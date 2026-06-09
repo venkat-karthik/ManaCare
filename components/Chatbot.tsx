@@ -18,6 +18,7 @@ export function Chatbot() {
   ])
   const [inputValue, setInputValue] = useState('')
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
+  const chatRef = useRef<HTMLDivElement | null>(null)
 
   const presetQuestions = [
     { q: 'What locations do you cover?', a: 'We currently operate fully across Hyderabad, Bengaluru, Visakhapatnam, and Tirupati. We are expanding to other major cities soon.' },
@@ -35,6 +36,18 @@ export function Chatbot() {
       scrollToBottom()
     }
   }, [messages, isOpen])
+
+  // Close on outside click
+  useEffect(() => {
+    if (!isOpen) return
+    const handleClickOutside = (e: MouseEvent) => {
+      if (chatRef.current && !chatRef.current.contains(e.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isOpen])
 
   const handleSendMessage = (text: string) => {
     if (!text.trim()) return
@@ -66,7 +79,7 @@ export function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-100 font-sans">
+    <div ref={chatRef} className="fixed bottom-6 right-6 z-100 font-sans">
       {/* Floating Button */}
       {!isOpen && (
         <button
