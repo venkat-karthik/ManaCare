@@ -29,7 +29,7 @@ export function IndiaMap() {
   const [hoveredCity, setHoveredCity] = useState<City | null>(null)
 
   return (
-    <div className="relative w-full h-full bg-slate-50/50 rounded-[32px] p-4 flex flex-col items-center justify-center border border-slate-100 shadow-sm overflow-hidden select-none">
+    <div className="relative w-full bg-slate-50/50 rounded-[32px] p-6 pt-16 flex flex-col items-center border border-slate-100 shadow-sm overflow-hidden select-none">
       <div className="absolute top-4 left-6 z-10 flex flex-col gap-1.5">
         <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Coverage Map</span>
         <h4 className="text-sm font-bold text-navy font-serif font-display">Service Coverage</h4>
@@ -308,8 +308,8 @@ export function IndiaMap() {
         </g>
       </svg>
 
-      {/* Floating Info Box / Tooltip */}
-      <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-primary/10 shadow-lg min-h-[72px] flex flex-col justify-center transition-all duration-300">
+      {/* Inline Info Box / Tooltip */}
+      <div className="w-full mt-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-primary/10 shadow-md min-h-[72px] flex flex-col justify-center transition-all duration-300">
         {hoveredCity ? (
           <div className="space-y-1">
             <div className="flex items-center gap-2">

@@ -440,7 +440,7 @@ function AnswerPanel({ scene, index }: { scene: typeof scenes[0]; index: number 
 
 function ServiceImage({ scene, isDark }: { scene: typeof scenes[0]; isDark: boolean }) {
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 max-w-lg mx-auto lg:max-w-none w-full">
       {/* Main photo */}
       <div
         className="relative rounded-3xl overflow-hidden shadow-2xl"

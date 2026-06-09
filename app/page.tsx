@@ -306,7 +306,7 @@ export default function Page() {
               </div>
             </Reveal>
 
-            <Reveal from="right" delay={0.1} className="lg:col-span-5 h-96 rounded-2xl border border-primary/10 relative overflow-hidden group shadow-lg">
+            <Reveal from="right" delay={0.1} className="lg:col-span-5 w-full max-w-lg mx-auto lg:max-w-none h-72 sm:h-80 md:h-96 rounded-2xl border border-primary/10 relative overflow-hidden group shadow-lg">
               <img
                 src="/assets/servostay_room.png"
                 alt="Servostay Premium Apartment"

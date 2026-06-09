@@ -89,7 +89,7 @@ export default function ServostayPage() {
 
         {/* FEATURED COVER PHOTO SECTION */}
         <section className="py-16 px-6 sm:px-10 lg:px-12">
-          <div className="max-w-6xl mx-auto rounded-[40px] overflow-hidden border border-light-gray relative h-96 md:h-[450px] shadow-lg group">
+          <div className="max-w-6xl mx-auto rounded-[40px] overflow-hidden border border-light-gray relative h-64 sm:h-80 md:h-[450px] shadow-lg group">
             <img
               src="/assets/servostay_room.png"
               alt="Servostay Apartment Room"
