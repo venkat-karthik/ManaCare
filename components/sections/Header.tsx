@@ -2,14 +2,25 @@
 
 import { ManaCareIcon } from '../ManaCareIcon'
 import { Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === '/'
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Transparent only on homepage before scrolling
+  const isTransparent = isHome && !scrolled
 
   const navItems = [
     { label: 'Home', href: '/' },
@@ -22,16 +33,17 @@ export function Header() {
   ]
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isHome 
-        ? 'bg-transparent border-0 shadow-none' 
-        : 'bg-white border-b border-primary/10 shadow-xs'
-    }`}>
-      <div className={`max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 h-24 flex items-center justify-between ${
-        isHome ? '' : 'bg-gradient-to-r from-white via-white to-secondary/30'
-      }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isTransparent
+          ? 'bg-transparent border-0 shadow-none'
+          : 'bg-white border-b border-primary/10 shadow-sm'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 h-24 flex items-center justify-between">
+
         <Link href="/" className="hover:opacity-90 transition-opacity">
-          <ManaCareIcon />
+          <ManaCareIcon transparent={isTransparent} />
         </Link>
 
         {/* Desktop Navigation */}
@@ -42,14 +54,20 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-xs uppercase tracking-widest font-bold transition-all hover:text-primary py-1 relative group ${
-                  isActive ? 'text-primary' : isHome ? 'text-white/80 hover:text-white' : 'text-dark/70'
+                className={`text-xs uppercase tracking-widest font-bold transition-all py-1 relative group ${
+                  isActive
+                    ? 'text-primary'
+                    : isTransparent
+                    ? 'text-white/80 hover:text-white'
+                    : 'text-dark/70 hover:text-primary'
                 }`}
               >
                 {item.label}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                  isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
               </Link>
             )
           })}
@@ -57,67 +75,78 @@ export function Header() {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Link href="/contact" className={`px-7 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-md transition-all text-xs font-bold uppercase tracking-wider shadow-sm ${
-            isHome 
-              ? 'bg-accent text-white hover:shadow-lg' 
-              : 'bg-primary text-white hover:bg-primary-hover'
-          }`}>
+          <Link
+            href="/contact"
+            className={`px-7 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-md transition-all text-xs font-bold uppercase tracking-wider shadow-sm ${
+              isTransparent
+                ? 'bg-accent text-white hover:shadow-lg'
+                : 'bg-primary text-white hover:bg-primary-hover'
+            }`}
+          >
             Book Free Consultation
           </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className={`md:hidden p-1 rounded-md hover:bg-light-gray transition-colors ${
-            isHome ? 'text-white' : 'text-dark'
+          className={`md:hidden p-1 rounded-md transition-colors ${
+            isTransparent
+              ? 'text-white hover:bg-white/10'
+              : 'text-dark hover:bg-light-gray'
           }`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className={`absolute top-24 left-0 right-0 shadow-md md:hidden animate-in fade-in slide-in-from-top-4 duration-200 ${
-            isHome ? 'bg-dark/95 border-b border-primary/20' : 'bg-white border-b border-light-gray'
-          }`}>
-            <nav className="flex flex-col p-6 gap-4">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className={`text-sm uppercase tracking-wider font-bold transition-colors py-1 relative group ${
-                      isActive 
-                        ? isHome ? 'text-accent' : 'text-primary' 
-                        : isHome ? 'text-white/70 hover:text-white' : 'text-dark/70 hover:text-primary'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}></span>
-                  </Link>
-                )
-              })}
-              <Link
-                href="/contact"
-                className={`text-center px-6 py-3 rounded-full font-bold uppercase tracking-wider mt-2 shadow-sm text-xs transition-all ${
-                  isHome 
-                    ? 'bg-accent text-white hover:shadow-lg' 
-                    : 'bg-primary text-white hover:bg-primary-hover'
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                Book Free Consultation
-              </Link>
-            </nav>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div
+          className={`absolute top-24 left-0 right-0 shadow-md md:hidden animate-in fade-in slide-in-from-top-4 duration-200 ${
+            isTransparent
+              ? 'bg-navy/95 border-b border-primary/20'
+              : 'bg-white border-b border-light-gray'
+          }`}
+        >
+          <nav className="flex flex-col p-6 gap-4">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`text-sm uppercase tracking-wider font-bold transition-colors py-1 relative group ${
+                    isActive
+                      ? isTransparent ? 'text-accent' : 'text-primary'
+                      : isTransparent ? 'text-white/70 hover:text-white' : 'text-dark/70 hover:text-primary'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
+                </Link>
+              )
+            })}
+            <Link
+              href="/contact"
+              className={`text-center px-6 py-3 rounded-full font-bold uppercase tracking-wider mt-2 shadow-sm text-xs transition-all ${
+                isTransparent
+                  ? 'bg-accent text-white hover:shadow-lg'
+                  : 'bg-primary text-white hover:bg-primary-hover'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Book Free Consultation
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

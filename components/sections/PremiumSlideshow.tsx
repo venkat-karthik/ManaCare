@@ -9,7 +9,6 @@ interface Slide {
   subtitle: string
   category: string
   image: string
-  icon: string
 }
 
 const slides: Slide[] = [
@@ -18,32 +17,35 @@ const slides: Slide[] = [
     title: 'Parent Care & Wellness',
     subtitle: 'Ensuring your parents are healthy, happy, and supported in India',
     category: 'Parents',
-    image: 'bg-gradient-to-br from-primary/20 to-primary/5',
-    icon: '👨‍👩‍👧'
+    image: '/assets/Parent Care & Wellness.png',
   },
   {
     id: 2,
-    title: 'Household Management',
-    subtitle: 'Professional domestic help and household maintenance coordination',
-    category: 'Household',
-    image: 'bg-gradient-to-br from-accent/20 to-accent/5',
-    icon: '🏠'
+    title: 'Hospital Visit Assistance',
+    subtitle: 'Accompanying your loved ones to appointments and managing medical coordination with care',
+    category: 'Healthcare',
+    image: '/assets/Hospital Visit Assistance.png',
   },
   {
     id: 3,
-    title: 'Property Oversight',
-    subtitle: 'Complete inspection, maintenance, and administrative supervision',
-    category: 'Property',
-    image: 'bg-gradient-to-br from-primary/30 to-primary/10',
-    icon: '🏡'
+    title: 'Household Management',
+    subtitle: 'Professional domestic help and household maintenance coordination',
+    category: 'Household',
+    image: '/assets/Household Management.png',
   },
   {
     id: 4,
+    title: 'Property Oversight',
+    subtitle: 'Complete inspection, maintenance, and administrative supervision',
+    category: 'Property',
+    image: '/assets/Property Oversight.png',
+  },
+  {
+    id: 5,
     title: 'Management & Coordination',
     subtitle: 'Seamless multi-city operations and extended family support',
     category: 'Management',
-    image: 'bg-gradient-to-br from-accent/30 to-accent/10',
-    icon: '📋'
+    image: '/assets/Management and Coordination.png',
   }
 ]
 
@@ -59,7 +61,7 @@ export function PremiumSlideshow() {
     }, 6000)
 
     return () => clearInterval(interval)
-  }, [isAutoPlay])
+  }, [isAutoPlay, currentSlide])
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
@@ -89,8 +91,14 @@ export function PremiumSlideshow() {
               index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
           >
-            {/* Background Gradient */}
-            <div className={`absolute inset-0 ${slide.image}`}></div>
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/70 to-transparent"></div>
@@ -104,9 +112,6 @@ export function PremiumSlideshow() {
                     {slide.category}
                   </span>
                 </div>
-
-                {/* Icon */}
-                <div className="text-6xl md:text-8xl lg:text-9xl opacity-80">{slide.icon}</div>
 
                 {/* Headline */}
                 <div className="space-y-3 md:space-y-4">
