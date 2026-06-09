@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter, DM_Serif_Display } from 'next/font/google'
+import { Playfair_Display, Lora, Poppins } from 'next/font/google'
 import './globals.css'
 import { Chatbot } from '@/components/Chatbot'
 
@@ -10,15 +10,16 @@ const playfair = Playfair_Display({
   weight: ['400', '500', '600', '700', '800'],
 })
 
-const dmSerif = DM_Serif_Display({
+const lora = Lora({
   variable: '--font-display',
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '500', '600', '700'],
 })
 
-const inter = Inter({
+const poppins = Poppins({
   variable: '--font-sans',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSerif.variable} ${inter.variable} bg-white`}>
+    <html lang="en" className={`${playfair.variable} ${lora.variable} ${poppins.variable} bg-white`}>
       <body className="font-sans antialiased bg-white text-[#1F2937]">
         {children}
         <Chatbot />

@@ -16,6 +16,7 @@ export default function ServostayPage() {
     type: '',
     message: ''
   })
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -24,7 +25,7 @@ export default function ServostayPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log('Servostay enquiry:', formData)
-    alert('Thank you for your Servostay enquiry! A booking assistant will contact you within 24 hours to present accommodation options.')
+    setIsSubmitted(true)
     setFormData({ name: '', email: '', phone: '', city: '', dates: '', duration: '', type: '', message: '' })
   }
 
@@ -113,13 +114,26 @@ export default function ServostayPage() {
             {features.map((feat, idx) => {
               const Icon = feat.icon
               return (
-                <div key={idx} className="bg-primary/5 border border-primary/10 rounded-[32px] p-8 flex gap-5 items-start hover:border-primary/20 hover:shadow-md transition-all duration-300">
-                  <div className="w-12 h-12 bg-white rounded-[20px] flex items-center justify-center border border-light-gray text-accent shrink-0">
-                    <Icon size={22} />
+                <div key={idx} className="group relative bg-gradient-to-br from-primary/6 to-primary/2 p-8 rounded-[32px] border-2 border-primary/15 flex gap-5 items-start overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:scale-105">
+                  {/* Shiny overlay effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="font-bold font-serif text-navy text-lg">{feat.title}</h3>
-                    <p className="text-sm text-dark/80 leading-relaxed">{feat.desc}</p>
+                  
+                  {/* Background shimmer */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl" />
+                  </div>
+
+                  {/* Icon container */}
+                  <div className="w-14 h-14 bg-white rounded-[20px] flex items-center justify-center border-2 border-primary/15 text-accent shrink-0 group-hover:from-primary/20 group-hover:to-accent/20 group-hover:border-accent group-hover:scale-110 group-hover:shadow-md transition-all duration-300 relative z-10">
+                    <Icon size={24} strokeWidth={1.5} className="group-hover:text-primary transition-colors duration-300" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="space-y-2 relative z-10">
+                    <h3 className="font-bold font-serif text-navy text-lg group-hover:text-primary transition-colors duration-300">{feat.title}</h3>
+                    <p className="text-sm text-dark/75 leading-relaxed font-light group-hover:text-dark transition-colors duration-300">{feat.desc}</p>
                   </div>
                 </div>
               )
@@ -166,117 +180,142 @@ export default function ServostayPage() {
               </div>
             </div>
 
-            {/* Right Column (Form) */}
-            <form onSubmit={handleSubmit} className="lg:col-span-7 bg-white p-8 md:p-10 rounded-[36px] border border-light-gray space-y-5 shadow-sm">
-              <h3 className="text-xl font-bold font-serif text-navy">Book or Enquire About a Stay</h3>
-              
-              <div className="grid sm:grid-cols-2 gap-4">
+            {/* Right Column (Form / Success Screen) */}
+            {isSubmitted ? (
+              <div className="lg:col-span-7 bg-gradient-to-br from-white via-white to-secondary/10 p-8 md:p-10 rounded-[32px] border-2 border-primary/20 flex flex-col items-center justify-center text-center space-y-6 shadow-md min-h-[440px] animate-in fade-in zoom-in-95 duration-300">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary relative">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping opacity-30" />
+                  <Check size={32} strokeWidth={3} />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold font-serif text-navy">Enquiry Submitted!</h3>
+                  <p className="text-sm text-dark/75 font-semibold leading-relaxed max-w-md">
+                    Thank you for your Servostay enquiry! A booking assistant will contact you within 24 hours to present accommodation options.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all"
+                >
+                  Submit Another Enquiry
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="lg:col-span-7 bg-gradient-to-br from-white via-white to-secondary/10 p-8 md:p-10 rounded-[32px] border-2 border-primary/20 space-y-6 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-dark/80">Full Name</label>
+                  <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-display inline-block">Booking Form</span>
+                  <h3 className="text-2xl font-bold font-serif text-navy">Book or Enquire About a Stay</h3>
+                </div>
+                
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-dark/80 uppercase tracking-wider font-display">Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your name"
+                      className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 placeholder:text-gray-400 hover:border-primary/30"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-dark/80 uppercase tracking-wider font-display">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="WhatsApp/Phone contact"
+                      className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 placeholder:text-gray-400 hover:border-primary/30"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-dark/80 uppercase tracking-wider font-display">Email Address</label>
                   <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
+                    type="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="Your name"
-                    className="w-full px-4 py-2 text-sm border border-light-gray rounded-lg focus:outline-none focus:border-primary bg-secondary/20"
+                    placeholder="Your email address"
+                    className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 placeholder:text-gray-400 hover:border-primary/30"
                   />
                 </div>
+
+                <div className="grid sm:grid-cols-3 gap-5">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-dark/80 uppercase tracking-wider font-display">City Visiting</label>
+                    <select
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 hover:border-primary/30"
+                    >
+                      <option value="">Select city</option>
+                      <option value="guntur">Guntur</option>
+                      <option value="vijayawada">Vijayawada</option>
+                      <option value="bapatla">Bapatla</option>
+                      <option value="ongole">Ongole</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-dark/80 uppercase tracking-wider font-display">Stay Duration</label>
+                    <input
+                      type="text"
+                      name="duration"
+                      value={formData.duration}
+                      onChange={handleChange}
+                      required
+                      placeholder="e.g. 2 weeks, 1 month"
+                      className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 placeholder:text-gray-400 hover:border-primary/30"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-dark/80 uppercase tracking-wider font-display">Accommodation Type</label>
+                    <select
+                      name="type"
+                      value={formData.type}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 hover:border-primary/30"
+                    >
+                      <option value="">Select type</option>
+                      <option value="serviced-apartment">Serviced Apartment</option>
+                      <option value="family-suite">Family Suite</option>
+                      <option value="villa">Bungalow/Villa</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-dark/80">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
+                  <label className="text-xs font-bold text-dark/80 uppercase tracking-wider font-display">Expected Travel Dates & Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
-                    required
-                    placeholder="WhatsApp/Phone contact"
-                    className="w-full px-4 py-2 text-sm border border-light-gray rounded-lg focus:outline-none focus:border-primary bg-secondary/20"
+                    placeholder="Expected dates of travel, airport pickup request, or specific area preferences..."
+                    rows={4}
+                    className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 placeholder:text-gray-400 resize-none hover:border-primary/30"
                   />
                 </div>
-              </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-dark/80">Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your email address"
-                  className="w-full px-4 py-2 text-sm border border-light-gray rounded-lg focus:outline-none focus:border-primary bg-secondary/20"
-                />
-              </div>
-
-              <div className="grid sm:grid-cols-3 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-dark/80">City Visiting</label>
-                  <select
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 text-sm border border-light-gray rounded-lg focus:outline-none focus:border-primary bg-secondary/20"
-                  >
-                    <option value="">Select city</option>
-                    <option value="hyderabad">Hyderabad</option>
-                    <option value="bengaluru">Bengaluru</option>
-                    <option value="visakhapatnam">Visakhapatnam</option>
-                    <option value="tirupati">Tirupati</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-dark/80">Stay Duration</label>
-                  <input
-                    type="text"
-                    name="duration"
-                    value={formData.duration}
-                    onChange={handleChange}
-                    required
-                    placeholder="e.g. 2 weeks, 1 month"
-                    className="w-full px-4 py-2 text-sm border border-light-gray rounded-lg focus:outline-none focus:border-primary bg-secondary/20"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-dark/80">Accommodation Type</label>
-                  <select
-                    name="type"
-                    value={formData.type}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 text-sm border border-light-gray rounded-lg focus:outline-none focus:border-primary bg-secondary/20"
-                  >
-                    <option value="">Select type</option>
-                    <option value="serviced-apartment">Serviced Apartment</option>
-                    <option value="family-suite">Family Suite</option>
-                    <option value="villa">Bungalow/Villa</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-dark/80">Expected Travel Dates & Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Expected dates of travel, airport pickup request, or specific area preferences..."
-                  rows={3}
-                  className="w-full px-4 py-2 text-sm border border-light-gray rounded-lg focus:outline-none focus:border-primary bg-secondary/20"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-primary text-white py-3.5 rounded-full hover:bg-primary-hover transition-all text-xs font-bold uppercase tracking-wider shadow-sm mt-2 cursor-pointer"
-              >
-                Submit Booking Enquiry
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-primary to-primary-hover text-white py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer font-display"
+                >
+                  Submit Booking Enquiry
+                </button>
+              </form>
+            )
+          }
           </div>
         </section>
       </main>

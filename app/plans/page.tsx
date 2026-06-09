@@ -3,8 +3,9 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 import Link from 'next/link'
-import { Check, Info, ShieldCheck, HelpCircle, ChevronDown, X, CreditCard, Sparkles, Loader2, CheckCircle2 } from 'lucide-react'
+import { Check, ShieldCheck, ChevronDown, X, CreditCard, Sparkles, Loader2, CheckCircle2 } from 'lucide-react'
 import { useState } from 'react'
+import { Reveal } from '@/lib/useReveal'
 
 const plans = [
   {
@@ -192,94 +193,84 @@ export default function PlansPage() {
       <main className="flex-grow pt-24">
         {/* HEADER SECTION */}
         <section className="bg-gradient-to-r from-primary/5 via-primary/3 to-white py-20 md:py-24 px-6 sm:px-10 lg:px-12 border-b border-primary/10 text-center space-y-4">
-          <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Pricing & Plans</span>
-          <h1 className="text-4xl sm:text-5xl font-bold font-serif text-navy tracking-tight">
-            Flexible Care Plans <br />
-            <span className="text-primary font-normal italic">Designed for Every Family.</span>
-          </h1>
-          <p className="text-dark/80 text-base max-w-2xl mx-auto leading-relaxed font-medium">
-            Select a plan that aligns with your requirements. Adjust your package anytime without penalties or cancel easily with 7 days notice.
-          </p>
+          <Reveal from="bottom">
+            <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Pricing & Plans</span>
+          </Reveal>
+          <Reveal from="bottom" delay={0.1}>
+            <h1 className="text-4xl sm:text-5xl font-bold font-serif text-navy tracking-tight">
+              Flexible Care Plans <br />
+              <span className="text-primary font-normal italic">Designed for Every Family.</span>
+            </h1>
+          </Reveal>
+          <Reveal from="bottom" delay={0.2}>
+            <p className="text-dark/80 text-base max-w-2xl mx-auto leading-relaxed font-medium">
+              Select a plan that aligns with your requirements. Adjust your package anytime without penalties or cancel easily with 7 days notice.
+            </p>
+          </Reveal>
         </section>
 
         {/* PRICING GRID */}
         <section className="py-24 px-6 sm:px-10 lg:px-12">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
             {plans.map((plan, idx) => (
-              <div
-                key={idx}
-                className={`bg-white rounded-[36px] border flex flex-col justify-between p-8 transition-all relative duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                  plan.popular
-                    ? 'border-primary ring-2 ring-primary/20 bg-gradient-to-b from-primary/5 via-white to-white shadow-md scale-105 lg:scale-100'
-                    : 'border-light-gray hover:border-primary/25'
-                }`}
-              >
-                {plan.popular && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-[9px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase font-serif animate-bounce">
-                    Most Popular
-                  </span>
-                )}
-
-                <div className="space-y-6">
-                  {/* Card Title */}
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-bold font-serif text-navy">{plan.name}</h3>
-                    <p className="text-xs text-dark/75 leading-relaxed font-semibold">{plan.description}</p>
-                  </div>
-
-                  {/* Pricing Display */}
-                  <div className="space-y-1">
-                    <div className="text-3xl font-bold text-primary font-serif">
-                      {plan.formattedPrice}
-                    </div>
-                    <div className="text-[10px] text-dark/60 font-sans tracking-wide uppercase font-bold">
-                      {plan.period}
-                    </div>
-                  </div>
-
-                  {/* Feature Bullets */}
-                  <ul className="space-y-3 pt-6 border-t border-light-gray">
-                    {plan.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2.5 text-xs text-dark/85 font-semibold leading-relaxed">
-                        <Check size={14} className="text-primary shrink-0 mt-0.5" strokeWidth={3} />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Button */}
-                <div className="pt-6">
-                  {plan.price === null ? (
-                    <Link
-                      href="/contact?plan=custom"
-                      className="w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all border border-primary text-primary hover:bg-secondary"
-                    >
-                      {plan.ctaText}
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => handleOpenCheckout(plan)}
-                      className={`w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                        plan.popular
-                          ? 'bg-primary text-white hover:bg-primary-hover shadow-sm'
-                          : 'border border-primary text-primary hover:bg-secondary'
-                      }`}
-                    >
-                      {plan.ctaText}
-                    </button>
+              <Reveal key={idx} from="bottom" delay={idx * 0.09}>
+                <div
+                  className={`bg-white rounded-[36px] border flex flex-col justify-between p-8 transition-all relative duration-300 hover:shadow-lg hover:-translate-y-1 h-full ${
+                    plan.popular
+                      ? 'border-primary ring-2 ring-primary/20 bg-gradient-to-b from-primary/5 via-white to-white shadow-md'
+                      : 'border-light-gray hover:border-primary/25'
+                  }`}
+                >
+                  {plan.popular && (
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-[9px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase font-serif animate-bounce">
+                      Most Popular
+                    </span>
                   )}
+
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-bold font-serif text-navy">{plan.name}</h3>
+                      <p className="text-xs text-dark/75 leading-relaxed font-semibold">{plan.description}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-3xl font-bold text-primary font-serif">{plan.formattedPrice}</div>
+                      <div className="text-[10px] text-dark/60 font-sans tracking-wide uppercase font-bold">{plan.period}</div>
+                    </div>
+                    <ul className="space-y-3 pt-6 border-t border-light-gray">
+                      {plan.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-2.5 text-xs text-dark/85 font-semibold leading-relaxed">
+                          <Check size={14} className="text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="pt-6">
+                    {plan.price === null ? (
+                      <Link href="/contact?plan=custom"
+                        className="w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all border border-primary text-primary hover:bg-secondary">
+                        {plan.ctaText}
+                      </Link>
+                    ) : (
+                      <button onClick={() => handleOpenCheckout(plan)}
+                        className={`w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                          plan.popular ? 'bg-primary text-white hover:bg-primary-hover shadow-sm' : 'border border-primary text-primary hover:bg-secondary'
+                        }`}>
+                        {plan.ctaText}
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
-        {/* TRUST SEAL / ACCORDION QUESTIONS */}
+        {/* FAQ & TRUST */}
         <section className="py-24 bg-primary/5 border-y border-primary/10 px-6 sm:px-10 lg:px-12">
           <div className="max-w-4xl mx-auto grid md:grid-cols-12 gap-12 items-start">
-            {/* Left info column */}
-            <div className="md:col-span-5 space-y-6">
+            <Reveal from="left" className="md:col-span-5 space-y-6">
               <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Guaranteed Peace of Mind</span>
               <h2 className="text-3xl font-bold font-serif text-navy leading-tight">Frequently Asked Pricing Questions</h2>
               <p className="text-dark/80 text-sm leading-relaxed font-semibold">
@@ -294,27 +285,26 @@ export default function PlansPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
-            {/* Right Accordion FAQ */}
             <div className="md:col-span-7 space-y-3.5">
               {pricingFaqs.map((faq, idx) => {
                 const isOpen = faqOpen === idx
                 return (
-                  <div key={idx} className="bg-white rounded-[24px] border border-light-gray overflow-hidden transition-all">
-                    <button
-                      onClick={() => setFaqOpen(isOpen ? null : idx)}
-                      className="w-full px-6 py-4 flex items-center justify-between hover:bg-secondary/15 transition-all text-left cursor-pointer"
-                    >
-                      <h4 className="font-bold font-serif text-navy text-sm">{faq.q}</h4>
-                      <ChevronDown size={16} className={`text-accent transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    {isOpen && (
-                      <div className="px-6 pb-5 pt-1 text-xs text-dark/80 leading-relaxed border-t border-light-gray/50 bg-secondary/5 font-semibold">
-                        {faq.a}
-                      </div>
-                    )}
-                  </div>
+                  <Reveal key={idx} from="right" delay={idx * 0.08}>
+                    <div className="bg-white rounded-[24px] border border-light-gray overflow-hidden transition-all">
+                      <button onClick={() => setFaqOpen(isOpen ? null : idx)}
+                        className="w-full px-6 py-4 flex items-center justify-between hover:bg-secondary/15 transition-all text-left cursor-pointer">
+                        <h4 className="font-bold font-serif text-navy text-sm">{faq.q}</h4>
+                        <ChevronDown size={16} className={`text-accent transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isOpen && (
+                        <div className="px-6 pb-5 pt-1 text-xs text-dark/80 leading-relaxed border-t border-light-gray/50 bg-secondary/5 font-semibold">
+                          {faq.a}
+                        </div>
+                      )}
+                    </div>
+                  </Reveal>
                 )
               })}
             </div>

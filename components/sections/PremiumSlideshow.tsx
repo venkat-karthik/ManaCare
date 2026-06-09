@@ -51,31 +51,25 @@ const slides: Slide[] = [
 
 export function PremiumSlideshow() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(true)
 
   useEffect(() => {
-    if (!isAutoPlay) return
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 6000)
+    }, 2500) // 2.5 sec auto-play
 
     return () => clearInterval(interval)
-  }, [isAutoPlay, currentSlide])
+  }, [currentSlide])
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
-    setIsAutoPlay(false)
   }
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
-    setIsAutoPlay(false)
   }
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-    setIsAutoPlay(false)
   }
 
   const currentSlideData = slides[currentSlide]
@@ -132,26 +126,41 @@ export function PremiumSlideshow() {
               </div>
             </div>
 
-            {/* Floating Cards on Right (Desktop) */}
-            <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 flex-col gap-4 pr-8 xl:pr-16">
-              {slides.map((s, idx) => (
-                <div
-                  key={s.id}
-                  onClick={() => goToSlide(idx)}
-                  className={`cursor-pointer transition-all duration-300 rounded-[20px] overflow-hidden backdrop-blur-md border ${
-                    idx === currentSlide
-                      ? 'w-72 h-24 bg-white/15 border-white/30 shadow-2xl'
-                      : 'w-16 h-16 bg-white/5 border-white/10 hover:bg-white/10'
-                  }`}
-                >
-                  {idx === currentSlide && (
-                    <div className="p-3 space-y-1.5 h-full flex flex-col justify-center">
-                      <p className="text-white text-xs font-bold uppercase tracking-wider">{s.category}</p>
-                      <p className="text-white/80 text-xs leading-tight line-clamp-2">{s.title}</p>
+            {/* Premium Vertical Dots on Right (Desktop) */}
+            <div className="hidden lg:flex absolute right-8 xl:right-16 top-1/2 -translate-y-1/2 flex-col gap-6 z-20">
+              {slides.map((s, idx) => {
+                const isActive = idx === currentSlide
+                return (
+                  <button
+                    key={s.id}
+                    onClick={() => goToSlide(idx)}
+                    className="group relative flex items-center justify-end"
+                    aria-label={`Go to slide ${idx + 1}`}
+                  >
+                    {/* Tooltip on Hover */}
+                    <div className="opacity-0 translate-x-4 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 absolute right-10 bg-navy/95 border border-white/20 backdrop-blur-md px-4 py-2.5 rounded-xl text-left shadow-2xl w-56">
+                      <p className="text-accent text-[9px] font-bold uppercase tracking-widest">{s.category}</p>
+                      <p className="text-white text-xs font-serif font-semibold leading-snug mt-0.5 line-clamp-2">{s.title}</p>
                     </div>
-                  )}
-                </div>
-              ))}
+
+                    {/* Dot */}
+                    <div className="w-8 h-8 flex items-center justify-center">
+                      {isActive ? (
+                        <div className="relative flex items-center justify-center">
+                          {/* Pulsing outer ring */}
+                          <div className="absolute w-6 h-6 border border-accent rounded-full animate-ping opacity-35" />
+                          {/* Inner active ring */}
+                          <div className="w-5 h-5 border border-accent rounded-full flex items-center justify-center">
+                            <div className="w-2.5 h-2.5 bg-accent rounded-full" />
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="w-2 h-2 bg-white/40 group-hover:bg-white/80 rounded-full group-hover:scale-125 transition-all duration-300" />
+                      )}
+                    </div>
+                  </button>
+                )
+              })}
             </div>
           </div>
         ))}
