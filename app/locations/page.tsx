@@ -47,7 +47,7 @@ export default function LocationsPage() {
     <div className="min-h-screen bg-white flex flex-col font-sans">
       <Header />
 
-      <main className="flex-grow">
+      <main className="flex-grow pt-24">
         {/* HEADER */}
         <section className="bg-gradient-to-r from-primary/5 via-primary/3 to-white py-20 md:py-24 px-6 sm:px-10 lg:px-12 border-b border-primary/10 text-center space-y-4">
           <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Service Locations</span>
