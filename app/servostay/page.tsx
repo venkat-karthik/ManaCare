@@ -101,12 +101,12 @@ export default function ServostayPage() {
 
             <Reveal from="bottom" delay={0.3} className="pt-2 flex flex-wrap justify-center gap-4">
               <a
-                href="https://servostay.com/"
+                href="https://servostay.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-accent text-white px-7 py-3.5 rounded-full hover:bg-accent/90 transition-all text-xs font-bold uppercase tracking-wider shadow-lg shadow-accent/20 inline-flex items-center gap-2 cursor-pointer"
               >
-                <span>Visit Servostay.com</span>
+                <span>Visit Servostay.in</span>
                 <ExternalLink size={14} />
               </a>
               <a

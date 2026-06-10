@@ -295,12 +295,12 @@ export default function Page() {
                   <ArrowRight size={14} />
                 </Link>
                 <a
-                  href="https://servostay.com/"
+                  href="https://servostay.in/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border border-primary text-primary px-7 py-3.5 rounded-full hover:bg-secondary transition-all text-sm font-semibold inline-flex items-center gap-2 hover:-translate-y-0.5"
                 >
-                  <span>Visit Servostay.com</span>
+                  <span>Visit Servostay.in</span>
                   <ArrowRight size={14} className="-rotate-45" />
                 </a>
               </div>
