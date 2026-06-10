@@ -4,6 +4,7 @@ import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 import { Check, Calendar, MapPin, Key, ShieldCheck, HeartHandshake, PhoneCall, ExternalLink, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
+import { Reveal } from '@/lib/useReveal'
 
 export default function ServostayPage() {
   const [formData, setFormData] = useState({
@@ -58,32 +59,64 @@ export default function ServostayPage() {
 
       <main className="flex-grow pt-24">
         {/* HERO HEADER */}
-        <section className="bg-gradient-to-r from-primary/5 via-primary/3 to-white py-20 md:py-24 px-6 sm:px-10 lg:px-12 border-b border-primary/10 text-center space-y-5">
-          <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Sister Business Integration</span>
-          <h1 className="text-4xl sm:text-5xl font-bold font-serif text-navy tracking-tight leading-tight">
-            Premium Serviced Suites by <span className="text-primary font-normal italic">Servostay.</span>
-          </h1>
-          <p className="text-dark/80 text-base max-w-2xl mx-auto leading-relaxed font-medium">
-            In partnership with Servostay, we offer NRI families transition homes, extended stays, and corporate accommodation packages in India. Secure, vetted, and fully serviced.
-          </p>
+        <section className="relative bg-[#0F172A] bg-gradient-to-b from-[#0F172A] via-[#0d1f17] to-[#0F172A] py-20 md:py-24 px-6 sm:px-10 lg:px-12 border-b border-white/5 text-center space-y-5 overflow-hidden select-none">
+          {/* Ambient glow */}
+          <div
+            className="absolute rounded-full pointer-events-none"
+            style={{
+              width: 700, height: 700,
+              top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%)',
+              background: '#1B5E43',
+              opacity: 0.08,
+              filter: 'blur(140px)',
+            }}
+          />
 
-          <div className="pt-2 flex justify-center gap-4">
-            <a
-              href="https://servostay.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary text-white px-7 py-3.5 rounded-full hover:bg-primary-hover transition-all text-xs font-bold uppercase tracking-wider shadow-sm inline-flex items-center gap-2"
-            >
-              <span>Visit Servostay.com</span>
-              <ExternalLink size={14} />
-            </a>
-            <a
-              href="#enquiry-form"
-              className="border border-primary text-primary px-7 py-3.5 rounded-full hover:bg-secondary transition-all text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2"
-            >
-              <span>Request Booking Quote</span>
-              <ArrowRight size={14} className="rotate-90" />
-            </a>
+          {/* Subtle grid pattern */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <pattern id="grid-servostay" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                <line x1="60" y1="0" x2="60" y2="60" stroke="#1B5E43" strokeWidth="1" />
+                <line x1="0" y1="60" x2="60" y2="60" stroke="#1B5E43" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-servostay)" />
+          </svg>
+
+          <div className="relative z-10 space-y-5 flex flex-col items-center">
+            <Reveal from="bottom">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase font-serif">Sister Business Integration</span>
+            </Reveal>
+            <Reveal from="bottom" delay={0.1}>
+              <h1 className="text-4xl sm:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
+                Premium Serviced Suites by <span className="text-accent font-normal italic mt-2 block sm:inline sm:mt-0">Servostay.</span>
+              </h1>
+            </Reveal>
+            <Reveal from="bottom" delay={0.2}>
+              <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed font-medium">
+                In partnership with Servostay, we offer NRI families transition homes, extended stays, and corporate accommodation packages in India. Secure, vetted, and fully serviced.
+              </p>
+            </Reveal>
+
+            <Reveal from="bottom" delay={0.3} className="pt-2 flex flex-wrap justify-center gap-4">
+              <a
+                href="https://servostay.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-accent text-white px-7 py-3.5 rounded-full hover:bg-accent/90 transition-all text-xs font-bold uppercase tracking-wider shadow-lg shadow-accent/20 inline-flex items-center gap-2 cursor-pointer"
+              >
+                <span>Visit Servostay.com</span>
+                <ExternalLink size={14} />
+              </a>
+              <a
+                href="#enquiry-form"
+                className="border border-white/20 text-white px-7 py-3.5 rounded-full hover:bg-white/10 hover:border-white/40 transition-all text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 cursor-pointer"
+              >
+                <span>Request Booking Quote</span>
+                <ArrowRight size={14} className="rotate-95 text-accent" />
+              </a>
+            </Reveal>
           </div>
         </section>
 

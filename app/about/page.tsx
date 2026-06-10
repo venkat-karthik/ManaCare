@@ -20,21 +20,47 @@ export default function AboutPage() {
 
       <main className="flex-grow pt-24">
         {/* HEADER */}
-        <section className="bg-gradient-to-r from-primary/5 via-primary/3 to-white py-20 md:py-24 px-6 sm:px-10 lg:px-12 border-b border-primary/10 text-center space-y-4">
-          <Reveal from="bottom">
-            <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">About ManaCare</span>
-          </Reveal>
-          <Reveal from="bottom" delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl font-bold font-serif text-navy tracking-tight">
-              Our Mission & Philosophy <br />
-              <span className="text-primary font-normal italic">Bridging the Distance with Care & Trust.</span>
-            </h1>
-          </Reveal>
-          <Reveal from="bottom" delay={0.2}>
-            <p className="text-dark/80 text-base max-w-2xl mx-auto leading-relaxed font-medium">
-              ManaCare was founded to solve a deeply personal challenge: providing reliable, high-quality care for elderly parents in India on behalf of their children living abroad.
-            </p>
-          </Reveal>
+        <section className="relative bg-[#0F172A] bg-gradient-to-b from-[#0F172A] via-[#0d1f17] to-[#0F172A] py-20 md:py-24 px-6 sm:px-10 lg:px-12 border-b border-white/5 text-center space-y-4 overflow-hidden select-none">
+          {/* Ambient glow */}
+          <div
+            className="absolute rounded-full pointer-events-none"
+            style={{
+              width: 700, height: 700,
+              top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%)',
+              background: '#1B5E43',
+              opacity: 0.08,
+              filter: 'blur(140px)',
+            }}
+          />
+
+          {/* Subtle grid pattern */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <pattern id="grid-about" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                <line x1="60" y1="0" x2="60" y2="60" stroke="#1B5E43" strokeWidth="1" />
+                <line x1="0" y1="60" x2="60" y2="60" stroke="#1B5E43" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-about)" />
+          </svg>
+
+          <div className="relative z-10 space-y-4">
+            <Reveal from="bottom">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase font-serif">About ManaCare</span>
+            </Reveal>
+            <Reveal from="bottom" delay={0.1}>
+              <h1 className="text-4xl sm:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
+                Our Mission & Philosophy <br />
+                <span className="text-accent font-normal italic mt-2 block">Bridging the Distance with Care & Trust.</span>
+              </h1>
+            </Reveal>
+            <Reveal from="bottom" delay={0.2}>
+              <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed font-medium">
+                ManaCare was founded to solve a deeply personal challenge: providing reliable, high-quality care for elderly parents in India on behalf of their children living abroad.
+              </p>
+            </Reveal>
+          </div>
         </section>
 
         {/* MISSION & DETAILS */}

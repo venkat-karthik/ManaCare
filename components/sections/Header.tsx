@@ -77,7 +77,7 @@ export function Header() {
         <div className="hidden md:block">
           <Link
             href="/contact"
-            className={`px-7 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-md transition-all text-xs font-bold uppercase tracking-wider shadow-sm ${
+            className={`hover-shine px-7 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-md transition-all text-xs font-bold uppercase tracking-wider shadow-sm ${
               isTransparent
                 ? 'bg-accent text-white hover:shadow-lg'
                 : 'bg-primary text-white hover:bg-primary-hover'
@@ -135,7 +135,7 @@ export function Header() {
             })}
             <Link
               href="/contact"
-              className={`text-center px-6 py-3 rounded-full font-bold uppercase tracking-wider mt-2 shadow-sm text-xs transition-all ${
+              className={`hover-shine text-center px-6 py-3 rounded-full font-bold uppercase tracking-wider mt-2 shadow-sm text-xs transition-all ${
                 isTransparent
                   ? 'bg-accent text-white hover:shadow-lg'
                   : 'bg-primary text-white hover:bg-primary-hover'

@@ -65,9 +65,14 @@ export function Footer() {
 
         {/* Subfooter */}
         <div className="pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p className="text-white/40 text-xs font-medium">
-            © {new Date().getFullYear()} ManaCare Support Services. Dedicated care network for NRI families.
-          </p>
+          <div className="space-y-1.5 text-left">
+            <p className="text-white/40 text-xs font-medium">
+              © {new Date().getFullYear()} ManaCare Support Services. Dedicated care network for NRI families.
+            </p>
+            <p className="text-white/40 text-[10px] font-medium tracking-wide uppercase">
+              Made by <span className="text-accent font-bold hover:text-white transition-colors duration-300">Velfound</span>
+            </p>
+          </div>
           <div className="flex gap-6 text-xs text-white/40 font-medium">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
