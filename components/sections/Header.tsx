@@ -13,7 +13,7 @@ export function Header() {
   const isHome = pathname === '/'
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10)
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
@@ -34,9 +34,9 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,box-shadow] duration-300 ${
         isTransparent
-          ? 'bg-transparent border-0 shadow-none'
+          ? 'bg-transparent border-b border-b-transparent shadow-none'
           : 'bg-white border-b border-primary/10 shadow-sm'
       }`}
     >

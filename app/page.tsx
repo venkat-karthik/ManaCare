@@ -139,7 +139,7 @@ export default function Page() {
         </section>
 
         {/* SERVICES PREVIEW */}
-        <section className="relative py-24 px-6 sm:px-10 lg:px-12 overflow-hidden">
+        <section className="relative py-24 px-6 sm:px-10 lg:px-12 overflow-hidden border-b border-light-gray">
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <pattern id="diag-lines" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
@@ -153,10 +153,10 @@ export default function Page() {
           <div className="relative max-w-7xl mx-auto">
             <Reveal from="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-16">
               <div className="space-y-4">
-                <span className="text-xs font-semibold tracking-widest text-accent uppercase font-sans">What We Do</span>
+                <span className="text-xs font-semibold tracking-widest text-accent uppercase font-sans">Core Focus & Care Pillars</span>
                 <h2 className="text-3xl sm:text-4xl font-bold font-serif text-navy">Professional Care & Asset Oversight</h2>
                 <p className="text-dark/60 max-w-xl text-base leading-relaxed font-normal">
-                  Structured services managed by background-verified professionals across India.
+                  Our service structure spotlights parental healthcare and property safety, supported by key local assistance layers.
                 </p>
               </div>
               <Link href="/services" className="group mt-6 md:mt-0 flex items-center gap-2 text-primary font-semibold text-sm hover:underline shrink-0">
@@ -165,27 +165,155 @@ export default function Page() {
               </Link>
             </Reveal>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {[
-                { icon: Heart, title: 'Parent Care', desc: 'Wellness check-ins, medicine refills, and daily coordinator logs.' },
-                { icon: Users, title: 'Relative Care', desc: 'Extended support for family members, siblings, and academic coordination.' },
-                { icon: Home, title: 'Property Management', desc: 'Regular audits, utility payments, tenant coordination, and repairs.' },
-                { icon: Shield, title: 'Household Assistance', desc: 'Sourcing domestic help, safety audits, and appliance maintenance.' },
-                { icon: AlertCircle, title: 'Emergency Support', desc: 'Dedicated 24/7 response helpline and direct hospital accompaniment.' }
-              ].map((srv, idx) => {
-                const Icon = srv.icon
-                return (
-                  <Reveal key={idx} from="bottom" delay={idx * 0.08}>
-                    <div className="bg-white rounded-2xl p-6 border border-light-gray hover:border-primary/25 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col gap-4 group h-full">
-                      <div className="w-11 h-11 bg-secondary rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                        <Icon size={20} />
-                      </div>
-                      <h3 className="font-semibold font-sans text-navy text-base">{srv.title}</h3>
-                      <p className="text-sm text-dark/60 leading-relaxed font-normal">{srv.desc}</p>
+            {/* PRIMARY SPOTLIGHT SERVICES (2 Columns) */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="text-xs font-bold tracking-widest text-accent uppercase font-sans">Primary Spotlight Services</span>
+                <div className="h-px bg-accent/20 flex-grow" />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* parental care spotlight */}
+                <Reveal from="left" delay={0.05}>
+                  <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                    <div className="relative h-60 w-full overflow-hidden">
+                      <img
+                        src="/assets/Parent Care & Wellness.png"
+                        alt="Parental Care & Wellness"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                      <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3 py-1 rounded-full uppercase shadow-md animate-pulse">
+                        ★ Primary Spotlight
+                      </span>
                     </div>
-                  </Reveal>
-                )
-              })}
+
+                    <div className="p-8 flex-grow flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <Heart size={22} />
+                          </div>
+                          <h3 className="font-bold font-serif text-navy text-2xl">Parental Care & Wellness</h3>
+                        </div>
+                        <p className="text-dark/70 text-sm leading-relaxed font-normal">
+                          Empathetic, structured care managers acting as your local eyes and hands. We look after your parents' daily health logs, vitals, medical requirements, and lifestyle companionship.
+                        </p>
+                        
+                        <ul className="space-y-2.5 pt-2">
+                          {[
+                            'Dedicated 1-on-1 care coordinator',
+                            'Regular health, vitals & wellness tracking logs',
+                            'Medication delivery, management & refills',
+                            'Accompanied hospital & doctor consultation runs'
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
+                              <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="pt-8 border-t border-light-gray mt-8">
+                        <Link href="/services#parent-care" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                          <span>Explore Parent Care Solutions</span>
+                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+
+                {/* property care spotlight */}
+                <Reveal from="right" delay={0.1}>
+                  <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                    <div className="relative h-60 w-full overflow-hidden">
+                      <img
+                        src="/assets/Property Oversight.png"
+                        alt="Property Oversight & Management"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                      <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3 py-1 rounded-full uppercase shadow-md animate-pulse">
+                        ★ Primary Spotlight
+                      </span>
+                    </div>
+
+                    <div className="p-8 flex-grow flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <Home size={22} />
+                          </div>
+                          <h3 className="font-bold font-serif text-navy text-2xl">Property Oversight & Protection</h3>
+                        </div>
+                        <p className="text-dark/70 text-sm leading-relaxed font-normal">
+                          Safeguarding your property investments and family assets in India. We perform regular physical checks, manage local tenants, maintain utilities, and send you detailed digital reports.
+                        </p>
+                        
+                        <ul className="space-y-2.5 pt-2">
+                          {[
+                            'Regular physical inspections with photo & video audits',
+                            'Repairs, maintenance, painting & cleaning coordination',
+                            'Tenant verification, onboarding & rent collection admin',
+                            'Utility bills, municipal taxes & registration paperwork'
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
+                              <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="pt-8 border-t border-light-gray mt-8">
+                        <Link href="/services#property-management" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                          <span>Explore Property Care Solutions</span>
+                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+
+            {/* SUPPORT SERVICES (3 Columns) */}
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="text-xs font-bold tracking-widest text-dark/50 uppercase font-sans">Supporting Service Pillars</span>
+                <div className="h-px bg-light-gray flex-grow" />
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  { icon: Users, title: 'Relative & Family Coordination', desc: 'Extended local support for family milestones, sibling check-ins, or academic setups.', link: '/services#relative-care' },
+                  { icon: Shield, title: 'Household & Help Sourcing', desc: 'Background-verified cook, security, and househelp assistance with home safety checks.', link: '/services#household-assistance' },
+                  { icon: AlertCircle, title: '24/7 Emergency Support', desc: 'Registered NRI emergency response, hospital runs, and dedicated coordinator assistance.', link: '/services#emergency-support' }
+                ].map((srv, idx) => {
+                  const Icon = srv.icon
+                  return (
+                    <Reveal key={idx} from="bottom" delay={idx * 0.06}>
+                      <div className="bg-white rounded-2xl p-6 border border-light-gray hover:border-primary/25 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group h-full">
+                        <div className="space-y-4">
+                          <div className="w-11 h-11 bg-secondary rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <Icon size={20} />
+                          </div>
+                          <h3 className="font-semibold font-sans text-navy text-base">{srv.title}</h3>
+                          <p className="text-xs text-dark/60 leading-relaxed font-normal">{srv.desc}</p>
+                        </div>
+                        <div className="pt-5 mt-5 border-t border-light-gray/40">
+                          <Link href={srv.link} className="inline-flex items-center gap-1.5 text-primary text-xs font-bold hover:underline">
+                            <span>Details</span>
+                            <ArrowRight size={11} />
+                          </Link>
+                        </div>
+                      </div>
+                    </Reveal>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </section>

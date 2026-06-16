@@ -11,6 +11,7 @@ interface Slide {
   subtitle: string
   category: string
   image: string
+  isSpotlight?: boolean
 }
 
 const slides: Slide[] = [
@@ -20,6 +21,7 @@ const slides: Slide[] = [
     subtitle: 'Ensuring your parents are healthy, happy, and supported in India',
     category: 'Parents',
     image: '/assets/Parent Care & Wellness.png',
+    isSpotlight: true,
   },
   {
     id: 2,
@@ -41,6 +43,7 @@ const slides: Slide[] = [
     subtitle: 'Complete inspection, maintenance, and administrative supervision',
     category: 'Property',
     image: '/assets/Property Oversight.png',
+    isSpotlight: true,
   },
   {
     id: 5,
@@ -149,11 +152,16 @@ export function PremiumSlideshow() {
                       : 'opacity-0 translate-y-8 scale-95 pointer-events-none z-0'
                   } space-y-6 pointer-events-auto flex flex-col items-start`}
                 >
-                  {/* Category Badge */}
-                  <div className="inline-flex">
+                  {/* Category & Spotlight Badges */}
+                  <div className="flex flex-wrap items-center gap-3">
                     <span className="text-accent font-sans text-xs sm:text-sm font-bold tracking-widest uppercase bg-accent/15 px-4.5 py-1.5 rounded-full border border-accent/25 backdrop-blur-xs">
                       {slide.category}
                     </span>
+                    {slide.isSpotlight && (
+                      <span className="text-white font-sans text-[11px] sm:text-xs font-bold tracking-widest uppercase bg-primary/80 px-4 py-1.5 rounded-full border border-primary/40 backdrop-blur-xs flex items-center gap-1.5 animate-pulse">
+                        <span className="text-accent">★</span> Primary Spotlight
+                      </span>
+                    )}
                   </div>
 
                   {/* Headline & Subtitle */}

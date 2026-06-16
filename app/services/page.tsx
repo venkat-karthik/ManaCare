@@ -349,20 +349,28 @@ function AnswerPanel({ scene, index }: { scene: typeof scenes[0]; index: number 
             <div className="h-px w-10" style={{ background: scene.answerAccent }} />
           </div>
 
-          <div
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full mb-7"
-            style={{
-              background: `${scene.answerAccent}15`,
-              border: `1px solid ${scene.answerAccent}30`,
-            }}
-          >
+          <div className="flex flex-col items-center gap-4 mb-7">
             <div
-              className="w-2 h-2 rounded-full animate-pulse"
-              style={{ background: scene.answerAccent }}
-            />
-            <span className="text-sm font-semibold" style={{ color: scene.answerAccent }}>
-              Yes — ManaCare is here for that.
-            </span>
+              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full"
+              style={{
+                background: `${scene.answerAccent}15`,
+                border: `1px solid ${scene.answerAccent}30`,
+              }}
+            >
+              <div
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ background: scene.answerAccent }}
+              />
+              <span className="text-sm font-semibold" style={{ color: scene.answerAccent }}>
+                Yes — ManaCare is here for that.
+              </span>
+            </div>
+
+            {['parent-care', 'property-management'].includes(scene.id) && (
+              <span className="bg-accent/15 text-accent text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-full uppercase border border-accent/25 inline-flex items-center gap-1.5 animate-pulse">
+                ★ Primary Spotlight Service
+              </span>
+            )}
           </div>
 
           <h3
@@ -622,6 +630,119 @@ export default function ServicesPage() {
                 <div className="w-px h-8 mx-auto" style={{ background: 'linear-gradient(to bottom, transparent, rgba(212,162,76,0.6))' }} />
                 <ChevronDown size={18} style={{ color: '#D4A24C', opacity: 0.7 }} />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CORE PRIMARY SERVICES SPOTLIGHT ── */}
+        <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0E1626] border-y border-white/5 overflow-hidden">
+          {/* Subtle background graphics */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
+          
+          <div className="relative max-w-7xl mx-auto space-y-16">
+            <Reveal from="bottom" className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="text-xs font-bold tracking-[0.25em] text-accent uppercase font-sans">
+                ManaCare Foundations
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold font-serif text-white">
+                Our Two Primary Care Spotlights
+              </h2>
+              <p className="text-white/50 text-base max-w-xl mx-auto leading-relaxed">
+                We focus on protecting what matters most: the health of your elderly parents and the security of your family home.
+              </p>
+            </Reveal>
+
+            {/* Split Grid */}
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+              
+              {/* LEFT COLUMN: Parental Care Spotlight */}
+              <div className="flex flex-col justify-between bg-white/3 rounded-[32px] border border-white/10 p-8 lg:p-12 hover:border-primary/30 transition-all duration-300 relative group overflow-hidden">
+                <div className="space-y-8">
+                  {/* Photo Fades in from Left */}
+                  <Reveal from="left" delay={0.05} className="w-full">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                      <img
+                        src="/assets/Parent Care & Wellness.png"
+                        alt="Parental Care & Wellness"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <span className="absolute top-4 left-4 bg-primary text-white text-[9px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase border border-primary/20 backdrop-blur-sm animate-pulse">
+                        ★ Core Focus
+                      </span>
+                    </div>
+                  </Reveal>
+
+                  {/* Text Details */}
+                  <div className="space-y-4">
+                    <span className="text-xs font-bold tracking-widest text-primary uppercase bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20 inline-block">
+                      Geriatric & Daily Wellness
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-bold font-serif text-white">
+                      Parental Care & Companion Logs
+                    </h3>
+                    <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                      Distance shouldn't compromise care. Our certified, compassionate coordinators look after your parents' daily safety audits, medical scheduling, prescriptions delivery, and friendly check-ins. You remain updated on WhatsApp daily.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-8 border-t border-white/5 mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <span className="text-xs text-white/40 font-normal">Active in major Indian cities</span>
+                  <Link
+                    href="/contact?service=parent-care"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-primary hover:bg-primary-hover shadow-lg transition-all"
+                  >
+                    <span>Enquire About Care</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+
+              {/* RIGHT COLUMN: Property Care Spotlight */}
+              <div className="flex flex-col justify-between bg-white/3 rounded-[32px] border border-white/10 p-8 lg:p-12 hover:border-accent/30 transition-all duration-300 relative group overflow-hidden">
+                <div className="space-y-8">
+                  {/* Photo Fades in from Right */}
+                  <Reveal from="right" delay={0.1} className="w-full">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                      <img
+                        src="/assets/Property Oversight.png"
+                        alt="Property Oversight & Protection"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase border border-accent/20 backdrop-blur-sm animate-pulse">
+                        ★ Core Focus
+                      </span>
+                    </div>
+                  </Reveal>
+
+                  {/* Text Details */}
+                  <div className="space-y-4">
+                    <span className="text-xs font-bold tracking-widest text-accent uppercase bg-accent/10 px-3.5 py-1.5 rounded-full border border-accent/20 inline-block">
+                      Asset & Estate Management
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-bold font-serif text-white">
+                      Property Oversight & Safety
+                    </h3>
+                    <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                      Securing your home from encroachment, weather damages, and utility default. We provide GPS-verified physical audits with comprehensive photos & videos. We also handle plumbing, painting, rentals, and paperwork.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-8 border-t border-white/5 mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <span className="text-xs text-white/40 font-normal">Real-time GPS tracking enabled</span>
+                  <Link
+                    href="/contact?service=property-management"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accent/90 shadow-lg transition-all"
+                  >
+                    <span>Enquire About Property</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
