@@ -109,7 +109,7 @@ export function Chatbot() {
       } else {
         // 2. Perform score-based keyword matching
         const lowerText = text.toLowerCase()
-        let bestMatch = null
+        let bestMatch: { keywords: string[]; response: string } | null = null
         let maxScore = 0
 
         chatbotDatabase.forEach((item) => {
@@ -128,7 +128,7 @@ export function Chatbot() {
         })
 
         if (bestMatch && maxScore > 0) {
-          reply = bestMatch.response
+          reply = (bestMatch as { keywords: string[]; response: string }).response
         } else {
           reply = "Please contact our care advisor team for direct assistance. You can email us at care@manacare.in, call/WhatsApp us at +91 91234 56789, or request a free consultation directly on our homepage."
         }
