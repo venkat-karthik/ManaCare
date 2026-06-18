@@ -63,7 +63,7 @@ export function PremiumSlideshow() {
 
   return (
     <section 
-      className="group relative w-full h-[580px] sm:h-[640px] md:h-[680px] lg:h-[760px] bg-[#0a2318] overflow-hidden select-none"
+      className="group relative w-full h-[580px] sm:h-[640px] md:h-[680px] lg:h-[760px] bg-[#0a2318] overflow-hidden select-none z-0"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
