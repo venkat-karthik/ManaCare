@@ -3,7 +3,7 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 import Link from 'next/link'
-import { Check, ShieldCheck, ChevronDown, X, CreditCard, Sparkles, Loader2, CheckCircle2 } from 'lucide-react'
+import { Check, ShieldCheck, ChevronDown, X, Sparkles, CheckCircle2, Phone, MessageCircle } from 'lucide-react'
 import { useState } from 'react'
 import { Reveal } from '@/lib/useReveal'
 
@@ -15,9 +15,9 @@ const plans = [
     period: '/month',
     description: 'Basic parent wellness check-in and communication.',
     features: [
-      '1 Wellness check-in visit per week',
+      '1 Wellness check-in visit per month',
       'Basic medication reminders',
-      'Weekly photo and activity updates via WhatsApp',
+      'Monthly photo and activity updates via WhatsApp',
       'Emergency support contact setup',
       'Dedicated care manager coordinator'
     ],
@@ -29,12 +29,13 @@ const plans = [
     price: 7999,
     formattedPrice: '₹7,999',
     period: '/month',
-    description: 'Comprehensive regular support for parent lifestyle and health.',
+    description: 'Comprehensive regular support for parent lifestyle and health with property oversight.',
     features: [
-      '2 Wellness check-in visits per week',
+      '2 Wellness check-in visits per month',
+      '1 Property inspection report per month (with photos/videos)',
       'Comprehensive medication management and refills',
       'Daily activity/check-in logging',
-      'Weekly video consultation with family',
+      'Bi-weekly video consultation with family',
       'Priority emergency hospital response coordination',
       'Local running errands (bill payments, grocery deliveries)'
     ],
@@ -48,9 +49,9 @@ const plans = [
     period: '/month',
     description: 'Bespoke combination of complete parent care and property monitoring.',
     features: [
-      '3 Wellness check-in visits per week',
-      'Complete health check coordination (doctor visits, tests)',
+      '4 Wellness check-in visits per month',
       '1 Property inspection report per month (with photos/videos)',
+      'Complete health check coordination (doctor visits, tests)',
       'Utility and maintenance coordinator',
       'Dedicated personal account manager',
       '24/7 Priority Emergency Support'
@@ -60,14 +61,14 @@ const plans = [
   },
   {
     name: 'NRI Prime',
-    price: 16999,
-    formattedPrice: '₹16,999',
+    price: 20000,
+    formattedPrice: '₹20,000',
     period: '/month',
-    description: 'Premium multi-family and property supervision for complete oversight.',
+    description: 'Premium parent care at multiple locations and property supervision for complete oversight.',
     features: [
-      'Daily check-ins or customized schedule visits',
-      'Multiple family members support included',
-      'Up to 3 Property inspection reports per month',
+      '8 Wellness check-in visits per month (2 per week)',
+      'Multi-location parent wellness check-ins',
+      'Up to 2 Property inspection reports per month',
       'Legal documentation assistance in India',
       'Bi-weekly detailed reports & video calls',
       '24/7 dedicated support team access'
@@ -83,7 +84,7 @@ const plans = [
     description: 'Tailored solutions tailored to your unique requirements.',
     features: [
       'Customized visit frequency and locations',
-      'Multi-city support for extended family',
+      'Multi-city parent care coordination',
       'Commercial property supervision',
       'Specialized medical assistance coordination',
       'Dedicated coordinator and reporting portal'
@@ -114,7 +115,7 @@ const pricingFaqs = [
 
 export default function PlansPage() {
   const [faqOpen, setFaqOpen] = useState<number | null>(0)
-  
+
   // Checkout Modal State
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<typeof plans[0] | null>(null)
@@ -122,17 +123,18 @@ export default function PlansPage() {
   const [appliedCoupon, setAppliedCoupon] = useState<{ code: string; type: 'percent' | 'flat'; value: number } | null>(null)
   const [couponError, setCouponError] = useState('')
 
-  // Razorpay Gateway State
-  const [razorpayOpen, setRazorpayOpen] = useState(false)
-  const [paymentStep, setPaymentStep] = useState<'form' | 'processing' | 'verifying' | 'success'>('form')
-  const [cardDetails, setCardDetails] = useState({ number: '', expiry: '', cvv: '', name: '' })
+  // Subscription Request State
+  const [requestSubmitted, setRequestSubmitted] = useState(false)
+  const [contactInfo, setContactInfo] = useState({ name: '', phone: '' })
 
   const handleOpenCheckout = (plan: typeof plans[0]) => {
-    if (plan.price === null) return 
+    if (plan.price === null) return
     setSelectedPlan(plan)
     setCouponCode('')
     setAppliedCoupon(null)
     setCouponError('')
+    setRequestSubmitted(false)
+    setContactInfo({ name: '', phone: '' })
     setCheckoutOpen(true)
   }
 
@@ -163,27 +165,9 @@ export default function PlansPage() {
     return Math.round(price)
   }
 
-  const handleStartPayment = () => {
-    setRazorpayOpen(true)
-    setPaymentStep('form')
-    setCardDetails({ number: '', expiry: '', cvv: '', name: '' })
-  }
-
-  const handleExecutePayment = (e: React.FormEvent) => {
+  const handleRequestSubscription = (e: React.FormEvent) => {
     e.preventDefault()
-    setPaymentStep('processing')
-    
-    setTimeout(() => {
-      setPaymentStep('verifying')
-      setTimeout(() => {
-        setPaymentStep('success')
-        setTimeout(() => {
-          setRazorpayOpen(false)
-          setCheckoutOpen(false)
-          alert(`Payment of ₹${calculateTotal().toLocaleString('en-IN')} successful! Thank you for subscribing to ${selectedPlan?.name}. An advisor will coordinate setup within 2 hours.`)
-        }, 2500)
-      }, 2000)
-    }, 2000)
+    setRequestSubmitted(true)
   }
 
   return (
@@ -347,7 +331,7 @@ export default function PlansPage() {
             <div className="bg-secondary/50 p-6 border-b border-light-gray flex items-center justify-between">
               <div>
                 <h3 className="font-serif font-bold text-navy text-lg">{selectedPlan.name} Subscription</h3>
-                <p className="text-xs text-dark/60 mt-0.5 font-semibold">Setup care dashboard immediately</p>
+                <p className="text-xs text-dark/60 mt-0.5 font-semibold">Our advisor will set up your care dashboard</p>
               </div>
               <button
                 onClick={() => setCheckoutOpen(false)}
@@ -358,219 +342,135 @@ export default function PlansPage() {
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 space-y-6 flex-grow overflow-y-auto">
-              <div className="space-y-3">
-                <div className="flex justify-between text-sm">
-                  <span className="text-dark/75 font-semibold">Base Subscription</span>
-                  <span className="font-serif font-bold text-navy">₹{selectedPlan.price?.toLocaleString('en-IN')}.00</span>
+            {requestSubmitted ? (
+              <div className="p-8 flex flex-col items-center justify-center text-center space-y-5 min-h-[300px]">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary relative">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping opacity-30" />
+                  <CheckCircle2 size={32} strokeWidth={2.5} />
                 </div>
-                
-                {appliedCoupon && (
-                  <div className="flex justify-between text-sm text-primary">
-                    <span className="font-bold flex items-center gap-1.5">
-                      <Sparkles size={14} />
-                      Coupon Code ({appliedCoupon.code}) Applied
-                    </span>
-                    <span className="font-bold">
-                      -₹{appliedCoupon.type === 'percent' 
-                        ? (selectedPlan.price! * (appliedCoupon.value / 100)).toLocaleString('en-IN')
-                        : appliedCoupon.value.toLocaleString('en-IN')
-                      }.00
-                    </span>
-                  </div>
-                )}
-                
-                <div className="border-t border-dashed border-light-gray pt-3 flex justify-between text-base">
-                  <span className="font-serif font-bold text-navy">Total Amount</span>
-                  <span className="font-serif font-bold text-primary">₹{calculateTotal().toLocaleString('en-IN')}.00</span>
+                <div className="space-y-2">
+                  <h4 className="text-xl font-bold font-serif text-navy">Request Received!</h4>
+                  <p className="text-sm text-dark/70 font-medium leading-relaxed max-w-xs">
+                    Thank you! Our care advisor will call or WhatsApp you within <strong>2 hours</strong> to confirm your <span className="text-primary font-bold">{selectedPlan.name}</span> subscription at <span className="text-primary font-bold">₹{calculateTotal().toLocaleString('en-IN')}/month</span>.
+                  </p>
                 </div>
-              </div>
-
-              {/* Coupon Form */}
-              <form onSubmit={handleApplyCoupon} className="space-y-2">
-                <label className="text-xs font-bold text-dark/80 uppercase tracking-wider">Apply Coupon Code</label>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={couponCode}
-                    onChange={(e) => setCouponCode(e.target.value)}
-                    placeholder="e.g. MANACARE15 (15% off)"
-                    className="flex-grow px-4 py-2.5 text-xs border border-light-gray rounded-full focus:outline-none focus:border-primary uppercase bg-secondary/10 font-semibold"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-primary text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-primary-hover transition-colors shrink-0 uppercase tracking-wider cursor-pointer"
+                <div className="flex gap-3 pt-2">
+                  <a
+                    href="https://wa.me/919123456789"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-[#1ebe59] transition-colors cursor-pointer"
                   >
-                    Apply
-                  </button>
+                    <MessageCircle size={14} />
+                    WhatsApp Us
+                  </a>
+                  <a
+                    href="tel:+919123456789"
+                    className="flex items-center gap-2 border border-primary text-primary px-5 py-2.5 rounded-full text-xs font-bold hover:bg-secondary transition-colors cursor-pointer"
+                  >
+                    <Phone size={14} />
+                    Call Now
+                  </a>
                 </div>
-                {couponError && <p className="text-[10px] text-red-600 font-bold">{couponError}</p>}
-                {appliedCoupon && <p className="text-[10px] text-primary font-bold">Successfully applied {appliedCoupon.code}!</p>}
-              </form>
-
-              {/* Secure payment message */}
-              <div className="bg-primary/5 p-4 rounded-[20px] border border-primary/10 flex items-start gap-2.5">
-                <ShieldCheck size={18} className="text-primary shrink-0 mt-0.5" />
-                <p className="text-[11px] text-dark/80 leading-relaxed font-semibold">
-                  Payments are secure and processed directly via **Razorpay**. You can cancel your monthly subscription at any time with a 7-day notice.
-                </p>
+                <button
+                  onClick={() => setCheckoutOpen(false)}
+                  className="text-dark/40 hover:text-dark text-xs font-medium transition-colors cursor-pointer mt-1"
+                >
+                  Close
+                </button>
               </div>
-            </div>
-
-            {/* Modal Footer */}
-            <div className="p-6 border-t border-light-gray">
-              <button
-                onClick={handleStartPayment}
-                className="w-full bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <CreditCard size={16} />
-                <span>Pay ₹{calculateTotal().toLocaleString('en-IN')} via Razorpay</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* RAZORPAY MOCK POPUP */}
-      {razorpayOpen && selectedPlan && (
-        <div className="fixed inset-0 z-200 flex items-center justify-center p-4 bg-black/70 animate-in fade-in duration-300">
-          <div className="bg-[#1C273C] text-white rounded-[32px] w-full max-w-sm overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-200 border border-white/10 flex flex-col font-sans">
-            
-            {/* Razorpay Top Banner */}
-            <div className="p-5 border-b border-white/5 flex items-center justify-between bg-[#0F172A]">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 bg-primary rounded-full flex items-center justify-center font-bold text-xs text-white">
-                  MC
+            ) : (
+              <div className="p-6 space-y-5 flex-grow overflow-y-auto">
+                {/* Price Summary */}
+                <div className="space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-dark/75 font-semibold">Base Subscription</span>
+                    <span className="font-serif font-bold text-navy">₹{selectedPlan.price?.toLocaleString('en-IN')}.00</span>
+                  </div>
+                  
+                  {appliedCoupon && (
+                    <div className="flex justify-between text-sm text-primary">
+                      <span className="font-bold flex items-center gap-1.5">
+                        <Sparkles size={14} />
+                        Coupon ({appliedCoupon.code}) Applied
+                      </span>
+                      <span className="font-bold">
+                        -₹{appliedCoupon.type === 'percent'
+                          ? (selectedPlan.price! * (appliedCoupon.value / 100)).toLocaleString('en-IN')
+                          : appliedCoupon.value.toLocaleString('en-IN')
+                        }.00
+                      </span>
+                    </div>
+                  )}
+                  
+                  <div className="border-t border-dashed border-light-gray pt-3 flex justify-between text-base">
+                    <span className="font-serif font-bold text-navy">Monthly Total</span>
+                    <span className="font-serif font-bold text-primary">₹{calculateTotal().toLocaleString('en-IN')}.00</span>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white leading-tight">ManaCare Care Services</h4>
-                  <p className="text-[9px] text-white/50">support@manacare.com</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-[9px] text-white/50 uppercase font-bold">Amount to Pay</p>
-                <h5 className="font-serif font-bold text-accent text-sm">₹{calculateTotal().toLocaleString('en-IN')}.00</h5>
-              </div>
-            </div>
 
-            {/* Razorpay Body based on Steps */}
-            <div className="p-6 flex-grow flex flex-col justify-center min-h-[300px]">
-              
-              {/* Form Step */}
-              {paymentStep === 'form' && (
-                <form onSubmit={handleExecutePayment} className="space-y-4">
-                  <div className="bg-white/5 p-4 rounded-[24px] border border-white/5 space-y-3.5">
-                    <div className="flex justify-between items-center text-xs pb-2 border-b border-white/5">
-                      <span className="text-white/70 font-bold uppercase tracking-wider text-[9px]">Razorpay Secure</span>
-                      <img src="https://razorpay.com/favicon.png" alt="Razorpay" className="w-4 h-4 object-contain opacity-85" onError={(e) => { e.currentTarget.style.display = 'none' }} />
-                    </div>
+                {/* Coupon Form */}
+                <form onSubmit={handleApplyCoupon} className="space-y-2">
+                  <label className="text-xs font-bold text-dark/80 uppercase tracking-wider">Apply Coupon Code</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={couponCode}
+                      onChange={(e) => setCouponCode(e.target.value)}
+                      placeholder="e.g. MANACARE15 (15% off)"
+                      className="flex-grow px-4 py-2.5 text-xs border border-light-gray rounded-full focus:outline-none focus:border-primary uppercase bg-secondary/10 font-semibold"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-primary text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-primary-hover transition-colors shrink-0 uppercase tracking-wider cursor-pointer"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                  {couponError && <p className="text-[10px] text-red-600 font-bold">{couponError}</p>}
+                  {appliedCoupon && <p className="text-[10px] text-primary font-bold">Successfully applied {appliedCoupon.code}!</p>}
+                </form>
 
-                    <div className="space-y-1">
-                      <label className="text-[9px] text-white/60 font-bold uppercase tracking-wider">Card Number</label>
-                      <input
-                        type="text"
-                        required
-                        maxLength={19}
-                        value={cardDetails.number}
-                        onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value.replace(/\s?/g, '').replace(/(\d{4})/g, '$1 ').trim() })}
-                        placeholder="4111 2222 3333 4444"
-                        className="w-full bg-[#0F172A] border border-white/10 rounded-full px-4 py-2 text-xs focus:outline-none focus:border-accent font-semibold"
-                      />
-                    </div>
+                {/* Contact Details */}
+                <form onSubmit={handleRequestSubscription} className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-dark/80 uppercase tracking-wider">Your Name</label>
+                    <input
+                      type="text"
+                      required
+                      value={contactInfo.name}
+                      onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
+                      placeholder="Full name"
+                      className="w-full px-4 py-2.5 text-xs border border-light-gray rounded-full focus:outline-none focus:border-primary bg-secondary/10 font-semibold"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-dark/80 uppercase tracking-wider">WhatsApp / Phone</label>
+                    <input
+                      type="tel"
+                      required
+                      value={contactInfo.phone}
+                      onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
+                      placeholder="+91 or international number"
+                      className="w-full px-4 py-2.5 text-xs border border-light-gray rounded-full focus:outline-none focus:border-primary bg-secondary/10 font-semibold"
+                    />
+                  </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-1">
-                        <label className="text-[9px] text-white/60 font-bold uppercase tracking-wider">Expiry Date</label>
-                        <input
-                          type="text"
-                          required
-                          maxLength={5}
-                          value={cardDetails.expiry}
-                          onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
-                          placeholder="MM/YY"
-                          className="w-full bg-[#0F172A] border border-white/10 rounded-full px-4 py-2 text-xs focus:outline-none focus:border-accent text-center font-semibold"
-                        />
-                      </div>
-                      <div className="space-y-1">
-                        <label className="text-[9px] text-white/60 font-bold uppercase tracking-wider">CVV</label>
-                        <input
-                          type="password"
-                          required
-                          maxLength={3}
-                          value={cardDetails.cvv}
-                          onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
-                          placeholder="•••"
-                          className="w-full bg-[#0F172A] border border-white/10 rounded-full px-4 py-2 text-xs focus:outline-none focus:border-accent text-center font-semibold"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-1">
-                      <label className="text-[9px] text-white/60 font-bold uppercase tracking-wider">Cardholder Name</label>
-                      <input
-                        type="text"
-                        required
-                        value={cardDetails.name}
-                        onChange={(e) => setCardDetails({ ...cardDetails, name: e.target.value })}
-                        placeholder="John Doe"
-                        className="w-full bg-[#0F172A] border border-white/10 rounded-full px-4 py-2 text-xs focus:outline-none focus:border-accent font-semibold"
-                      />
-                    </div>
+                  <div className="bg-primary/5 p-4 rounded-[20px] border border-primary/10 flex items-start gap-2.5">
+                    <ShieldCheck size={18} className="text-primary shrink-0 mt-0.5" />
+                    <p className="text-[11px] text-dark/80 leading-relaxed font-semibold">
+                      Our care advisor will contact you within 2 hours to confirm your subscription and process payment securely.
+                    </p>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-[#0E82FD] text-white py-3 rounded-full text-xs font-bold hover:bg-[#0c72de] transition-colors flex items-center justify-center gap-1.5 uppercase tracking-wider cursor-pointer"
+                    className="w-full bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Pay ₹{calculateTotal().toLocaleString('en-IN')}</span>
+                    <CheckCircle2 size={16} />
+                    <span>Request {selectedPlan.name} — ₹{calculateTotal().toLocaleString('en-IN')}/mo</span>
                   </button>
                 </form>
-              )}
-
-              {/* Processing Step */}
-              {paymentStep === 'processing' && (
-                <div className="text-center space-y-4 py-8">
-                  <Loader2 className="animate-spin text-accent mx-auto" size={40} />
-                  <div className="space-y-1">
-                    <h5 className="font-bold text-sm">Processing Payment</h5>
-                    <p className="text-[9px] text-white/50">Contacting issuer bank securely...</p>
-                  </div>
-                </div>
-              )}
-
-              {/* Verifying Step */}
-              {paymentStep === 'verifying' && (
-                <div className="text-center space-y-4 py-8 animate-pulse">
-                  <Loader2 className="animate-spin text-[#0E82FD] mx-auto" size={40} />
-                  <div className="space-y-1">
-                    <h5 className="font-bold text-sm text-white">Verifying OTP Authentication</h5>
-                    <p className="text-[9px] text-white/50">Checking secure 3D-Secure credentials...</p>
-                  </div>
-                </div>
-              )}
-
-              {/* Success Step */}
-              {paymentStep === 'success' && (
-                <div className="text-center space-y-4 py-8 animate-in zoom-in-95 duration-300">
-                  <CheckCircle2 className="text-[#10B981] mx-auto" size={56} strokeWidth={2.5} />
-                  <div className="space-y-1">
-                    <h5 className="font-bold text-base text-[#10B981]">Payment Successful!</h5>
-                    <p className="text-xs text-white/60">Subscription setup complete.</p>
-                  </div>
-                </div>
-              )}
-
-            </div>
-
-            {/* Cancel Footer */}
-            {paymentStep === 'form' && (
-              <div className="p-4 border-t border-white/5 text-center bg-[#0F172A]">
-                <button
-                  onClick={() => setRazorpayOpen(false)}
-                  className="text-white/40 hover:text-white text-[9px] uppercase font-bold tracking-wider cursor-pointer"
-                >
-                  Cancel and go back
-                </button>
               </div>
             )}
           </div>

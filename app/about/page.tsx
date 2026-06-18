@@ -71,10 +71,10 @@ export default function AboutPage() {
                 <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Our Story</span>
                 <h2 className="text-3xl font-bold font-serif text-navy">Why We Started ManaCare</h2>
                 <p className="text-dark/80 text-sm leading-relaxed font-semibold">
-                  As Non-Resident Indians ourselves, we realized that sending money home was never enough. Our parents deserved companionship, prompt medical accompaniment, and support with household maintenance.
+                  As Non-Resident Indians ourselves, we realized that sending money home was never enough. Our parents deserved companionship, prompt medical accompaniment, and dedicated care.
                 </p>
                 <p className="text-dark/80 text-sm leading-relaxed font-semibold">
-                  Similarly, supervising properties and coordinating family logistics from abroad was stressful. We built ManaCare as a professional platform that combines compassionate care with corporate accountability.
+                  Similarly, supervising family homes and properties from abroad was stressful. We built ManaCare as a professional platform that combines compassionate parental care with reliable property oversight.
                 </p>
               </div>
             </Reveal>

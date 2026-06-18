@@ -37,6 +37,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  turbopack: {
+    root: path.resolve('.'),
+  },
 }
 
 export default nextConfig
+

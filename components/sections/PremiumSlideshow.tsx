@@ -25,32 +25,11 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    title: 'Hospital Visit Assistance',
-    subtitle: 'Accompanying your loved ones to appointments and managing medical coordination with care',
-    category: 'Healthcare',
-    image: '/assets/Hospital Visit Assistance.png',
-  },
-  {
-    id: 3,
-    title: 'Household Management',
-    subtitle: 'Professional domestic help and household maintenance coordination',
-    category: 'Household',
-    image: '/assets/Household Management.png',
-  },
-  {
-    id: 4,
-    title: 'Property Oversight',
-    subtitle: 'Complete inspection, maintenance, and administrative supervision',
+    title: 'Property Management & Oversight',
+    subtitle: 'Complete inspection, maintenance, and administrative supervision for family assets',
     category: 'Property',
     image: '/assets/Property Oversight.png',
     isSpotlight: true,
-  },
-  {
-    id: 5,
-    title: 'Management & Coordination',
-    subtitle: 'Seamless multi-city operations and extended family support',
-    category: 'Management',
-    image: '/assets/Management and Coordination.png',
   }
 ]
 
@@ -209,7 +188,7 @@ export function PremiumSlideshow() {
       {/* Bottom Progress Navigation Bars ("Down Bars") */}
       <div className="absolute bottom-8 left-0 right-0 z-30">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-5 gap-3 sm:gap-5 max-w-3xl lg:max-w-4xl">
+          <div className="grid gap-3 sm:gap-5 max-w-3xl lg:max-w-4xl" style={{ gridTemplateColumns: `repeat(${slides.length}, minmax(0, 1fr))` }}>
             {slides.map((s, idx) => {
               const isActive = idx === currentSlide
               return (

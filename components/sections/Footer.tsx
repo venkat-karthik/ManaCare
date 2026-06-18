@@ -25,9 +25,7 @@ export function Footer() {
             <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Services</h4>
             <ul className="space-y-3 text-xs text-white/70 font-semibold uppercase tracking-wider">
               <li><Link href="/services#parent-care" className="hover:text-accent transition-colors">Parent Care</Link></li>
-              <li><Link href="/services#relative-care" className="hover:text-accent transition-colors">Relative Care</Link></li>
               <li><Link href="/services#property-management" className="hover:text-accent transition-colors">Property Management</Link></li>
-              <li><Link href="/services#household-assistance" className="hover:text-accent transition-colors">Household Assistance</Link></li>
               <li><Link href="/servostay" className="hover:text-accent transition-colors">Servostay Stays</Link></li>
             </ul>
           </div>
@@ -51,9 +49,9 @@ export function Footer() {
                 <Phone size={14} className="text-accent shrink-0" />
                 <span>+91 91234 56789</span>
               </a>
-              <a href="mailto:support@manacare.com" className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
+              <a href="mailto:care@manacare.in" className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
                 <Mail size={14} className="text-accent shrink-0" />
-                <span>support@manacare.com</span>
+                <span>care@manacare.in</span>
               </a>
               <a href="https://wa.me/919123456789" className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
                 <MessageCircle size={14} className="text-accent shrink-0" />
@@ -74,9 +72,9 @@ export function Footer() {
             </p>
           </div>
           <div className="flex gap-6 text-xs text-white/40 font-medium">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
 

@@ -124,8 +124,8 @@ export default function ContactPage() {
   const contactChannels = [
     { icon: Phone, title: 'Call Support', desc: 'Mon - Sat, 9 AM - 6 PM IST', val: '+91 91234 56789' },
     { icon: MessageCircle, title: 'WhatsApp Chat', desc: '24/7 Support Channel', val: '+91 91234 56789' },
-    { icon: Mail, title: 'Email Correspondence', desc: 'General & Support queries', val: 'support@manacare.com' },
-    { icon: MapPin, title: 'Main Operations Hub', desc: 'Hyderabad, AP & Telangana', val: 'Visit by appointment' }
+    { icon: Mail, title: 'Email Correspondence', desc: 'General & Support queries', val: 'care@manacare.in' },
+    { icon: MapPin, title: 'Main Operations Hub', desc: 'Guntur, Andhra Pradesh', val: 'Visit by appointment' }
   ]
 
   return (

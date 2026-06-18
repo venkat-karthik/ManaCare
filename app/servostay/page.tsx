@@ -25,7 +25,6 @@ export default function ServostayPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Servostay enquiry:', formData)
     setIsSubmitted(true)
     setFormData({ name: '', email: '', phone: '', city: '', dates: '', duration: '', type: '', message: '' })
   }

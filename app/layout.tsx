@@ -24,8 +24,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'ManaCare - NRI Family Care Services in India',
-  description: 'Professional care services for NRI families. Trusted by thousands of Non-Resident Indians for parent care, relative care, property management, and household assistance across India.',
-  generator: 'v0.app',
+  description: 'Professional care services for NRI families. Trusted by Non-Resident Indians for parental care and property management across India.',
   icons: {
     icon: [
       {
