@@ -54,7 +54,7 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-xs uppercase tracking-widest font-bold transition-all py-1 relative group ${
+                className={`text-xs uppercase tracking-widest font-bold transition-all py-1 relative group overflow-hidden ${
                   isActive
                     ? 'text-primary'
                     : isTransparent
@@ -64,7 +64,7 @@ export function Header() {
               >
                 {item.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                  className={`absolute -bottom-0.5 left-0 h-px bg-primary transition-all duration-300 ${
                     isActive ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -117,7 +117,7 @@ export function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-sm uppercase tracking-wider font-bold transition-colors py-1 relative group ${
+                  className={`text-sm uppercase tracking-wider font-bold transition-colors py-1 relative group overflow-hidden ${
                     isActive
                       ? isTransparent ? 'text-accent' : 'text-primary'
                       : isTransparent ? 'text-white/70 hover:text-white' : 'text-dark/70 hover:text-primary'
@@ -126,7 +126,7 @@ export function Header() {
                 >
                   {item.label}
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    className={`absolute -bottom-0.5 left-0 h-px bg-primary transition-all duration-300 ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
