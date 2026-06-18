@@ -3,6 +3,7 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 import { PremiumSlideshow } from '@/components/sections/PremiumSlideshow'
+import { StoryPlayer } from '@/components/sections/StoryPlayer'
 import Link from 'next/link'
 import { Heart, Home, AlertCircle, Users, Shield, Check, CheckCircle2, ArrowRight, Quote, Phone, MessageCircle, Mail } from 'lucide-react'
 import { useState } from 'react'
@@ -272,6 +273,9 @@ export default function Page() {
           </div>
         </section>
 
+        {/* STORY PLAYER */}
+        <StoryPlayer />
+
         {/* PLANS PREVIEW */}
         <section className="relative py-24 px-6 sm:px-10 lg:px-12 border-t border-light-gray overflow-hidden">
           <div className="absolute inset-0 bg-navy" />
@@ -303,10 +307,10 @@ export default function Page() {
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { name: 'Essential Care', price: '₹4,999', desc: '1 wellness check-in visit per month and communication.', popular: false },
-                { name: 'Family Care', price: '₹7,999', desc: '2 wellness check-in visits per month and 1 property inspection.', popular: false },
-                { name: 'Complete Care', price: '₹11,999', desc: '4 wellness check-in visits per month and 1 property inspection.', popular: false },
-                { name: 'NRI Prime', price: '₹20,000', desc: '8 monthly wellness check-ins and 2 property inspections.', popular: true }
+                { name: 'Basic Care', price: '₹4,999', desc: '1 wellness check-in, medication reminders & monthly report.', popular: false },
+                { name: 'Premium Care', price: '₹7,999', desc: '2 check-ins, hospital transport & assistance, property inspection.', popular: false },
+                { name: 'Complete Care', price: '₹11,999', desc: '4 check-ins, blood bank access, hospital support & property checks.', popular: false },
+                { name: 'NRI Prime', price: '₹20,000', desc: '8 check-ins, full hospital suite, property selling & construction.', popular: true }
               ].map((plan, idx) => (
                 <Reveal key={idx} from="bottom" delay={idx * 0.1}>
                   <div className={`rounded-2xl p-8 border transition-all duration-300 relative flex flex-col justify-between h-full hover:-translate-y-1 ${

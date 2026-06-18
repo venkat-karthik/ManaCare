@@ -22,11 +22,15 @@ const scenes = [
     answerBody: 'Our dedicated care managers visit your parents regularly — checking their health, handling errands, escorting them to hospitals, and making sure they never feel alone. You get detailed reports. You stay in control. They stay safe.',
     answerImage: '/assets/Parent Care & Wellness.png',
     details: [
-      'Regular wellness check-ins — daily or weekly, your choice',
+      'Hospital transport — picking up & safely returning home after every visit',
+      'Dedicated at-hospital assistance — our staff stays throughout',
+      'Blood bank tie-up for priority, fast blood acquisition',
+      'Blood & IV assistance coordination with medical staff',
+      'In-patient care support & Servostay-to-hospital transition',
+      'Monthly wellness checks with vitals, reports & doctor coordination',
       'Medication management, reminders & pharmacy delivery',
-      'Escorted hospital visits with reports shared directly to you',
-      'Grocery runs, utility bills & daily chore support',
-      'Companionship visits to keep loneliness away',
+      'Evening daily WhatsApp updates with photos & health notes',
+      'Companionship & emotional wellness visits',
     ],
     answerBg: '#FAFDF9',
     answerAccent: '#1B5E43',
@@ -46,8 +50,12 @@ const scenes = [
     answerImage: '/assets/Property Oversight.png',
     details: [
       'Monthly physical inspections with photos, videos & GPS',
-      'Repairs, painting, cleaning & gardening coordination',
-      'Tenant management, rent monitoring & contract admin',
+      'House strength checks — monsoon, rain damage & depreciation assessment',
+      'Own home maintenance — painting, plumbing, electrical & gardening',
+      'Selling properties — market valuation, buyer scouting & documentation',
+      'Setting up rental income — verified tenant finding & onboarding',
+      'Full construction or renovation management & scouting',
+      'Tenant management, rent collection & contract renewals',
       'Property tax, utility & municipal dues payment',
       'Legal paperwork, documentation & registration help',
     ],
@@ -698,6 +706,118 @@ export default function ServicesPage() {
             <AnswerPanel scene={scene} index={i} />
           </div>
         ))}
+
+        {/* ── COMPLETE SERVICE BREAKDOWN ── */}
+        <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-white border-y border-light-gray overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-30" />
+          <div className="max-w-7xl mx-auto">
+            <Reveal from="bottom" className="text-center max-w-3xl mx-auto space-y-4 mb-20">
+              <span className="text-xs font-bold tracking-[0.25em] text-accent uppercase font-sans">Every Service, Clearly Listed</span>
+              <h2 className="text-4xl sm:text-5xl font-bold font-serif text-navy">Complete Care Breakdown</h2>
+              <p className="text-dark/60 text-base max-w-xl mx-auto leading-relaxed">
+                Every service ManaCare provides — transparent, detailed, and ready to be tailored to your family.
+              </p>
+            </Reveal>
+
+            <div className="grid lg:grid-cols-2 gap-12">
+
+              {/* PARENT CARE BREAKDOWN */}
+              <Reveal from="left" delay={0.05}>
+                <div className="rounded-[32px] border border-primary/15 overflow-hidden bg-secondary/20">
+                  <div className="bg-primary p-6 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                      <Heart size={20} className="text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold font-serif text-lg">Parental Care Services</h3>
+                      <p className="text-white/60 text-xs">Complete hospital & daily wellness support</p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 space-y-1">
+                    {[
+                      { label: 'Hospital Transport', desc: 'Pick-up and safe return home for all appointments' },
+                      { label: 'At-Hospital Assistance', desc: 'Dedicated staff stays with your parent throughout the visit' },
+                      { label: 'In-Patient Care Support', desc: 'Coordination during hospital stays; Servostay-to-hospital transitions' },
+                      { label: 'Blood Bank Tie-Up', desc: 'Priority blood access through our verified blood bank network' },
+                      { label: 'Blood & IV Assistance', desc: 'Coordination with nursing staff for IV drips, blood draws & tests' },
+                      { label: 'Monthly Wellness Checks', desc: 'Structured health audits with vitals, reports & doctor coordination' },
+                      { label: 'Medication Management', desc: 'Daily reminders, prescription refills & pharmacy delivery' },
+                      { label: 'Evening Daily Updates', desc: 'WhatsApp photo & health update sent every evening by 6 PM' },
+                      { label: 'Grocery & Errand Support', desc: 'Daily essentials, bill payments & household chores' },
+                      { label: 'Companionship Visits', desc: 'Regular emotional wellness and companionship sessions' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-primary/8 last:border-0 hover:bg-primary/5 rounded-xl px-3 transition-colors">
+                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check size={11} strokeWidth={3} className="text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <Link href="/contact?service=parent-care" className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover transition-all">
+                      <span>Enquire About Parent Care</span>
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* PROPERTY CARE BREAKDOWN */}
+              <Reveal from="right" delay={0.1}>
+                <div className="rounded-[32px] border border-accent/20 overflow-hidden bg-[#FDFAF6]">
+                  <div className="bg-navy p-6 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                      <Home size={20} className="text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold font-serif text-lg">Property Management Services</h3>
+                      <p className="text-white/60 text-xs">Full-service property oversight & transactions</p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 space-y-1">
+                    {[
+                      { label: 'Monthly Physical Inspections', desc: 'GPS-verified site visits with photo & video documentation' },
+                      { label: 'House Strength Checks', desc: 'Monsoon readiness, rain damage, depreciation & structural health' },
+                      { label: 'Own Home Maintenance', desc: 'Painting, plumbing, electrical repairs & garden upkeep' },
+                      { label: 'Property Selling Assistance', desc: 'Market valuation, buyer scouting, negotiation & full documentation' },
+                      { label: 'Rental Income Setup', desc: 'Verified tenant finding, onboarding, rent collection & agreements' },
+                      { label: 'Construction & Renovation', desc: 'End-to-end contractor management, scouting & quality oversight' },
+                      { label: 'New Property Scouting', desc: 'Site identification, legal due diligence & purchase coordination' },
+                      { label: 'Tenant Management', desc: 'Rent follow-up, dispute resolution & contract renewals' },
+                      { label: 'Utility & Tax Payments', desc: 'Property tax, EB, water & municipal dues paid on your behalf' },
+                      { label: 'Legal Paperwork & Registration', desc: 'Encumbrance certificates, patta, registration & compliance support' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-accent/8 last:border-0 hover:bg-accent/5 rounded-xl px-3 transition-colors">
+                        <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check size={11} strokeWidth={3} className="text-accent" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <Link href="/contact?service=property-management" className="w-full flex items-center justify-center gap-2 bg-accent text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all">
+                      <span>Enquire About Property Care</span>
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+
+            </div>
+          </div>
+        </section>
 
         {/* ── CLOSING CTA ── */}
         <section

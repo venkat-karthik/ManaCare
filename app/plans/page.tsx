@@ -9,51 +9,50 @@ import { Reveal } from '@/lib/useReveal'
 
 const plans = [
   {
-    name: 'Essential Care',
+    name: 'Basic Care',
     price: 4999,
     formattedPrice: '₹4,999',
     period: '/month',
-    description: 'Basic parent wellness check-in and communication.',
+    description: 'Essential parent wellness support and communication for families getting started.',
     features: [
       '1 Wellness check-in visit per month',
-      'Basic medication reminders',
-      'Monthly photo and activity updates via WhatsApp',
-      'Emergency support contact setup',
+      'Medication reminders & pharmacy coordination',
+      'Monthly health report via WhatsApp',
+      'Emergency contact setup & response guidance',
       'Dedicated care manager coordinator'
     ],
     popular: false,
-    ctaText: 'Choose Essential'
+    ctaText: 'Choose Basic'
   },
   {
-    name: 'Family Care',
+    name: 'Premium Care',
     price: 7999,
     formattedPrice: '₹7,999',
     period: '/month',
-    description: 'Comprehensive regular support for parent lifestyle and health with property oversight.',
+    description: 'Comprehensive parent care with hospital assistance and property oversight.',
     features: [
       '2 Wellness check-in visits per month',
-      '1 Property inspection report per month (with photos/videos)',
-      'Comprehensive medication management and refills',
-      'Daily activity/check-in logging',
-      'Bi-weekly video consultation with family',
-      'Priority emergency hospital response coordination',
-      'Local running errands (bill payments, grocery deliveries)'
+      'Hospital transport & at-hospital assistance',
+      '1 Property inspection report per month',
+      'Medication management, refills & pharmacy',
+      'Evening daily WhatsApp updates with photos',
+      'Emergency hospital response coordination'
     ],
     popular: false,
-    ctaText: 'Choose Family Care'
+    ctaText: 'Choose Premium'
   },
   {
     name: 'Complete Care',
     price: 11999,
     formattedPrice: '₹11,999',
     period: '/month',
-    description: 'Bespoke combination of complete parent care and property monitoring.',
+    description: 'Full parent care with hospital support, blood bank access, and property management.',
     features: [
       '4 Wellness check-in visits per month',
-      '1 Property inspection report per month (with photos/videos)',
-      'Complete health check coordination (doctor visits, tests)',
-      'Utility and maintenance coordinator',
-      'Dedicated personal account manager',
+      'Hospital transport, at-hospital & in-patient support',
+      'Blood bank tie-up for priority blood access',
+      '1 Property inspection + house strength check',
+      'Evening daily WhatsApp health reports',
       '24/7 Priority Emergency Support'
     ],
     popular: false,
@@ -64,13 +63,13 @@ const plans = [
     price: 20000,
     formattedPrice: '₹20,000',
     period: '/month',
-    description: 'Premium parent care at multiple locations and property supervision for complete oversight.',
+    description: 'Premium full-service care with hospital, property, selling & construction management.',
     features: [
-      '8 Wellness check-in visits per month (2 per week)',
-      'Multi-location parent wellness check-ins',
-      'Up to 2 Property inspection reports per month',
-      'Legal documentation assistance in India',
-      'Bi-weekly detailed reports & video calls',
+      '8 Wellness check-ins + daily evening updates',
+      'Full hospital suite: transport, assistance, blood bank',
+      '2 Property inspections + structural health checks',
+      'Property selling, rental setup & construction oversight',
+      'Legal documentation & registration assistance',
       '24/7 dedicated support team access'
     ],
     popular: true,
