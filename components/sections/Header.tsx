@@ -56,10 +56,10 @@ export function Header() {
                 href={item.href}
                 className={`text-xs uppercase tracking-widest font-bold py-1 ${
                   isActive
-                    ? 'text-primary'
+                    ? 'text-bright-green'
                     : isTransparent
-                    ? 'text-white/80 hover:text-white'
-                    : 'text-dark/70 hover:text-primary'
+                    ? 'text-white/80 hover:text-bright-green'
+                    : 'text-dark/70 hover:text-bright-green'
                 }`}
               >
                 {item.label}
@@ -72,7 +72,7 @@ export function Header() {
         <div className="hidden md:block">
           <Link
             href="/contact"
-            className={`hover-shine px-7 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-md transition-all text-xs font-bold uppercase tracking-wider shadow-sm ${
+            className={`px-7 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-md transition-all text-xs font-bold uppercase tracking-wider shadow-sm ${
               isTransparent
                 ? 'bg-accent text-white hover:shadow-lg'
                 : 'bg-primary text-white hover:bg-primary-hover'
@@ -114,8 +114,8 @@ export function Header() {
                   href={item.href}
                   className={`text-sm uppercase tracking-wider font-bold py-1 ${
                     isActive
-                      ? isTransparent ? 'text-accent' : 'text-primary'
-                      : isTransparent ? 'text-white/70 hover:text-white' : 'text-dark/70 hover:text-primary'
+                      ? 'text-bright-green'
+                      : isTransparent ? 'text-white/70 hover:text-bright-green' : 'text-dark/70 hover:text-bright-green'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -125,7 +125,7 @@ export function Header() {
             })}
             <Link
               href="/contact"
-              className={`hover-shine text-center px-6 py-3 rounded-full font-bold uppercase tracking-wider mt-2 shadow-sm text-xs transition-all ${
+              className={`text-center px-6 py-3 rounded-full font-bold uppercase tracking-wider mt-2 shadow-sm text-xs transition-all ${
                 isTransparent
                   ? 'bg-accent text-white hover:shadow-lg'
                   : 'bg-primary text-white hover:bg-primary-hover'
