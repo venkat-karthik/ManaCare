@@ -179,7 +179,7 @@ export function StoryPlayer() {
         </div>
 
         {/* Story Player */}
-        <div className="relative rounded-[32px] overflow-hidden shadow-2xl border border-white/10 bg-[#0a0f0c]" style={{ aspectRatio: '16/7' }}>
+        <div className="relative rounded-[32px] overflow-hidden shadow-2xl border border-white/10 bg-[#0a0f0c] h-[340px] sm:h-auto sm:aspect-[16/7] w-full">
 
           {/* Image */}
           {story.map((b, idx) => (
@@ -235,7 +235,7 @@ export function StoryPlayer() {
 
           {/* Subtitles */}
           <div
-            className="absolute bottom-[12%] left-6 right-6 z-20 space-y-2"
+            className="absolute bottom-6 left-6 right-20 sm:bottom-[12%] sm:right-6 z-20 space-y-2"
             style={{
               opacity: subtitleVisible ? 1 : 0,
               transform: subtitleVisible ? 'translateY(0)' : 'translateY(12px)',
@@ -257,7 +257,7 @@ export function StoryPlayer() {
           </div>
 
           {/* Controls */}
-          <div className="absolute bottom-[10%] right-6 z-20 flex items-center gap-2">
+          <div className="absolute bottom-6 right-6 sm:bottom-[10%] z-20 flex items-center gap-2">
             <button
               onClick={handlePlayPause}
               className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all cursor-pointer"

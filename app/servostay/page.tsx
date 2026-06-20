@@ -121,14 +121,14 @@ export default function ServostayPage() {
 
         {/* FEATURED COVER PHOTO SECTION */}
         <section className="py-16 px-6 sm:px-10 lg:px-12">
-          <div className="max-w-6xl mx-auto rounded-[40px] overflow-hidden border border-light-gray relative h-64 sm:h-80 md:h-[450px] shadow-lg group">
+          <div className="max-w-6xl mx-auto rounded-[40px] overflow-hidden border border-light-gray relative h-[340px] sm:h-80 md:h-[450px] shadow-lg group">
             <img
               src="/assets/servostay_room.png"
               alt="Servostay Apartment Room"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8 text-white space-y-2">
+            <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
               <span className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif bg-white/10 px-3 py-1 rounded-full backdrop-blur-xs">
                 Luxury Living
               </span>
