@@ -5,9 +5,10 @@ import { Footer } from '@/components/sections/Footer'
 import { PremiumSlideshow } from '@/components/sections/PremiumSlideshow'
 import { StoryPlayer } from '@/components/sections/StoryPlayer'
 import Link from 'next/link'
-import { Heart, Home, AlertCircle, Users, Shield, Check, CheckCircle2, ArrowRight, Quote, Phone, MessageCircle, Mail } from 'lucide-react'
+import { Heart, Home, Check, CheckCircle2, ArrowRight, Quote, Phone, MessageCircle, Mail } from 'lucide-react'
 import { useState } from 'react'
 import { Reveal } from '@/lib/useReveal'
+import { CONTACT_PHONE, CONTACT_PHONE_RAW, CONTACT_EMAIL } from '@/lib/constants'
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -377,7 +378,7 @@ export default function Page() {
 
               <div className="pt-2 flex flex-wrap gap-4">
                 <Link href="/servostay" className="bg-primary text-white px-7 py-3.5 rounded-full hover:bg-primary-hover transition-all text-sm font-semibold shadow-sm inline-flex items-center gap-2 hover:-translate-y-0.5 hover:shadow-lg">
-                  <span>Book via ManaCare</span>
+                  <span>Book via Aasara</span>
                   <ArrowRight size={14} />
                 </Link>
                 <a
@@ -431,13 +432,13 @@ export default function Page() {
               <span className="text-xs font-semibold tracking-widest text-accent uppercase font-sans">Community Voices</span>
               <h2 className="text-3xl sm:text-4xl font-bold font-serif text-navy">Trusted by NRI Families Worldwide</h2>
               <p className="text-dark/60 text-base leading-relaxed font-normal">
-                Here's what families say about their experience with ManaCare.
+                Here's what families say about their experience with Aasara.
               </p>
             </Reveal>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { name: 'Sridhar R.', loc: 'New Jersey, USA', quote: 'ManaCare has been a blessing for our family. Their parent care service is outstanding — personal, reliable, and always proactive.' },
+                { name: 'Sridhar R.', loc: 'New Jersey, USA', quote: 'Aasara has been a blessing for our family. Their parent care service is outstanding — personal, reliable, and always proactive.' },
                 { name: 'Lakshmi V.', loc: 'Sydney, Australia', quote: 'Very professional team. Property reports are always timely, precise, and highly detailed. I feel completely at ease.' },
                 { name: 'Ramesh K.', loc: 'London, UK', quote: 'During our India visit, Servostay arranged a wonderful, clean stay for our family — complete kitchen, great location, no hassles.' }
               ].map((test, idx) => (
@@ -470,17 +471,17 @@ export default function Page() {
                 </p>
 
                 <div className="space-y-4 pt-2">
-                  <a href="tel:+919123456789" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <a href={`tel:${CONTACT_PHONE_RAW}`} className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
                     <Phone size={15} className="text-accent shrink-0" />
-                    <span className="text-sm font-normal">+91 91234 56789</span>
+                    <span className="text-sm font-normal">{CONTACT_PHONE}</span>
                   </a>
-                  <a href="https://wa.me/919123456789" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <a href={`https://wa.me/${CONTACT_PHONE_RAW}`} className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
                     <MessageCircle size={15} className="text-accent shrink-0" />
                     <span className="text-sm font-normal">Chat with us on WhatsApp</span>
                   </a>
-                  <a href="mailto:care@manacare.in" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
                     <Mail size={15} className="text-accent shrink-0" />
-                    <span className="text-sm font-normal">care@manacare.in</span>
+                    <span className="text-sm font-normal">{CONTACT_EMAIL}</span>
                   </a>
                 </div>
               </div>

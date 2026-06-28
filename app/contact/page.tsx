@@ -6,6 +6,7 @@ import { Phone, MessageCircle, Mail, MapPin, Check } from 'lucide-react'
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Reveal } from '@/lib/useReveal'
+import { CONTACT_PHONE, CONTACT_EMAIL } from '@/lib/constants'
 
 function ContactForm() {
   const searchParams = useSearchParams()
@@ -122,9 +123,9 @@ function ContactForm() {
 
 export default function ContactPage() {
   const contactChannels = [
-    { icon: Phone, title: 'Call Support', desc: 'Mon - Sat, 9 AM - 6 PM IST', val: '+91 91234 56789' },
-    { icon: MessageCircle, title: 'WhatsApp Chat', desc: '24/7 Support Channel', val: '+91 91234 56789' },
-    { icon: Mail, title: 'Email Correspondence', desc: 'General & Support queries', val: 'care@manacare.in' },
+    { icon: Phone, title: 'Call Support', desc: 'Mon - Sat, 9 AM - 6 PM IST', val: CONTACT_PHONE },
+    { icon: MessageCircle, title: 'WhatsApp Chat', desc: '24/7 Support Channel', val: CONTACT_PHONE },
+    { icon: Mail, title: 'Email Correspondence', desc: 'General & Support queries', val: CONTACT_EMAIL },
     { icon: MapPin, title: 'Main Operations Hub', desc: 'Guntur, Andhra Pradesh', val: 'Visit by appointment' }
   ]
 

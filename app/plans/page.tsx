@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Check, ShieldCheck, ChevronDown, X, Sparkles, CheckCircle2, Phone, MessageCircle } from 'lucide-react'
 import { useState } from 'react'
 import { Reveal } from '@/lib/useReveal'
+import { CONTACT_PHONE_RAW } from '@/lib/constants'
 
 const plans = [
   {
@@ -142,12 +143,12 @@ export default function PlansPage() {
     setCouponError('')
     const code = couponCode.toUpperCase().trim()
 
-    if (code === 'MANACARE15') {
-      setAppliedCoupon({ code: 'MANACARE15', type: 'percent', value: 15 })
+    if (code === 'AASARA15') {
+      setAppliedCoupon({ code: 'AASARA15', type: 'percent', value: 15 })
     } else if (code === 'WELCOME500') {
       setAppliedCoupon({ code: 'WELCOME500', type: 'flat', value: 500 })
     } else {
-      setCouponError('Invalid coupon code. Try MANACARE15 or WELCOME500')
+      setCouponError('Invalid coupon code. Try AASARA15 or WELCOME500')
     }
   }
 
@@ -355,7 +356,7 @@ export default function PlansPage() {
                 </div>
                 <div className="flex gap-3 pt-2">
                   <a
-                    href="https://wa.me/919123456789"
+                    href={`https://wa.me/${CONTACT_PHONE_RAW}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-[#1ebe59] transition-colors cursor-pointer"
@@ -364,7 +365,7 @@ export default function PlansPage() {
                     WhatsApp Us
                   </a>
                   <a
-                    href="tel:+919123456789"
+                    href={`tel:${CONTACT_PHONE_RAW}`}
                     className="flex items-center gap-2 border border-primary text-primary px-5 py-2.5 rounded-full text-xs font-bold hover:bg-secondary transition-colors cursor-pointer"
                   >
                     <Phone size={14} />
@@ -416,7 +417,7 @@ export default function PlansPage() {
                       type="text"
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value)}
-                      placeholder="e.g. MANACARE15 (15% off)"
+                      placeholder="e.g. AASARA15 (15% off)"
                       className="flex-grow px-4 py-2.5 text-xs border border-light-gray rounded-full focus:outline-none focus:border-primary uppercase bg-secondary/10 font-semibold"
                     />
                     <button

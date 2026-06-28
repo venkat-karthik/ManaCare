@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { MessageSquare, X, Send, ShieldCheck, Sparkles } from 'lucide-react'
+import { MessageSquare, X, Send, ShieldCheck } from 'lucide-react'
+import { CONTACT_PHONE, CONTACT_EMAIL } from '@/lib/constants'
 
 interface Message {
   sender: 'user' | 'bot'
@@ -13,7 +14,7 @@ export function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'bot',
-      text: 'Hello. Welcome to ManaCare. I am your automated care assistant. How may I assist you with your family or property needs in India today?'
+      text: 'Hello. Welcome to Aasara. I am your automated care assistant. How may I assist you with your family or property needs in India today?'
     }
   ])
   const [inputValue, setInputValue] = useState('')
@@ -27,7 +28,7 @@ export function Chatbot() {
     },
     { 
       q: 'What plans do you offer?', 
-      a: 'We offer 4 monthly plans (no setup fees, cancel with 7 days notice):\n• Essential Care (₹4,999/mo)\n• Family Care (₹7,999/mo)\n• Complete Care (₹11,999/mo)\n• NRI Prime (₹20,000/mo)\nCustom quotes are also available. Use code WELCOME500 for ₹500 off or MANACARE15 for 15% off!' 
+      a: 'We offer 4 monthly plans (no setup fees, cancel with 7 days notice):\n• Basic Care (₹4,999/mo)\n• Premium Care (₹7,999/mo)\n• Complete Care (₹11,999/mo)\n• NRI Prime (₹20,000/mo)\nCustom quotes are also available. Use code WELCOME500 for ₹500 off or AASARA15 for 15% off!' 
     },
     { 
       q: 'How do you verify caregivers?', 
@@ -35,7 +36,7 @@ export function Chatbot() {
     },
     { 
       q: 'What is the Servostay discount?', 
-      a: 'Servostay is our sister business providing premium 1-5 BHK serviced apartments in Hyderabad, Bengaluru, Visakhapatnam, and Tirupati. ManaCare subscribers receive an exclusive 15% discount, zero security deposit, priority booking, airport pickup, and pre-arrival pantry stocking.' 
+      a: 'Servostay is our sister business providing premium 1-5 BHK serviced apartments in Hyderabad, Bengaluru, Visakhapatnam, and Tirupati. Aasara subscribers receive an exclusive 15% discount, zero security deposit, priority booking, airport pickup, and pre-arrival pantry stocking.' 
     }
   ]
 
@@ -46,7 +47,7 @@ export function Chatbot() {
     },
     {
       keywords: ['plan', 'price', 'pricing', 'cost', 'rate', 'fee', 'charge', 'essential', 'family care', 'complete care', 'nri prime', 'custom plan', 'subscription', 'monthly', 'bill', 'billing', 'contract', 'coupon', 'discount', 'promo', 'gateway'],
-      response: "We offer 4 flexible subscription plans (billed monthly, no setup fees, cancel anytime with a 7-day notice):\n• Basic Care (₹4,999/mo): 1 wellness check-in, medication reminders, monthly updates.\n• Premium Care (₹7,999/mo): 2 check-ins, hospital transport & assistance, 1 property inspection.\n• Complete Care (₹11,999/mo): 4 check-ins, blood bank access, hospital support, property + strength checks.\n• NRI Prime (₹20,000/mo): 8 check-ins, full hospital suite, 2 property inspections, property selling & construction oversight.\n\nUse coupon WELCOME500 for a flat ₹500 off or MANACARE15 for 15% off! Custom plans are available for unique requirements."
+      response: "We offer 4 flexible subscription plans (billed monthly, no setup fees, cancel anytime with a 7-day notice):\n• Basic Care (₹4,999/mo): 1 wellness check-in, medication reminders, monthly updates.\n• Premium Care (₹7,999/mo): 2 check-ins, hospital transport & assistance, 1 property inspection.\n• Complete Care (₹11,999/mo): 4 check-ins, blood bank access, hospital support, property + strength checks.\n• NRI Prime (₹20,000/mo): 8 check-ins, full hospital suite, 2 property inspections, property selling & construction oversight.\n\nUse coupon WELCOME500 for a flat ₹500 off or AASARA15 for 15% off! Custom plans are available for unique requirements."
     },
     {
       keywords: ['caregiver', 'staff', 'manager', 'verify', 'trust', 'safe', 'safety', 'police', 'vet', 'background', 'check', 'biometric', 'train', 'geriatric', 'nurse', 'elderly', 'qualification', 'vetting'],
@@ -54,15 +55,19 @@ export function Chatbot() {
     },
     {
       keywords: ['servostay', 'apartment', 'stay', 'rent', 'suite', 'accommodation', 'room', 'living', 'furniture', 'visiting india', 'hotel', 'sister'],
-      response: "Servostay is our sister business offering premium, fully furnished 1 to 5 BHK serviced suites in Hyderabad, Bengaluru, Visakhapatnam, and Tirupati. \n\nManaCare subscribers get exclusive perks:\n• 15% discount on all bookings\n• Zero security deposit\n• Priority booking windows during peak seasons\n• Free pre-arrival groceries/pantry stocking\n• Complimentary airport pickup coordination"
+      response: "Servostay is our sister business offering premium, fully furnished 1 to 5 BHK serviced suites in Hyderabad, Bengaluru, Visakhapatnam, and Tirupati. \n\nAasara subscribers get exclusive perks:\n• 15% discount on all bookings\n• Zero security deposit\n• Priority booking windows during peak seasons\n• Free pre-arrival groceries/pantry stocking\n• Complimentary airport pickup coordination"
     },
     {
       keywords: ['service', 'do you do', 'wellness', 'health', 'property', 'asset', 'estate', 'maintenance', 'repair', 'tenant', 'emergency', 'hospital', 'doctor', 'ambulance', 'errand', 'blood', 'transport', 'selling', 'construction', 'rental', 'iv', 'update', 'evening'],
-      response: "ManaCare provides comprehensive local care services in India:\n\n❤️ Parent Care:\n• Hospital transport (pick-up & return home)\n• At-hospital assistance (staff stays throughout)\n• In-patient care & Servostay-to-hospital coordination\n• Blood bank tie-up for priority blood access\n• Blood & IV assistance with nursing staff\n• Monthly wellness checks with vitals & reports\n• Medication management & pharmacy delivery\n• Evening daily WhatsApp health updates (6 PM)\n• Companionship & errand support\n\n🏠 Property Management:\n• Monthly GPS-verified inspections with photos\n• House strength checks (monsoon, rain & depreciation)\n• Property selling: valuation, buyer scouting & documentation\n• Rental income setup: tenant finding & onboarding\n• Full construction & renovation management\n• Tenant management, rent collection & dues payment"
+      response: "Aasara provides comprehensive local care services in India:\n\n❤️ Parent Care:\n• Hospital transport (pick-up & return home)\n• At-hospital assistance (staff stays throughout)\n• In-patient care & Servostay-to-hospital coordination\n• Blood bank tie-up for priority blood access\n• Blood & IV assistance with nursing staff\n• Monthly wellness checks with vitals & reports\n• Medication management & pharmacy delivery\n• Evening daily WhatsApp health updates (6 PM)\n• Companionship & errand support\n\n🏠 Property Management:\n• Monthly GPS-verified inspections with photos\n• House strength checks (monsoon, rain & depreciation)\n• Property selling: valuation, buyer scouting & documentation\n• Rental income setup: tenant finding & onboarding\n• Full construction & renovation management\n• Tenant management, rent collection & dues payment"
     },
     {
       keywords: ['contact', 'phone', 'call', 'email', 'support', 'consult', 'consultation', 'inquiry', 'enquiry', 'reach', 'number', 'address', 'office', 'whatsapp', 'mail'],
-      response: "You can book a free consultation directly on our homepage. You can also reach our care advisors at:\n• Email: care@manacare.in\n• Phone/WhatsApp: +91 91234 56789\n\nWe respond to all enquiries within 2 hours during business hours."
+      response: `You can book a free consultation directly on our homepage. You can also reach our care advisors at:
+• Email: ${CONTACT_EMAIL}
+• Phone/WhatsApp: ${CONTACT_PHONE}
+
+We respond to all enquiries within 2 hours during business hours.`
     }
   ]
 
@@ -130,7 +135,7 @@ export function Chatbot() {
         if (bestMatch && maxScore > 0) {
           reply = (bestMatch as { keywords: string[]; response: string }).response
         } else {
-          reply = "Please contact our care advisor team for direct assistance. You can email us at care@manacare.in, call/WhatsApp us at +91 91234 56789, or request a free consultation directly on our homepage."
+          reply = `Please contact our care advisor team for direct assistance. You can email us at ${CONTACT_EMAIL}, call/WhatsApp us at ${CONTACT_PHONE}, or request a free consultation directly on our homepage.`
         }
       }
 
@@ -161,7 +166,7 @@ export function Chatbot() {
                 <ShieldCheck size={16} className="text-accent" />
               </div>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider font-serif">ManaCare Support</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider font-serif">Aasara Support</h4>
                 <p className="text-[9px] text-white/60">Verified Care Assistance</p>
               </div>
             </div>
