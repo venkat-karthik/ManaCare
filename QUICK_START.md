@@ -1,4 +1,4 @@
-# 🚀 ManaCare Platform - Quick Start Guide
+﻿# 🚀 Aasara Platform - Quick Start Guide
 
 ## ⚡ 30-Second Start
 
@@ -150,7 +150,7 @@ Everything is set up and working. Just run:
 npm run dev
 ```
 
-Enjoy your new premium ManaCare platform! 🎉
+Enjoy your new premium Aasara platform! 🎉
 
 ---
 

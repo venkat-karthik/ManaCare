@@ -1,4 +1,4 @@
-# Sanity CMS Integration Guide - ManaCare Platform
+﻿# Sanity CMS Integration Guide - Aasara Platform
 
 ## ✅ Integration Status: ACTIVE
 
@@ -180,7 +180,7 @@ export function DynamicTestimonials() {
   _type: "testimonial",
   name: "John Doe",
   location: "New Jersey, USA",
-  quote: "ManaCare has been a blessing...",
+  quote: "Aasara has been a blessing...",
   role: "NRI Parent",
   publishedAt: datetime
 }

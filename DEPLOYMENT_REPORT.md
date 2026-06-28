@@ -1,4 +1,4 @@
-# ManaCare Project - Deployment Report
+﻿# Aasara Project - Deployment Report
 
 **Date:** June 19, 2026  
 **Status:** ✅ PRODUCTION READY
@@ -7,7 +7,7 @@
 
 ## Summary
 
-The ManaCare Next.js web application has been successfully updated with the new Servostay website link and all critical issues have been resolved. The development server is running without errors.
+The Aasara Next.js web application has been successfully updated with the new Servostay website link and all critical issues have been resolved. The development server is running without errors.
 
 ---
 
@@ -102,10 +102,10 @@ These are acceptable for development/staging. Upgrade to `npm audit fix --force`
 ## Files Modified
 
 ### Core Changes
-1. `/Users/venkatkarthik/Desktop/ManaCare/app/page.tsx`
+1. `/Users/venkatkarthik/Desktop/Aasara/app/page.tsx`
    - Line 303: Updated Servostay link
    
-2. `/Users/venkatkarthik/Desktop/ManaCare/app/servostay/page.tsx`
+2. `/Users/venkatkarthik/Desktop/Aasara/app/servostay/page.tsx`
    - Line 104: Updated Servostay link
 
 ### Configuration Changes

@@ -1,4 +1,4 @@
-# ManaCare Platform - UI/UX Improvements Summary
+﻿# Aasara Platform - UI/UX Improvements Summary
 
 ## ✅ Completed Enhancements
 
