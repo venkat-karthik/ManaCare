@@ -1,6 +1,6 @@
-'use client'
+﻿'use client'
 
-import { ManaCareIcon } from '../ManaCareIcon'
+import { AasaraIcon } from '../AasaraIcon'
 import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -43,7 +43,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 h-24 flex items-center justify-between">
 
         <Link href="/" className="hover:opacity-90 transition-opacity">
-          <ManaCareIcon transparent={isTransparent} />
+          <AasaraIcon transparent={isTransparent} />
         </Link>
 
         {/* Desktop Navigation */}

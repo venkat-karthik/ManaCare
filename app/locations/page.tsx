@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
@@ -87,7 +87,7 @@ export default function LocationsPage() {
             </Reveal>
             <Reveal from="bottom" delay={0.2}>
               <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed font-medium">
-                ManaCare delivers premium local support across Guntur (Headquarters with Blood Bank Facility), Vijayawada, Bapatla, and Ongole. Our care managers speak the local language and coordinate seamlessly.
+                Aasara delivers premium local support across Guntur (Headquarters with Blood Bank Facility), Vijayawada, Bapatla, and Ongole. Our care managers speak the local language and coordinate seamlessly.
               </p>
             </Reveal>
           </div>

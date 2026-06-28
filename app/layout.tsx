@@ -1,4 +1,4 @@
-import { Analytics } from '@vercel/analytics/next'
+﻿import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Playfair_Display, Lora, Poppins } from 'next/font/google'
 import './globals.css'
@@ -23,7 +23,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'ManaCare - NRI Family Care Services in India',
+  title: 'Aasara - NRI Family Care Services in India',
   description: 'Professional care services for NRI families. Trusted by Non-Resident Indians for parental care and property management across India.',
   icons: {
     icon: [

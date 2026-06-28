@@ -1,9 +1,9 @@
-import { Header } from '@/components/sections/Header'
+﻿import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 
 export const metadata = {
-  title: 'Cookie Policy - ManaCare',
-  description: 'ManaCare cookie policy explaining how and why we use cookies on our website.',
+  title: 'Cookie Policy - Aasara',
+  description: 'Aasara cookie policy explaining how and why we use cookies on our website.',
 }
 
 const sections = [
@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: '2. Cookies We Use',
-    body: 'ManaCare uses only essential functional cookies required for the website to operate correctly. These include session management cookies and security tokens. We do not use tracking or advertising cookies.'
+    body: 'Aasara uses only essential functional cookies required for the website to operate correctly. These include session management cookies and security tokens. We do not use tracking or advertising cookies.'
   },
   {
     title: '3. Essential Cookies',
@@ -33,7 +33,7 @@ const sections = [
   },
   {
     title: '7. Contact',
-    body: 'If you have any questions about our use of cookies, please contact us at care@manacare.in.'
+    body: 'If you have any questions about our use of cookies, please contact us at care@aasara.in.'
   }
 ]
 
@@ -51,7 +51,7 @@ export default function CookiesPage() {
             <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase font-serif">Legal</span>
             <h1 className="text-4xl sm:text-5xl font-bold font-serif text-white tracking-tight leading-tight">Cookie Policy</h1>
             <p className="text-white/60 text-sm max-w-xl mx-auto leading-relaxed font-medium">
-              Last updated: June 2026. This policy explains how ManaCare uses cookies and similar technologies.
+              Last updated: June 2026. This policy explains how Aasara uses cookies and similar technologies.
             </p>
           </div>
         </section>

@@ -1,6 +1,7 @@
-import { ManaCareIcon } from '../ManaCareIcon'
+import { AasaraIcon } from '../AasaraIcon'
 import { Mail, Phone, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
+import { CONTACT_PHONE, CONTACT_PHONE_RAW, CONTACT_EMAIL } from '@/lib/constants'
 
 export function Footer() {
   return (
@@ -13,10 +14,10 @@ export function Footer() {
           {/* Brand Presentation Column (5 cols) */}
           <div className="md:col-span-5 space-y-6">
             <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
-              <ManaCareIcon />
+              <AasaraIcon />
             </Link>
             <p className="text-white/70 text-sm leading-relaxed max-w-sm font-medium">
-              ManaCare provides a highly dedicated, professional care coordination system for Non-Resident Indian families. We act as your trusted local eyes and ears, securing your parents' wellness and assets back home.
+              Aasara provides a highly dedicated, professional care coordination system for Non-Resident Indian families. We act as your trusted local eyes and ears, securing your parents' wellness and assets back home.
             </p>
           </div>
 
@@ -45,15 +46,15 @@ export function Footer() {
           <div className="md:col-span-2 space-y-4">
             <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Contact Office</h4>
             <div className="space-y-3 text-xs font-semibold tracking-wide">
-              <a href="tel:+919123456789" className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
+              <a href={`tel:${CONTACT_PHONE_RAW}`} className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
                 <Phone size={14} className="text-accent shrink-0" />
-                <span>+91 91234 56789</span>
+                <span>{CONTACT_PHONE}</span>
               </a>
-              <a href="mailto:care@manacare.in" className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
                 <Mail size={14} className="text-accent shrink-0" />
-                <span>care@manacare.in</span>
+                <span>{CONTACT_EMAIL}</span>
               </a>
-              <a href="https://wa.me/919123456789" className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
+              <a href={`https://wa.me/${CONTACT_PHONE_RAW}`} className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
                 <MessageCircle size={14} className="text-accent shrink-0" />
                 <span>WhatsApp Coordination</span>
               </a>
@@ -65,7 +66,7 @@ export function Footer() {
         <div className="pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="space-y-1.5 text-left">
             <p className="text-white/40 text-xs font-medium">
-              © {new Date().getFullYear()} ManaCare Support Services. Dedicated care network for NRI families.
+              © {new Date().getFullYear()} Aasara Support Services. Dedicated care network for NRI families.
             </p>
             <p className="text-white/40 text-[10px] font-medium tracking-wide uppercase">
               Made by <span className="text-accent font-bold hover:text-white transition-colors duration-300">Velfound</span>

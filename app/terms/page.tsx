@@ -1,19 +1,20 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
+import { CONTACT_PHONE, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata = {
-  title: 'Terms of Service - ManaCare',
-  description: 'ManaCare terms of service governing the use of our care coordination platform and services.',
+  title: 'Terms of Service - Aasara',
+  description: 'Aasara terms of service governing the use of our care coordination platform and services.',
 }
 
 const sections = [
   {
     title: '1. Acceptance of Terms',
-    body: 'By accessing or using ManaCare services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.'
+    body: 'By accessing or using Aasara services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.'
   },
   {
     title: '2. Service Description',
-    body: 'ManaCare provides care coordination and property management services for Non-Resident Indian families. Our services are carried out by trained, verified local care managers across our active service cities in India.'
+    body: 'Aasara provides care coordination and property management services for Non-Resident Indian families. Our services are carried out by trained, verified local care managers across our active service cities in India.'
   },
   {
     title: '3. Subscription and Billing',
@@ -25,11 +26,11 @@ const sections = [
   },
   {
     title: '5. Service Standards',
-    body: 'ManaCare commits to providing professional, respectful, and transparent care services. All care managers are background-verified and trained. We will provide regular reports as per your chosen plan.'
+    body: 'Aasara commits to providing professional, respectful, and transparent care services. All care managers are background-verified and trained. We will provide regular reports as per your chosen plan.'
   },
   {
     title: '6. Limitation of Liability',
-    body: 'ManaCare acts as a care coordination service and is not a licensed medical provider. Our liability is limited to the monthly subscription fee paid. Emergency medical decisions remain the responsibility of licensed healthcare professionals.'
+    body: 'Aasara acts as a care coordination service and is not a licensed medical provider. Our liability is limited to the monthly subscription fee paid. Emergency medical decisions remain the responsibility of licensed healthcare professionals.'
   },
   {
     title: '7. Governing Law',
@@ -37,7 +38,7 @@ const sections = [
   },
   {
     title: '8. Contact',
-    body: 'For questions regarding these Terms, contact us at care@manacare.in or +91 91234 56789.'
+    body: `For questions regarding these Terms, contact us at ${CONTACT_EMAIL} or ${CONTACT_PHONE}.`
   }
 ]
 
@@ -55,7 +56,7 @@ export default function TermsPage() {
             <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase font-serif">Legal</span>
             <h1 className="text-4xl sm:text-5xl font-bold font-serif text-white tracking-tight leading-tight">Terms of Service</h1>
             <p className="text-white/60 text-sm max-w-xl mx-auto leading-relaxed font-medium">
-              Last updated: June 2026. Please read these terms carefully before using ManaCare services.
+              Last updated: June 2026. Please read these terms carefully before using Aasara services.
             </p>
           </div>
         </section>

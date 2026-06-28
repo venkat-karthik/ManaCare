@@ -1,9 +1,10 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
+import { CONTACT_PHONE, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata = {
-  title: 'Privacy Policy - ManaCare',
-  description: 'ManaCare privacy policy detailing how we handle and protect your personal data.',
+  title: 'Privacy Policy - Aasara',
+  description: 'Aasara privacy policy detailing how we handle and protect your personal data.',
 }
 
 const sections = [
@@ -25,7 +26,7 @@ const sections = [
   },
   {
     title: '5. Your Rights',
-    body: 'You have the right to access, correct, or request deletion of your personal data at any time. To exercise these rights, please contact us at care@manacare.in.'
+    body: `You have the right to access, correct, or request deletion of your personal data at any time. To exercise these rights, please contact us at ${CONTACT_EMAIL}.`
   },
   {
     title: '6. Cookies',
@@ -33,7 +34,7 @@ const sections = [
   },
   {
     title: '7. Contact',
-    body: 'If you have any questions about this Privacy Policy, please contact our team at care@manacare.in or call us at +91 91234 56789.'
+    body: `If you have any questions about this Privacy Policy, please contact our team at ${CONTACT_EMAIL} or call us at ${CONTACT_PHONE}.`
   }
 ]
 
@@ -51,7 +52,7 @@ export default function PrivacyPage() {
             <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase font-serif">Legal</span>
             <h1 className="text-4xl sm:text-5xl font-bold font-serif text-white tracking-tight leading-tight">Privacy Policy</h1>
             <p className="text-white/60 text-sm max-w-xl mx-auto leading-relaxed font-medium">
-              Last updated: June 2026. This policy outlines how ManaCare collects, uses, and protects your personal information.
+              Last updated: June 2026. This policy outlines how Aasara collects, uses, and protects your personal information.
             </p>
           </div>
         </section>

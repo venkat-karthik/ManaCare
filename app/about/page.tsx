@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
@@ -47,7 +47,7 @@ export default function AboutPage() {
 
           <div className="relative z-10 space-y-4">
             <Reveal from="bottom">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase font-serif">About ManaCare</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase font-serif">About Aasara</span>
             </Reveal>
             <Reveal from="bottom" delay={0.1}>
               <h1 className="text-4xl sm:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
@@ -57,7 +57,7 @@ export default function AboutPage() {
             </Reveal>
             <Reveal from="bottom" delay={0.2}>
               <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed font-medium">
-                ManaCare was founded to solve a deeply personal challenge: providing reliable, high-quality care for elderly parents in India on behalf of their children living abroad.
+                Aasara was founded to solve a deeply personal challenge: providing reliable, high-quality care for elderly parents in India on behalf of their children living abroad.
               </p>
             </Reveal>
           </div>
@@ -69,12 +69,12 @@ export default function AboutPage() {
             <Reveal from="left">
               <div className="space-y-6">
                 <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Our Story</span>
-                <h2 className="text-3xl font-bold font-serif text-navy">Why We Started ManaCare</h2>
+                <h2 className="text-3xl font-bold font-serif text-navy">Why We Started Aasara</h2>
                 <p className="text-dark/80 text-sm leading-relaxed font-semibold">
                   As Non-Resident Indians ourselves, we realized that sending money home was never enough. Our parents deserved companionship, prompt medical accompaniment, and dedicated care.
                 </p>
                 <p className="text-dark/80 text-sm leading-relaxed font-semibold">
-                  Similarly, supervising family homes and properties from abroad was stressful. We built ManaCare as a professional platform that combines compassionate parental care with reliable property oversight.
+                  Similarly, supervising family homes and properties from abroad was stressful. We built Aasara as a professional platform that combines compassionate parental care with reliable property oversight.
                 </p>
               </div>
             </Reveal>
@@ -159,7 +159,7 @@ export default function AboutPage() {
                 <span className="text-[10px] font-bold tracking-widest text-accent uppercase inline-block">Training & Compliance</span>
                 <h2 className="text-2xl sm:text-3xl font-serif font-bold">Our Caregiver Training Standard</h2>
                 <p className="text-white/80 text-sm leading-relaxed font-light">
-                  Every ManaCare associate undergoes a specialized 4-week training program in geriatric care, emergency medical support coordination, and soft skills to ensure respect, warmth, and complete professional competence.
+                  Every Aasara associate undergoes a specialized 4-week training program in geriatric care, emergency medical support coordination, and soft skills to ensure respect, warmth, and complete professional competence.
                 </p>
               </div>
 
@@ -176,7 +176,7 @@ export default function AboutPage() {
 
         {/* CTA */}
         <Reveal from="bottom" className="py-16 px-6 text-center border-t border-primary/10 bg-secondary/20">
-          <p className="text-dark/70 text-base mb-6 font-medium">Ready to let ManaCare take care of your family?</p>
+          <p className="text-dark/70 text-base mb-6 font-medium">Ready to let Aasara take care of your family?</p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full hover:bg-primary-hover transition-all text-sm font-semibold shadow-md hover:-translate-y-0.5 hover:shadow-lg"
