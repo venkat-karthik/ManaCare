@@ -1,8 +1,8 @@
-'use client'
+﻿'use client'
 
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
-import { Check, Calendar, MapPin, Key, ShieldCheck, HeartHandshake, PhoneCall, ExternalLink, ArrowRight } from 'lucide-react'
+import { Check, MapPin, Key, ShieldCheck, HeartHandshake, PhoneCall, ExternalLink, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { Reveal } from '@/lib/useReveal'
 
@@ -12,7 +12,6 @@ export default function ServostayPage() {
     email: '',
     phone: '',
     city: '',
-    dates: '',
     duration: '',
     type: '',
     message: ''
@@ -26,7 +25,7 @@ export default function ServostayPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', city: '', dates: '', duration: '', type: '', message: '' })
+    setFormData({ name: '', email: '', phone: '', city: '', duration: '', type: '', message: '' })
   }
 
   const features = [
@@ -125,7 +124,7 @@ export default function ServostayPage() {
             <img
               src="/assets/servostay_room.png"
               alt="Servostay Apartment Room"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
@@ -146,7 +145,7 @@ export default function ServostayPage() {
             {features.map((feat, idx) => {
               const Icon = feat.icon
               return (
-                <div key={idx} className="group relative bg-gradient-to-br from-primary/6 to-primary/2 p-8 rounded-[32px] border-2 border-primary/15 flex gap-5 items-start overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:scale-105">
+                <div key={idx} className="group relative bg-gradient-to-br from-primary/6 to-primary/2 p-8 rounded-[32px] border-2 border-primary/15 flex gap-5 items-start overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:-translate-y-1">
                   {/* Shiny overlay effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
@@ -181,9 +180,9 @@ export default function ServostayPage() {
             <div className="lg:col-span-5 space-y-8">
               <div className="space-y-4">
                 <span className="text-[10px] font-bold tracking-widest text-accent uppercase font-serif">Exclusive Benefits</span>
-                <h2 className="text-3xl font-bold font-serif text-navy leading-tight">Exclusive Perks for ManaCare Members</h2>
+                <h2 className="text-3xl font-bold font-serif text-navy leading-tight">Exclusive Perks for Aasara Members</h2>
                 <p className="text-dark/80 text-sm leading-relaxed">
-                  If you are currently subscribed to a ManaCare Parent Care plan, you receive additional benefits for your travels:
+                  If you are currently subscribed to a Aasara Parent Care plan, you receive additional benefits for your travels:
                 </p>
               </div>
 
@@ -207,7 +206,7 @@ export default function ServostayPage() {
               <div className="bg-white p-5 rounded-[28px] border border-light-gray flex items-center gap-3 shadow-xs">
                 <ShieldCheck size={24} className="text-primary shrink-0" />
                 <p className="text-xs text-dark/85 font-semibold">
-                  All Servostay properties are personally inspected and safety-audited by ManaCare staff.
+                  All Servostay properties are personally inspected and safety-audited by Aasara staff.
                 </p>
               </div>
             </div>

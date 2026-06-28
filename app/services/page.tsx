@@ -3,8 +3,9 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 import Link from 'next/link'
-import { Heart, Users, Home, Shield, AlertCircle, Check, ArrowRight, ChevronDown } from 'lucide-react'
+import { Heart, Home, Shield, Check, ArrowRight, ChevronDown } from 'lucide-react'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { Reveal, useInView } from '@/lib/useReveal'
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -65,23 +66,6 @@ const scenes = [
   },
 ]
 
-// ─── HOOKS ────────────────────────────────────────────────────────────────────
-
-function useInView(threshold = 0.2) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setInView(true) },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return { ref, inView }
-}
 
 // ─── SCROLL PROGRESS BAR ──────────────────────────────────────────────────────
 
@@ -111,40 +95,6 @@ function ScrollBar() {
   )
 }
 
-// ─── ANIMATED TEXT WRAPPER ────────────────────────────────────────────────────
-
-function Reveal({
-  children,
-  delay = 0,
-  from = 'bottom',
-  className = '',
-}: {
-  children: ReactNode
-  delay?: number
-  from?: 'bottom' | 'left' | 'right' | 'scale'
-  className?: string
-}) {
-  const { ref, inView } = useInView(0.15)
-  const hidden =
-    from === 'bottom' ? 'translateY(48px)'
-    : from === 'left' ? 'translateX(-64px)'
-    : from === 'right' ? 'translateX(64px)'
-    : 'scale(0.88)'
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: inView ? 1 : 0,
-        transform: inView ? 'none' : hidden,
-        transition: `opacity 0.75s ease ${delay}s, transform 0.75s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
-      }}
-    >
-      {children}
-    </div>
-  )
-}
 
 // ─── QUESTION PANEL ───────────────────────────────────────────────────────────
 
@@ -303,7 +253,7 @@ function AnswerPanel({ scene, index }: { scene: typeof scenes[0]; index: number 
                 style={{ background: scene.answerAccent }}
               />
               <span className="text-sm font-semibold" style={{ color: scene.answerAccent }}>
-                Yes — ManaCare is here for that.
+                Yes — Aasara is here for that.
               </span>
             </div>
 
@@ -410,7 +360,7 @@ function ServiceImage({ scene, isDark }: { scene: typeof scenes[0]; isDark: bool
         {/* Caption bar at the bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
           <div>
-            <p className="text-white/55 text-xs font-medium mb-1">ManaCare — on the ground</p>
+            <p className="text-white/55 text-xs font-medium mb-1">Aasara — on the ground</p>
             <p className="text-white font-semibold text-sm leading-snug">{scene.answerTag}</p>
           </div>
           <div
@@ -456,7 +406,7 @@ function TrustBadge({ accent, isDark }: { accent: string; isDark: boolean }) {
         className="text-xs leading-relaxed"
         style={{ color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(15,23,42,0.5)' }}
       >
-        All services are managed by verified, trained ManaCare professionals — fully transparent, fully accountable.
+        All services are managed by verified, trained Aasara professionals — fully transparent, fully accountable.
       </p>
     </div>
   )
@@ -550,7 +500,7 @@ export default function ServicesPage() {
 
           <div className="relative z-10 max-w-4xl mx-auto space-y-8">
             <p className="text-xs font-bold tracking-[0.28em] uppercase" style={{ color: '#D4A24C' }}>
-              ManaCare — What We Do
+              Aasara — What We Do
             </p>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold font-serif text-white leading-[1.08]">
@@ -561,7 +511,7 @@ export default function ServicesPage() {
             </h1>
 
             <p className="text-white/50 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">
-              Scroll down and see how ManaCare answers the questions that keep you awake at night — one real solution at a time.
+              Scroll down and see how Aasara answers the questions that keep you awake at night — one real solution at a time.
             </p>
 
             {/* Scroll cue */}
@@ -583,7 +533,7 @@ export default function ServicesPage() {
           <div className="relative max-w-7xl mx-auto space-y-16">
             <Reveal from="bottom" className="text-center max-w-3xl mx-auto space-y-4">
               <span className="text-xs font-bold tracking-[0.25em] text-accent uppercase font-sans">
-                ManaCare Foundations
+                Aasara Foundations
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold font-serif text-white">
                 Our Two Primary Care Spotlights
@@ -605,7 +555,7 @@ export default function ServicesPage() {
                       <img
                         src="/assets/Parent Care & Wellness.png"
                         alt="Parental Care & Wellness"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       <span className="absolute top-4 left-4 bg-primary text-white text-[9px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase border border-primary/20 backdrop-blur-sm animate-pulse">
@@ -649,7 +599,7 @@ export default function ServicesPage() {
                       <img
                         src="/assets/Property Oversight.png"
                         alt="Property Oversight & Protection"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase border border-accent/20 backdrop-blur-sm animate-pulse">
@@ -702,7 +652,7 @@ export default function ServicesPage() {
             {/* The question — full-screen pain point */}
             <QuestionPanel scene={scene} isLast={i === scenes.length - 1} />
 
-            {/* The answer — ManaCare's reveal */}
+            {/* The answer — Aasara's reveal */}
             <AnswerPanel scene={scene} index={i} />
           </div>
         ))}
@@ -715,7 +665,7 @@ export default function ServicesPage() {
               <span className="text-xs font-bold tracking-[0.25em] text-accent uppercase font-sans">Every Service, Clearly Listed</span>
               <h2 className="text-4xl sm:text-5xl font-bold font-serif text-navy">Complete Care Breakdown</h2>
               <p className="text-dark/60 text-base max-w-xl mx-auto leading-relaxed">
-                Every service ManaCare provides — transparent, detailed, and ready to be tailored to your family.
+                Every service Aasara provides — transparent, detailed, and ready to be tailored to your family.
               </p>
             </Reveal>
 
@@ -855,7 +805,7 @@ export default function ServicesPage() {
 
             <Reveal delay={0.2} from="bottom">
               <p className="text-white/55 text-base sm:text-lg leading-relaxed">
-                Whether it&apos;s a single service or a fully custom care package — ManaCare is your trusted partner on the ground in India.
+                Whether it&apos;s a single service or a fully custom care package — Aasara is your trusted partner on the ground in India.
               </p>
             </Reveal>
 

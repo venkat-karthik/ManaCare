@@ -1,4 +1,4 @@
-import { createClient } from 'next-sanity'
+﻿import { createClient } from 'next-sanity'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || ''
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
@@ -25,7 +25,7 @@ export async function getSanityContent<T>(query: string, fallbackData: T): Promi
     const data = await sanityClient.fetch(query)
     return data && (Array.isArray(data) ? data.length > 0 : true) ? data : fallbackData
   } catch (error) {
-    console.warn('[ManaCare CMS] Sanity fetch error, using local fallback data:', error)
+    console.warn('[Aasara CMS] Sanity fetch error, using local fallback data:', error)
     return fallbackData
   }
 }

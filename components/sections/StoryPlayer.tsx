@@ -70,13 +70,13 @@ export function StoryPlayer() {
   const [isPlaying, setIsPlaying] = useState(true)
   const [progress, setProgress] = useState(0)
   const [subtitleVisible, setSubtitleVisible] = useState(true)
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const story = activeStory === 'parental' ? parentalStory : propertyStory
 
   const clearTimers = useCallback(() => {
-    if (intervalRef.current) clearTimeout(intervalRef.current)
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
     if (progressRef.current) clearInterval(progressRef.current)
   }, [])
 
@@ -105,13 +105,13 @@ export function StoryPlayer() {
       }
     }, tickInterval)
 
-    intervalRef.current = setTimeout(advanceBeat, beat.duration)
+    timeoutRef.current = setTimeout(advanceBeat, beat.duration)
   }, [isPlaying, story, currentBeat, advanceBeat, clearTimers])
 
   useEffect(() => {
     startProgress()
     return clearTimers
-  }, [currentBeat, isPlaying, activeStory]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [startProgress, clearTimers])
 
   const handleStorySwitch = (s: 'parental' | 'property') => {
     clearTimers()
@@ -148,7 +148,7 @@ export function StoryPlayer() {
           <span className="text-[10px] font-bold tracking-[0.25em] text-accent uppercase font-sans">Our Story in Action</span>
           <h2 className="text-3xl sm:text-4xl font-bold font-serif text-white">See How We Care</h2>
           <p className="text-white/50 text-sm max-w-xl mx-auto leading-relaxed">
-            A cinematic walkthrough of how ManaCare works for your family — every step, every service, every day.
+            A cinematic walkthrough of how Aasara works for your family — every step, every service, every day.
           </p>
         </div>
 

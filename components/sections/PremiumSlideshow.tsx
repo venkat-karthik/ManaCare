@@ -45,7 +45,7 @@ export function PremiumSlideshow() {
     }, 5000) // 5 sec auto-play
 
     return () => clearInterval(interval)
-  }, [currentSlide, isPaused])
+  }, [isPaused])
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
@@ -64,6 +64,8 @@ export function PremiumSlideshow() {
   return (
     <section 
       className="group relative w-full h-[580px] sm:h-[640px] md:h-[680px] lg:h-[760px] bg-[#0a2318] overflow-hidden select-none z-0"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Styles for dynamic progress animation */}
       <style>{`
