@@ -149,20 +149,20 @@ We respond to all enquiries within 2 hours during business hours.`
   }
 
   return (
-    <div ref={chatRef} className="fixed bottom-6 right-6 z-100 font-sans">
+    <div ref={chatRef} className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] font-sans">
       {/* Floating Button */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-primary text-white p-4 rounded-full shadow-xl hover:bg-primary-hover hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center border-2 border-accent/30 cursor-pointer"
+          className="bg-primary text-white p-3.5 sm:p-4 rounded-full shadow-xl hover:bg-primary-hover hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center border-2 border-accent/30 cursor-pointer"
         >
-          <MessageSquare size={24} className="text-accent" />
+          <MessageSquare size={22} className="text-accent" />
         </button>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="bg-white rounded-[32px] border border-light-gray w-80 md:w-96 h-[480px] shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+        <div className="bg-white rounded-[28px] sm:rounded-[32px] border border-light-gray w-[calc(100vw-32px)] sm:w-80 md:w-96 max-w-[380px] h-[480px] max-h-[82vh] shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           
           {/* Header */}
           <div className="bg-primary p-4 text-white flex items-center justify-between border-b border-accent/20">

@@ -153,10 +153,10 @@ export function StoryPlayer() {
         </div>
 
         {/* Story Type Tabs */}
-        <div className="flex justify-center gap-3 mb-8">
+        <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-8">
           <button
             onClick={() => handleStorySwitch('parental')}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border ${
+            className={`flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border ${
               activeStory === 'parental'
                 ? 'bg-primary text-white border-primary shadow-lg shadow-primary/30'
                 : 'border-white/15 text-white/50 hover:border-white/30 hover:text-white'
@@ -167,7 +167,7 @@ export function StoryPlayer() {
           </button>
           <button
             onClick={() => handleStorySwitch('property')}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border ${
+            className={`flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border ${
               activeStory === 'property'
                 ? 'bg-accent text-white border-accent shadow-lg shadow-accent/30'
                 : 'border-white/15 text-white/50 hover:border-white/30 hover:text-white'
@@ -179,7 +179,7 @@ export function StoryPlayer() {
         </div>
 
         {/* Story Player */}
-        <div className="relative rounded-[32px] overflow-hidden shadow-2xl border border-white/10 bg-[#0a0f0c] h-[340px] sm:h-auto sm:aspect-[16/7] w-full">
+        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/10 bg-[#0a0f0c] h-[360px] sm:h-auto sm:aspect-[16/7] w-full">
 
           {/* Image */}
           {story.map((b, idx) => (
@@ -205,7 +205,7 @@ export function StoryPlayer() {
           <div className="absolute bottom-0 left-0 right-0 h-[6%] bg-black z-10" />
 
           {/* Beat indicators top */}
-          <div className="absolute top-[8%] left-6 right-6 flex gap-1.5 z-20">
+          <div className="absolute top-[8%] left-4 right-4 sm:left-6 sm:right-6 flex gap-1.5 z-20">
             {story.map((_, idx) => (
               <div key={idx} className="h-0.5 flex-1 rounded-full bg-white/20 overflow-hidden">
                 <div
@@ -220,22 +220,22 @@ export function StoryPlayer() {
           </div>
 
           {/* Story badge */}
-          <div className="absolute top-[14%] left-6 z-20">
+          <div className="absolute top-[14%] left-4 sm:left-6 z-20">
             <span
-              className="text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full uppercase border backdrop-blur-sm"
+              className="text-[9px] font-bold tracking-widest px-3 py-1 rounded-full uppercase border backdrop-blur-sm"
               style={{
                 background: activeStory === 'parental' ? 'rgba(27,94,67,0.4)' : 'rgba(212,162,76,0.35)',
                 borderColor: activeStory === 'parental' ? 'rgba(27,94,67,0.6)' : 'rgba(212,162,76,0.5)',
                 color: activeStory === 'parental' ? '#6ee7b7' : '#fcd34d',
               }}
             >
-              {activeStory === 'parental' ? '❤ Parental Care' : '🏠 Property Management'} — Scene {currentBeat + 1}/{story.length}
+              {activeStory === 'parental' ? '❤ Parental Care' : '🏠 Property Care'} — Scene {currentBeat + 1}/{story.length}
             </span>
           </div>
 
           {/* Subtitles */}
           <div
-            className="absolute bottom-6 left-6 right-20 sm:bottom-[12%] sm:right-6 z-20 space-y-2"
+            className="absolute bottom-4 left-4 right-16 sm:bottom-[12%] sm:left-6 sm:right-6 z-20 space-y-1.5"
             style={{
               opacity: subtitleVisible ? 1 : 0,
               transform: subtitleVisible ? 'translateY(0)' : 'translateY(12px)',
@@ -244,13 +244,13 @@ export function StoryPlayer() {
           >
             {/* Main subtitle */}
             <div className="inline-block">
-              <p className="text-white font-serif font-bold text-lg sm:text-2xl leading-tight drop-shadow-lg max-w-2xl">
+              <p className="text-white font-serif font-bold text-sm sm:text-2xl leading-tight drop-shadow-lg max-w-2xl">
                 {beat.subtitle}
               </p>
             </div>
             {/* Caption (subtitle track) */}
-            <div className="bg-black/60 backdrop-blur-sm px-4 py-2 rounded-lg inline-block max-w-2xl">
-              <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-medium">
+            <div className="bg-black/60 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg inline-block max-w-2xl">
+              <p className="text-white/85 text-[11px] sm:text-sm leading-relaxed font-medium">
                 {beat.caption}
               </p>
             </div>

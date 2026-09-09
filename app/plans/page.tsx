@@ -324,8 +324,8 @@ export default function PlansPage() {
 
       {/* CHECKOUT MODAL OVERLAY */}
       {checkoutOpen && selectedPlan && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-navy/60 backdrop-blur-xs animate-in fade-in duration-300">
-          <div className="bg-white rounded-[40px] border border-light-gray max-w-md w-full overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-200 flex flex-col">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-navy/60 backdrop-blur-xs animate-in fade-in duration-300">
+          <div className="bg-white rounded-[32px] sm:rounded-[40px] border border-light-gray max-w-md w-full overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
             
             {/* Modal Header */}
             <div className="bg-secondary/50 p-6 border-b border-light-gray flex items-center justify-between">

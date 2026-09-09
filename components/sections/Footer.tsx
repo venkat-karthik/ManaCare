@@ -8,11 +8,11 @@ export function Footer() {
     <footer className="bg-navy text-white border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 md:py-20">
         
-        {/* Main Grid */}
-        <div className="grid md:grid-cols-12 gap-10 pb-14 border-b border-white/5">
+        {/* Main Grid: Mobile (1 col), Tablet (2 cols), Desktop (12 cols) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-white/5">
           
-          {/* Brand Presentation Column (4 cols) */}
-          <div className="md:col-span-4 space-y-6">
+          {/* Brand Presentation Column */}
+          <div className="sm:col-span-2 lg:col-span-4 space-y-6">
             <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
               <AasaraIcon />
             </Link>
@@ -21,8 +21,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Quick Links Column (2 cols) */}
-          <div className="md:col-span-2 space-y-4">
+          {/* Quick Links Column */}
+          <div className="sm:col-span-1 lg:col-span-2 space-y-4">
             <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Services</h4>
             <ul className="space-y-3 text-xs text-white/70 font-semibold uppercase tracking-wider">
               <li><Link href="/services#parent-care" className="hover:text-accent transition-colors">Parent Care</Link></li>
@@ -31,8 +31,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company Links Column (2 cols) */}
-          <div className="md:col-span-2 space-y-4">
+          {/* Company Links Column */}
+          <div className="sm:col-span-1 lg:col-span-2 space-y-4">
             <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Organization</h4>
             <ul className="space-y-3 text-xs text-white/70 font-semibold uppercase tracking-wider">
               <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
@@ -42,8 +42,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Details & Office Column (4 cols) */}
-          <div className="md:col-span-4 space-y-4">
+          {/* Contact Details & Office Column */}
+          <div className="sm:col-span-2 lg:col-span-4 space-y-4">
             <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Headquarters & Contact</h4>
             <div className="space-y-3 text-xs font-semibold tracking-wide">
               <a href={OFFICE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-white/80 hover:text-accent transition-colors group">

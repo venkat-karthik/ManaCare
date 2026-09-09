@@ -144,11 +144,11 @@ export function PremiumSlideshow() {
                   </div>
 
                   {/* Headline & Subtitle */}
-                  <div className="space-y-4">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-serif text-white leading-[1.1] tracking-tight">
+                  <div className="space-y-3 sm:space-y-4">
+                    <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-serif text-white leading-[1.15] sm:leading-[1.1] tracking-tight">
                       {slide.title}
                     </h2>
-                    <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-xl font-medium leading-relaxed">
+                    <p className="text-xs sm:text-base md:text-lg text-white/80 max-w-xl font-medium leading-relaxed">
                       {slide.subtitle}
                     </p>
                   </div>
@@ -157,7 +157,7 @@ export function PremiumSlideshow() {
                   <div className="pt-2">
                     <Link
                       href={`/contact?plan=${slide.title.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="hover-shine bg-accent hover:bg-accent/90 text-white px-8 py-3.5 rounded-full font-bold uppercase text-xs tracking-widest transition-all duration-300 shadow-lg shadow-accent/20 inline-block cursor-pointer hover:-translate-y-0.5"
+                      className="hover-shine bg-accent hover:bg-accent/90 text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold uppercase text-[11px] sm:text-xs tracking-widest transition-all duration-300 shadow-lg shadow-accent/20 inline-block cursor-pointer hover:-translate-y-0.5"
                     >
                       Enquire Now
                     </Link>
@@ -172,14 +172,14 @@ export function PremiumSlideshow() {
       {/* Manual Side Navigation Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/35 hover:bg-accent border border-white/10 flex items-center justify-center text-white opacity-0 hover:scale-105 group-hover:opacity-100 transition-all duration-300 z-30 cursor-pointer"
+        className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/35 hover:bg-accent border border-white/10 items-center justify-center text-white opacity-0 hover:scale-105 group-hover:opacity-100 transition-all duration-300 z-30 cursor-pointer"
         aria-label="Previous Slide"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/35 hover:bg-accent border border-white/10 flex items-center justify-center text-white opacity-0 hover:scale-105 group-hover:opacity-100 transition-all duration-300 z-30 cursor-pointer"
+        className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/35 hover:bg-accent border border-white/10 items-center justify-center text-white opacity-0 hover:scale-105 group-hover:opacity-100 transition-all duration-300 z-30 cursor-pointer"
         aria-label="Next Slide"
       >
         <ChevronRight size={24} />

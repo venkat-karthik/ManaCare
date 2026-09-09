@@ -323,7 +323,7 @@ export default function Page() {
               </Link>
             </Reveal>
 
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { name: 'Basic Care', price: '₹4,999', desc: '1 wellness check-in, medication reminders & monthly report.', popular: false },
                 { name: 'Premium Care', price: '₹7,999', desc: '2 check-ins, hospital transport & assistance, property inspection.', popular: false },
@@ -331,13 +331,13 @@ export default function Page() {
                 { name: 'NRI Prime', price: '₹20,000', desc: '8 check-ins, full hospital suite, property selling & construction.', popular: true }
               ].map((plan, idx) => (
                 <Reveal key={idx} from="bottom" delay={idx * 0.1}>
-                  <div className={`rounded-2xl p-8 border transition-all duration-300 relative flex flex-col justify-between h-full hover:-translate-y-1 ${
+                  <div className={`rounded-2xl p-6 sm:p-8 border transition-all duration-300 relative flex flex-col justify-between h-full hover:-translate-y-1 ${
                     plan.popular
                       ? 'bg-primary border-accent/40 ring-1 ring-accent/30 shadow-2xl'
                       : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
                   }`}>
                     {plan.popular && (
-                      <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-semibold px-4 py-1 rounded-full">
+                      <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
                         Most Popular
                       </span>
                     )}
@@ -364,8 +364,8 @@ export default function Page() {
         </section>
 
         {/* SERVOSTAY SECTION */}
-        <section className="py-24 px-6 sm:px-10 lg:px-12 border-t border-light-gray">
-          <div className="max-w-7xl mx-auto bg-secondary/30 rounded-3xl p-8 md:p-14 border border-primary/5 grid lg:grid-cols-12 gap-12 items-center">
+        <section className="py-16 md:py-24 px-6 sm:px-10 lg:px-12 border-t border-light-gray">
+          <div className="max-w-7xl mx-auto bg-secondary/30 rounded-3xl p-6 sm:p-8 md:p-14 border border-primary/5 grid lg:grid-cols-12 gap-8 md:gap-12 items-center">
             <Reveal from="left" className="lg:col-span-7 space-y-6">
               <span className="text-xs font-semibold tracking-widest text-accent uppercase font-sans">Our Sister Business</span>
               <h2 className="text-3xl sm:text-4xl font-bold font-serif text-navy leading-tight">
