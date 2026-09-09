@@ -172,3 +172,15 @@
     box-shadow: 0 0 0 0 rgba(212, 162, 76, 0);
   }
 }
+
+/* Buttery Smooth GPU-accelerated Transitions */
+.smooth-transform {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.smooth-transition {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
