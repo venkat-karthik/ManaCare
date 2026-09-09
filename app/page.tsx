@@ -18,15 +18,32 @@ export default function Page() {
     message: '',
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', message: '' })
+    setIsSubmitting(true)
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          sourcePage: 'Homepage Consultation Form'
+        })
+      })
+    } catch (err) {
+      console.error('Lead submission error:', err)
+    } finally {
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      setFormData({ name: '', email: '', phone: '', message: '' })
+    }
   }
 
   return (
@@ -554,9 +571,10 @@ export default function Page() {
 
                   <button
                     type="submit"
-                    className="w-full bg-primary text-white py-3.5 rounded-full hover:bg-primary-hover transition-all text-sm font-semibold shadow-sm mt-1 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-white py-3.5 rounded-full hover:bg-primary-hover transition-all text-sm font-semibold shadow-sm mt-1 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50"
                   >
-                    Submit Request
+                    {isSubmitting ? 'Sending Request...' : 'Submit Request'}
                   </button>
                 </form>
               )}

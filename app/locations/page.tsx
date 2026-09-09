@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
@@ -9,10 +9,10 @@ import { Reveal } from '@/lib/useReveal'
 import { IndiaMap } from '@/components/sections/IndiaMap'
 
 const activeCities = [
-  { city: 'Guntur', status: 'Active', details: 'Main Headquarters', special: 'Blood Bank Facility' },
-  { city: 'Vijayawada', status: 'Active', details: '6 Dedicated Care Teams' },
-  { city: 'Bapatla', status: 'Active', details: '3 Dedicated Care Teams' },
-  { city: 'Ongole', status: 'Active', details: '3 Dedicated Care Teams' }
+  { city: 'Vijayawada / Mallempudi', status: 'Active', details: 'Villa 69, Samruddhi Green Avenues (beside KL University)', special: 'MAIN HQ & CENTRAL OPERATIONS', isHQ: true },
+  { city: 'Guntur', status: 'Active', details: '6 Dedicated Care Teams & Blood Bank Support', special: 'Blood Bank Facility', isHQ: false },
+  { city: 'Bapatla', status: 'Active', details: '3 Dedicated Care Teams', isHQ: false },
+  { city: 'Ongole', status: 'Active', details: '3 Dedicated Care Teams', isHQ: false }
 ]
 
 const upcomingCities = [
@@ -32,8 +32,8 @@ export default function LocationsPage() {
     if (!searchTerm.trim()) return
 
     const term = searchTerm.toLowerCase()
-    const activeMatch = activeCities.some(c => c.city.toLowerCase() === term)
-    const upcomingMatch = upcomingCities.some(c => c.city.toLowerCase() === term)
+    const activeMatch = activeCities.some(c => c.city.toLowerCase().includes(term))
+    const upcomingMatch = upcomingCities.some(c => c.city.toLowerCase().includes(term))
 
     if (activeMatch) {
       setCheckerResult(`Yes! We are fully active in ${searchTerm}. We have local care managers ready to assist your family immediately.`)
@@ -87,7 +87,7 @@ export default function LocationsPage() {
             </Reveal>
             <Reveal from="bottom" delay={0.2}>
               <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed font-medium">
-                Aasara delivers premium local support across Guntur (Headquarters with Blood Bank Facility), Vijayawada, Bapatla, and Ongole. Our care managers speak the local language and coordinate seamlessly.
+                Aasara delivers premium local support across Vijayawada & Mallempudi (Main HQ at Villa 69, Samruddhi Green Avenues, beside KL University), Guntur (Blood Bank Facility), Bapatla, and Ongole.
               </p>
             </Reveal>
           </div>
@@ -103,16 +103,31 @@ export default function LocationsPage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {activeCities.map((loc, idx) => (
                 <Reveal key={idx} from="bottom" delay={idx * 0.1}>
-                  <div className="group relative bg-gradient-to-br from-primary/6 to-primary/2 p-6 rounded-[28px] border-2 border-primary/15 flex flex-col justify-between items-start space-y-4 overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:-translate-y-1">
+                  <div className={`group relative p-6 rounded-[28px] border-2 flex flex-col justify-between items-start space-y-4 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+                    loc.isHQ 
+                      ? 'bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-white border-accent shadow-md' 
+                      : 'bg-gradient-to-br from-primary/6 to-primary/2 border-primary/15 hover:border-accent'
+                  }`}>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
                     </div>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full blur-2xl" />
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
                     </div>
-                    <div className="w-10 h-10 bg-white rounded-[16px] flex items-center justify-center border-2 border-primary/15 text-accent group-hover:scale-110 group-hover:border-accent transition-all duration-300 relative z-10">
-                      <MapPin size={18} strokeWidth={1.5} />
+                    
+                    <div className="w-full flex items-center justify-between relative z-10">
+                      <div className={`w-10 h-10 rounded-[16px] flex items-center justify-center border-2 transition-all duration-300 ${
+                        loc.isHQ ? 'bg-accent border-accent text-navy shadow-sm' : 'bg-white border-primary/15 text-accent group-hover:scale-110 group-hover:border-accent'
+                      }`}>
+                        <MapPin size={18} strokeWidth={1.5} />
+                      </div>
+                      {loc.isHQ && (
+                        <span className="text-[9px] font-extrabold uppercase tracking-widest text-navy bg-accent px-2.5 py-1 rounded-full shadow-xs">
+                          Headquarters
+                        </span>
+                      )}
                     </div>
+
                     <div className="relative z-10">
                       <h3 className="font-bold text-navy text-lg font-serif group-hover:text-primary transition-colors duration-300">{loc.city}</h3>
                       <p className="text-xs text-dark/70 mt-1 font-light group-hover:text-dark transition-colors duration-300">{loc.details}</p>

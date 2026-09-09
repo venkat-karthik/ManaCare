@@ -2,11 +2,11 @@
 
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
-import { Phone, MessageCircle, Mail, MapPin, Check } from 'lucide-react'
+import { Phone, MessageCircle, Mail, MapPin, Check, ExternalLink, Building2 } from 'lucide-react'
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Reveal } from '@/lib/useReveal'
-import { CONTACT_PHONE, CONTACT_EMAIL } from '@/lib/constants'
+import { CONTACT_PHONE, CONTACT_EMAIL, OFFICE_NAME, OFFICE_LANDMARK, OFFICE_CITY_STATE, OFFICE_FULL_ADDRESS, OFFICE_MAPS_URL } from '@/lib/constants'
 
 function ContactForm() {
   const searchParams = useSearchParams()
@@ -14,6 +14,7 @@ function ContactForm() {
     name: '', email: '', phone: '', city: '', serviceInterest: '', message: '',
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     const service = searchParams.get('service') || ''
@@ -28,10 +29,26 @@ function ContactForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', city: '', serviceInterest: '', message: '' })
+    setIsSubmitting(true)
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          sourcePage: 'Contact Page Form'
+        })
+      })
+    } catch (err) {
+      console.error('Contact lead submission error:', err)
+    } finally {
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      setFormData({ name: '', email: '', phone: '', city: '', serviceInterest: '', message: '' })
+    }
   }
 
   if (isSubmitted) {
@@ -113,9 +130,9 @@ function ContactForm() {
           className="w-full px-4 py-2.5 text-sm border-2 border-primary/20 rounded-[16px] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-secondary/30 font-medium transition-all duration-200 placeholder:text-gray-400 resize-none hover:border-primary/30" />
       </div>
 
-      <button type="submit"
-        className="w-full bg-gradient-to-r from-primary to-primary-hover text-white py-3 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer font-display">
-        Submit Consultation Request
+      <button type="submit" disabled={isSubmitting}
+        className="w-full bg-gradient-to-r from-primary to-primary-hover text-white py-3 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer font-display disabled:opacity-50">
+        {isSubmitting ? 'Sending Request...' : 'Submit Consultation Request'}
       </button>
     </form>
   )
@@ -126,7 +143,7 @@ export default function ContactPage() {
     { icon: Phone, title: 'Call Support', desc: 'Mon - Sat, 9 AM - 6 PM IST', val: CONTACT_PHONE },
     { icon: MessageCircle, title: 'WhatsApp Chat', desc: '24/7 Support Channel', val: CONTACT_PHONE },
     { icon: Mail, title: 'Email Correspondence', desc: 'General & Support queries', val: CONTACT_EMAIL },
-    { icon: MapPin, title: 'Main Operations Hub', desc: 'Guntur, Andhra Pradesh', val: 'Visit by appointment' }
+    { icon: MapPin, title: 'Main Office', desc: OFFICE_LANDMARK, val: OFFICE_NAME }
   ]
 
   return (
@@ -209,7 +226,7 @@ export default function ContactPage() {
                             <h4 className="font-bold text-navy text-[11px] uppercase tracking-widest font-display leading-tight">{chan.title}</h4>
                             <p className="text-[12px] text-dark/60 mt-1.5 font-light">{chan.desc}</p>
                           </div>
-                          <p className="text-sm font-bold text-primary pt-2 group-hover:text-primary-hover transition-colors duration-300">{chan.val}</p>
+                          <p className="text-xs font-bold text-primary pt-2 group-hover:text-primary-hover transition-colors duration-300 leading-snug">{chan.val}</p>
                         </div>
                       </div>
                     </Reveal>
@@ -246,6 +263,65 @@ export default function ContactPage() {
               </Suspense>
             </Reveal>
 
+          </div>
+        </section>
+
+        {/* HEADQUARTERS LOCATION CARD SECTION */}
+        <section className="py-16 px-6 sm:px-10 lg:px-12 bg-secondary/10 border-t border-primary/10">
+          <div className="max-w-6xl mx-auto">
+            <Reveal from="bottom">
+              <div className="bg-gradient-to-br from-navy via-[#0F172A] to-[#1E293B] text-white rounded-[36px] p-8 md:p-12 border-2 border-accent/20 shadow-xl grid lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="lg:col-span-7 space-y-6 relative z-10">
+                  <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 px-3.5 py-1.5 rounded-full text-accent text-[11px] font-bold uppercase tracking-wider">
+                    <Building2 size={14} />
+                    <span>Official Headquarters Office</span>
+                  </div>
+
+                  <h3 className="text-3xl sm:text-4xl font-bold font-serif text-white leading-tight">
+                    Visit Our Office in AP
+                  </h3>
+
+                  <div className="space-y-3 bg-white/5 backdrop-blur-md p-6 rounded-[24px] border border-white/10">
+                    <div className="flex items-start gap-3">
+                      <MapPin size={20} className="text-accent shrink-0 mt-1" />
+                      <div className="space-y-1 text-sm font-medium">
+                        <p className="text-white font-bold text-base">{OFFICE_NAME}</p>
+                        <p className="text-white/80">{OFFICE_LANDMARK}</p>
+                        <p className="text-white/70">{OFFICE_CITY_STATE}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-4 pt-2">
+                    <a
+                      href={OFFICE_MAPS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-navy px-6 py-3 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:-translate-y-0.5"
+                    >
+                      <span>Open in Google Maps</span>
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-5 relative z-10">
+                  <div className="bg-white/10 backdrop-blur-md p-6 rounded-[28px] border border-white/15 space-y-4 text-center">
+                    <div className="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center text-accent mx-auto border border-accent/30">
+                      <MapPin size={32} />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-lg font-bold font-serif text-white">Main Operations & Coordination</h4>
+                      <p className="text-xs text-white/70 leading-relaxed">
+                        Beside KL University Campus, Mallempudi, Nutakki. Direct visits by prior appointment.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </section>
       </main>

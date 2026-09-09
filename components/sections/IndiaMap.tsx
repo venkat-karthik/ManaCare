@@ -13,8 +13,8 @@ interface City {
 
 const cities: City[] = [
   // Active Cities
-  { name: 'Guntur (HQ)', cx: 285, cy: 512, type: 'active', details: 'Main Headquarters', special: 'Blood Bank Facility' },
-  { name: 'Vijayawada', cx: 290, cy: 505, type: 'active', details: '6 Dedicated Care Teams' },
+  { name: 'Vijayawada (HQ)', cx: 290, cy: 505, type: 'active', details: 'Villa 69, Samruddhi Green Avenues', special: 'Main Headquarters Office' },
+  { name: 'Guntur', cx: 285, cy: 512, type: 'active', details: '6 Dedicated Care Teams', special: 'Blood Bank Facility' },
   { name: 'Bapatla', cx: 283, cy: 525, type: 'active', details: '3 Dedicated Care Teams' },
   { name: 'Ongole', cx: 270, cy: 545, type: 'active', details: '3 Dedicated Care Teams' },
   // Upcoming Cities

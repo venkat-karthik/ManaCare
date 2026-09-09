@@ -1,7 +1,7 @@
 import { AasaraIcon } from '../AasaraIcon'
-import { Mail, Phone, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MessageCircle, MapPin } from 'lucide-react'
 import Link from 'next/link'
-import { CONTACT_PHONE, CONTACT_PHONE_RAW, CONTACT_EMAIL } from '@/lib/constants'
+import { CONTACT_PHONE, CONTACT_PHONE_RAW, CONTACT_EMAIL, OFFICE_NAME, OFFICE_LANDMARK, OFFICE_CITY_STATE, OFFICE_MAPS_URL } from '@/lib/constants'
 
 export function Footer() {
   return (
@@ -9,10 +9,10 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 md:py-20">
         
         {/* Main Grid */}
-        <div className="grid md:grid-cols-12 gap-12 pb-14 border-b border-white/5">
+        <div className="grid md:grid-cols-12 gap-10 pb-14 border-b border-white/5">
           
-          {/* Brand Presentation Column (5 cols) */}
-          <div className="md:col-span-5 space-y-6">
+          {/* Brand Presentation Column (4 cols) */}
+          <div className="md:col-span-4 space-y-6">
             <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
               <AasaraIcon />
             </Link>
@@ -21,8 +21,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Quick Links Column (3 cols) */}
-          <div className="md:col-span-3 space-y-4">
+          {/* Quick Links Column (2 cols) */}
+          <div className="md:col-span-2 space-y-4">
             <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Services</h4>
             <ul className="space-y-3 text-xs text-white/70 font-semibold uppercase tracking-wider">
               <li><Link href="/services#parent-care" className="hover:text-accent transition-colors">Parent Care</Link></li>
@@ -42,22 +42,32 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Details Column (2 cols) */}
-          <div className="md:col-span-2 space-y-4">
-            <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Contact Office</h4>
+          {/* Contact Details & Office Column (4 cols) */}
+          <div className="md:col-span-4 space-y-4">
+            <h4 className="text-[10px] uppercase font-bold tracking-widest text-accent font-serif">Headquarters & Contact</h4>
             <div className="space-y-3 text-xs font-semibold tracking-wide">
-              <a href={`tel:${CONTACT_PHONE_RAW}`} className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
-                <Phone size={14} className="text-accent shrink-0" />
-                <span>{CONTACT_PHONE}</span>
+              <a href={OFFICE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-white/80 hover:text-accent transition-colors group">
+                <MapPin size={16} className="text-accent shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                <div className="space-y-0.5">
+                  <span className="font-bold text-white block">{OFFICE_NAME}</span>
+                  <span className="text-white/60 text-[11px] block">{OFFICE_LANDMARK}</span>
+                  <span className="text-white/60 text-[11px] block">{OFFICE_CITY_STATE}</span>
+                </div>
               </a>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
-                <Mail size={14} className="text-accent shrink-0" />
-                <span>{CONTACT_EMAIL}</span>
-              </a>
-              <a href={`https://wa.me/${CONTACT_PHONE_RAW}`} className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors">
-                <MessageCircle size={14} className="text-accent shrink-0" />
-                <span>WhatsApp Coordination</span>
-              </a>
+              <div className="pt-2 border-t border-white/10 space-y-2.5">
+                <a href={`tel:${CONTACT_PHONE_RAW}`} className="flex items-center gap-2.5 text-white/70 hover:text-accent transition-colors">
+                  <Phone size={14} className="text-accent shrink-0" />
+                  <span>{CONTACT_PHONE}</span>
+                </a>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2.5 text-white/70 hover:text-accent transition-colors">
+                  <Mail size={14} className="text-accent shrink-0" />
+                  <span>{CONTACT_EMAIL}</span>
+                </a>
+                <a href={`https://wa.me/${CONTACT_PHONE_RAW}`} className="flex items-center gap-2.5 text-white/70 hover:text-accent transition-colors">
+                  <MessageCircle size={14} className="text-accent shrink-0" />
+                  <span>WhatsApp Coordination</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
@@ -17,15 +17,33 @@ export default function ServostayPage() {
     message: ''
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', city: '', duration: '', type: '', message: '' })
+    setIsSubmitting(true)
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          serviceInterest: `Servostay (${formData.type || 'Booking'})`,
+          sourcePage: 'Servostay Booking Form'
+        })
+      })
+    } catch (err) {
+      console.error('Servostay lead submission error:', err)
+    } finally {
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      setFormData({ name: '', email: '', phone: '', city: '', duration: '', type: '', message: '' })
+    }
   }
 
   const features = [
@@ -340,9 +358,10 @@ export default function ServostayPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-primary-hover text-white py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer font-display"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-primary to-primary-hover text-white py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer font-display disabled:opacity-50"
                 >
-                  Submit Booking Enquiry
+                  {isSubmitting ? 'Submitting Enquiry...' : 'Submit Booking Enquiry'}
                 </button>
               </form>
             )

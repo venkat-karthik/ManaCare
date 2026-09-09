@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { MessageSquare, X, Send, ShieldCheck } from 'lucide-react'
-import { CONTACT_PHONE, CONTACT_EMAIL } from '@/lib/constants'
+import { CONTACT_PHONE, CONTACT_EMAIL, OFFICE_FULL_ADDRESS } from '@/lib/constants'
 
 interface Message {
   sender: 'user' | 'bot'
@@ -27,23 +27,27 @@ export function Chatbot() {
       a: 'We are active in Coastal Andhra Pradesh: Guntur (HQ with Blood Bank), Vijayawada (6 care teams), Bapatla (3 teams), and Ongole (3 teams). We are expanding to Visakhapatnam & Tirupati (Q3 2026), Bangalore & Hyderabad (Q4 2026), and Chennai (Q1 2027).' 
     },
     { 
+      q: 'Where is your main office?', 
+      a: `Our main headquarters office is located at:\n${OFFICE_FULL_ADDRESS}` 
+    },
+    { 
       q: 'What plans do you offer?', 
       a: 'We offer 4 monthly plans (no setup fees, cancel with 7 days notice):\n• Basic Care (₹4,999/mo)\n• Premium Care (₹7,999/mo)\n• Complete Care (₹11,999/mo)\n• NRI Prime (₹20,000/mo)\nCustom quotes are also available. Use code WELCOME500 for ₹500 off or AASARA15 for 15% off!' 
     },
     { 
       q: 'How do you verify caregivers?', 
       a: '100% of our local Care Managers undergo thorough reference checks, background vetting, and biometric verification. They complete an intensive 4-week geriatric care and emergency response training program. We share daily WhatsApp check-in logs and GPS-verified visits.' 
-    },
-    { 
-      q: 'What is the Servostay discount?', 
-      a: 'Servostay is our sister business providing premium 1-5 BHK serviced apartments in Hyderabad, Bengaluru, Visakhapatnam, and Tirupati. Aasara subscribers receive an exclusive 15% discount, zero security deposit, priority booking, airport pickup, and pre-arrival pantry stocking.' 
     }
   ]
 
   const chatbotDatabase = [
     {
       keywords: ['location', 'city', 'cities', 'where', 'operate', 'cover', 'guntur', 'vijayawada', 'bapatla', 'ongole', 'visakhapatnam', 'tirupati', 'bangalore', 'bengaluru', 'hyderabad', 'chennai', 'service area', 'coverage'],
-      response: "We are fully active across Coastal Andhra Pradesh:\n• Guntur (Main Headquarters & Blood Bank Facility)\n• Vijayawada (6 Dedicated Care Teams)\n• Bapatla (3 Dedicated Care Teams)\n• Ongole (3 Dedicated Care Teams)\n\nWe are expanding soon to:\n• Visakhapatnam & Tirupati (Q3 2026)\n• Bangalore & Hyderabad (Q4 2026)\n• Chennai (Q1 2027)\n\nWe also schedule custom visit routes for outer zones/suburbs surrounding our active areas."
+      response: `We are fully active across Coastal Andhra Pradesh:\n• Main HQ Office: Villa 69, Samruddhi Green Avenues (beside KL University), Mallempudi, Nutakki, AP 522303\n• Guntur (Blood Bank Facility)\n• Vijayawada (6 Dedicated Care Teams)\n• Bapatla (3 Dedicated Care Teams)\n• Ongole (3 Dedicated Care Teams)\n\nWe are expanding soon to:\n• Visakhapatnam & Tirupati (Q3 2026)\n• Bangalore & Hyderabad (Q4 2026)\n• Chennai (Q1 2027)`
+    },
+    {
+      keywords: ['office', 'address', 'headquarters', 'villa 69', 'samruddhi', 'kl university', 'mallempudi', 'nutakki', 'head office', 'visit', 'physical location'],
+      response: `📍 Main Headquarters Office Address:\nVilla 69, Samruddhi Green Avenues, Main Campus, beside KL University, Mallempudi, Nutakki, Andhra Pradesh - 522303.\n\nDirect visits are coordinated by prior appointment. You can also call or WhatsApp us at ${CONTACT_PHONE}.`
     },
     {
       keywords: ['plan', 'price', 'pricing', 'cost', 'rate', 'fee', 'charge', 'essential', 'family care', 'complete care', 'nri prime', 'custom plan', 'subscription', 'monthly', 'bill', 'billing', 'contract', 'coupon', 'discount', 'promo', 'gateway'],
@@ -62,8 +66,9 @@ export function Chatbot() {
       response: "Aasara provides comprehensive local care services in India:\n\n❤️ Parent Care:\n• Hospital transport (pick-up & return home)\n• At-hospital assistance (staff stays throughout)\n• In-patient care & Servostay-to-hospital coordination\n• Blood bank tie-up for priority blood access\n• Blood & IV assistance with nursing staff\n• Monthly wellness checks with vitals & reports\n• Medication management & pharmacy delivery\n• Evening daily WhatsApp health updates (6 PM)\n• Companionship & errand support\n\n🏠 Property Management:\n• Monthly GPS-verified inspections with photos\n• House strength checks (monsoon, rain & depreciation)\n• Property selling: valuation, buyer scouting & documentation\n• Rental income setup: tenant finding & onboarding\n• Full construction & renovation management\n• Tenant management, rent collection & dues payment"
     },
     {
-      keywords: ['contact', 'phone', 'call', 'email', 'support', 'consult', 'consultation', 'inquiry', 'enquiry', 'reach', 'number', 'address', 'office', 'whatsapp', 'mail'],
-      response: `You can book a free consultation directly on our homepage. You can also reach our care advisors at:
+      keywords: ['contact', 'phone', 'call', 'email', 'support', 'consult', 'consultation', 'inquiry', 'enquiry', 'reach', 'number', 'whatsapp', 'mail'],
+      response: `You can book a free consultation directly on our homepage. You can also reach our care advisors or visit our office at:
+📍 Office: Villa 69, Samruddhi Green Avenues, Main Campus, beside KL University, Mallempudi, Nutakki, AP 522303
 • Email: ${CONTACT_EMAIL}
 • Phone/WhatsApp: ${CONTACT_PHONE}
 
