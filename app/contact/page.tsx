@@ -273,7 +273,7 @@ export default function ContactPage() {
               <div className="bg-gradient-to-br from-navy via-[#0F172A] to-[#1E293B] text-white rounded-[36px] p-8 md:p-12 border-2 border-accent/20 shadow-xl grid lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="lg:col-span-7 space-y-6 relative z-10">
+                <div className="lg:col-span-6 space-y-6 relative z-10">
                   <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 px-3.5 py-1.5 rounded-full text-accent text-[11px] font-bold uppercase tracking-wider">
                     <Building2 size={14} />
                     <span>Official Headquarters Office</span>
@@ -307,16 +307,27 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 relative z-10">
-                  <div className="bg-white/10 backdrop-blur-md p-6 rounded-[28px] border border-white/15 space-y-4 text-center">
-                    <div className="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center text-accent mx-auto border border-accent/30">
-                      <MapPin size={32} />
-                    </div>
-                    <div className="space-y-1">
-                      <h4 className="text-lg font-bold font-serif text-white">Main Operations & Coordination</h4>
-                      <p className="text-xs text-white/70 leading-relaxed">
-                        Beside KL University Campus, Mallempudi, Nutakki. Direct visits by prior appointment.
-                      </p>
+                <div className="lg:col-span-6 relative z-10 w-full min-h-[280px] h-full flex flex-col">
+                  <div className="w-full h-full min-h-[280px] rounded-[28px] overflow-hidden border-2 border-white/15 shadow-2xl relative bg-white/5 backdrop-blur-md group">
+                    <iframe
+                      title="Aasara Headquarters Map Location"
+                      src="https://maps.google.com/maps?q=Samruddhi+Green+Avenues,+KL+University,+Mallempudi,+Nutakki,+Andhra+Pradesh+522303&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0, minHeight: '280px' }}
+                      allowFullScreen={false}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-full rounded-[26px] opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                    <div className="absolute bottom-3 left-3 right-3 bg-navy/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/15 flex items-center justify-between shadow-lg pointer-events-none">
+                      <div className="flex items-center gap-2">
+                        <MapPin size={15} className="text-accent shrink-0" />
+                        <span className="text-[11px] font-semibold text-white/95">Mallempudi (beside KL University)</span>
+                      </div>
+                      <span className="text-[9px] bg-accent/20 text-accent font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-accent/30">
+                        Live Map
+                      </span>
                     </div>
                   </div>
                 </div>
