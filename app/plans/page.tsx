@@ -14,12 +14,12 @@ const plans = [
     price: 4999,
     formattedPrice: '₹4,999',
     period: '/month',
-    description: 'Essential parent wellness support and communication for families getting started.',
+    description: 'Essential care and regular monitoring for parents living independently.',
     features: [
-      '1 Wellness check-in visit per month',
-      'Medication reminders & pharmacy coordination',
+      '1 wellness check-in visit per month',
+      'Medication reminders + refill coordination',
       'Monthly health report via WhatsApp',
-      'Emergency contact setup & response guidance',
+      'Emergency contact setup & coordination',
       'Dedicated care manager coordinator'
     ],
     popular: false,
@@ -30,14 +30,16 @@ const plans = [
     price: 7999,
     formattedPrice: '₹7,999',
     period: '/month',
-    description: 'Comprehensive parent care with hospital assistance and property oversight.',
+    description: 'Comprehensive parent care with regular visits, hospital coordination, and basic property oversight.',
     features: [
-      '2 Wellness check-in visits per month',
-      'Hospital transport & at-hospital assistance',
-      '1 Property inspection report per month',
-      'Medication management, refills & pharmacy',
-      'Evening daily WhatsApp updates with photos',
-      'Emergency hospital response coordination'
+      '2 wellness check-in visits per month',
+      'Hospital appointment & transport coordination',
+      'Hospital visit assistance',
+      '1 basic property inspection per month',
+      'Medication reminders + refill coordination',
+      'Scheduled WhatsApp health updates with photos',
+      'Emergency contact coordination',
+      'Dedicated care manager coordinator'
     ],
     popular: false,
     ctaText: 'Choose Premium'
@@ -47,31 +49,40 @@ const plans = [
     price: 11999,
     formattedPrice: '₹11,999',
     period: '/month',
-    description: 'Full parent care with hospital support, blood bank access, and property management.',
+    description: 'Enhanced parent care with hospital support, blood bank access, property monitoring, and priority emergency assistance.',
     features: [
-      '4 Wellness check-in visits per month',
-      'Hospital transport, at-hospital & in-patient support',
-      'Blood bank tie-up for priority blood access',
-      '1 Property inspection + house strength check',
-      'Evening daily WhatsApp health reports',
-      '24/7 Priority Emergency Support'
+      '4 wellness check-in visits per month',
+      'Hospital appointment, transport & visit assistance',
+      'Blood bank coordination and priority assistance',
+      '1 property inspection per month',
+      'Basic property condition monitoring',
+      'Scheduled WhatsApp health reports',
+      'Medication reminders + refill coordination',
+      '24/7 Priority Emergency Support',
+      'Emergency hospital response coordination',
+      'Dedicated care manager coordinator'
     ],
     popular: false,
     ctaText: 'Choose Complete'
   },
   {
     name: 'NRI Prime',
-    price: 20000,
-    formattedPrice: '₹20,000',
+    price: 22999,
+    formattedPrice: '₹22,999',
     period: '/month',
-    description: 'Premium full-service care with hospital, property, selling & construction management.',
+    description: 'Premium full-service care for NRI families seeking comprehensive support for their parents, healthcare, and property.',
     features: [
-      '8 Wellness check-ins + daily evening updates',
-      'Full hospital suite: transport, assistance, blood bank',
-      '2 Property inspections + structural health checks',
-      'Property selling, rental setup & construction oversight',
+      '8 wellness check-in visits per month',
+      'Scheduled evening WhatsApp health updates',
+      'Hospital appointment, transport & visit assistance',
+      'Blood bank coordination and priority assistance',
+      '2 property inspections per month',
+      'Basic property condition monitoring',
+      'Property selling & rental assistance',
+      'Construction oversight',
       'Legal documentation & registration assistance',
-      '24/7 dedicated support team access'
+      '24/7 Priority Emergency Support',
+      'Dedicated priority care coordination'
     ],
     popular: true,
     ctaText: 'Choose Prime'
@@ -80,17 +91,24 @@ const plans = [
     name: 'Custom Plan',
     price: null,
     formattedPrice: 'Quote',
-    period: 'based on needs',
-    description: 'Tailored solutions tailored to your unique requirements.',
+    period: 'based on requirements',
+    description: "Tailored care solutions designed around your family's specific needs.",
     features: [
       'Customized visit frequency and locations',
       'Multi-city parent care coordination',
       'Commercial property supervision',
       'Specialized medical assistance coordination',
-      'Dedicated coordinator and reporting portal'
+      'Blood bank coordination',
+      'Hospital & emergency support',
+      'Property selling and rental assistance',
+      'Construction oversight',
+      'Legal documentation & registration assistance',
+      '24/7 Emergency Support',
+      'Dedicated coordinator',
+      'Customized reporting'
     ],
     popular: false,
-    ctaText: 'Talk to an Advisor'
+    ctaText: 'Get Custom Quote'
   }
 ]
 
@@ -274,6 +292,23 @@ export default function PlansPage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+
+          {/* DISCLAIMER / SCOPE TRANSPARENCY NOTE */}
+          <div className="mt-12 max-w-4xl mx-auto">
+            <Reveal from="bottom">
+              <div className="bg-secondary/40 rounded-2xl border border-accent/25 p-5 sm:p-6 flex items-start gap-4 shadow-sm">
+                <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0 mt-0.5 border border-accent/30">
+                  <Sparkles size={16} className="text-accent" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-navy font-serif">Billing & Service Scope Note</h4>
+                  <p className="text-xs text-dark/75 leading-relaxed font-medium">
+                    Additional services, extended hospital assistance, outstation visits, travel expenses, and third-party professional charges may be billed separately based on requirements.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </section>
 

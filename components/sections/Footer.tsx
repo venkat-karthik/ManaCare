@@ -27,6 +27,8 @@ export function Footer() {
             <ul className="space-y-3 text-xs text-white/70 font-semibold uppercase tracking-wider">
               <li><Link href="/services#parent-care" className="hover:text-accent transition-colors">Parent Care</Link></li>
               <li><Link href="/services#property-management" className="hover:text-accent transition-colors">Property Management</Link></li>
+              <li><Link href="/services#legal-services" className="hover:text-accent transition-colors">Legal Services</Link></li>
+              <li><Link href="/services#fiduciary-services" className="hover:text-accent transition-colors">Fiduciary Services</Link></li>
               <li><Link href="/servostay" className="hover:text-accent transition-colors">Servostay Stays</Link></li>
             </ul>
           </div>

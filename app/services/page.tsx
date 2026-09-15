@@ -3,7 +3,7 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 import Link from 'next/link'
-import { Heart, Home, Shield, Check, ArrowRight, ChevronDown } from 'lucide-react'
+import { Heart, Home, Shield, Check, ArrowRight, ChevronDown, Scale, Landmark } from 'lucide-react'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Reveal, useInView } from '@/lib/useReveal'
 
@@ -59,6 +59,54 @@ const scenes = [
       'Tenant management, rent collection & contract renewals',
       'Property tax, utility & municipal dues payment',
       'Legal paperwork, documentation & registration help',
+    ],
+    answerBg: '#FDFAF6',
+    answerAccent: '#1B5E43',
+    answerAccentLight: 'rgba(27,94,67,0.08)',
+  },
+  {
+    id: 'legal-services',
+    icon: Scale,
+    questionEmotion: 'Navigating legal matters in India from abroad can be daunting.',
+    question: 'Who is protecting your legal rights, property titles & statutory compliance?',
+    questionSub: 'Property disputes, Special Power of Attorney (SPOA), title searches, inheritance, and tenant contracts. We provide vetted legal guidance on the ground.',
+    questionBg: 'from-[#0F172A] via-[#0d1f17] to-[#0F172A]',
+    questionAccent: '#D4A24C',
+    answerTag: 'Legal & Compliance Services',
+    answerHeadline: 'Vetted advocates and legal experts safeguarding your assets.',
+    answerBody: 'We handle property title verification, encumbrance retrieval, Power of Attorney registration, tenant agreement drafting, and legal representation through qualified advocates — keeping you fully compliant and protected.',
+    answerImage: '/assets/Property Oversight.png',
+    details: [
+      'Property title search & Encumbrance Certificate (EC) retrieval',
+      'Special Power of Attorney (SPOA) drafting & Sub-Registrar registration support',
+      'Inheritance, wills & property mutation legal coordination',
+      'Tenant agreement drafting, police verification & dispute resolution',
+      'Municipal tax, stamp duty & land revenue compliance check',
+      'Vetted advocate consultation & legal representation coordination',
+    ],
+    answerBg: '#FAFDF9',
+    answerAccent: '#D4A24C',
+    answerAccentLight: 'rgba(212,162,76,0.1)',
+  },
+  {
+    id: 'fiduciary-services',
+    icon: Landmark,
+    questionEmotion: 'Managing financial & estate obligations across borders requires total trust.',
+    question: 'Who is managing your estate, accounts & statutory fiduciary duties in India?',
+    questionSub: 'NRE/NRO account administration, repatriation procedures (Form 15CA/CB), property tax payments, and estate auditing with absolute integrity.',
+    questionBg: 'from-[#0F172A] via-[#0d1f17] to-[#0F172A]',
+    questionAccent: '#1B5E43',
+    answerTag: 'Fiduciary & Estate Care Services',
+    answerHeadline: 'Trusted estate oversight and financial administrative support.',
+    answerBody: 'Managing assets from afar requires complete fiduciary responsibility. We assist with NRE/NRO account documentation, repatriation procedures, tax filing assistance, utility dues management, and audited rental income ledgers.',
+    answerImage: '/assets/Servostay Suites.png',
+    details: [
+      'NRE / NRO bank account assistance & KYC documentation coordination',
+      'Repatriation paperwork assistance (Form 15CA & 15CB coordination)',
+      'Capital gains tax calculation & property sale remittance guidance',
+      'Statutory utility, property tax & municipal dues automated payments',
+      'Audited rental income ledgers & escrow management transparency',
+      'Senior citizen pension, life certificate & banking assistance',
     ],
     answerBg: '#FDFAF6',
     answerAccent: '#1B5E43',
@@ -759,6 +807,92 @@ export default function ServicesPage() {
                   <div className="p-6 pt-0">
                     <Link href="/contact?service=property-management" className="w-full flex items-center justify-center gap-2 bg-accent text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all">
                       <span>Enquire About Property Care</span>
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* LEGAL SERVICES BREAKDOWN */}
+              <Reveal from="left" delay={0.15}>
+                <div className="rounded-[32px] border border-accent/30 overflow-hidden bg-white">
+                  <div className="bg-[#0F172A] p-6 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                      <Scale size={20} className="text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold font-serif text-lg">Legal & Compliance Services</h3>
+                      <p className="text-white/60 text-xs">Vetted advocates, property title & POA assistance</p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 space-y-1">
+                    {[
+                      { label: 'Property Title Verification', desc: 'Thorough search & Encumbrance Certificate (EC) retrieval' },
+                      { label: 'Special Power of Attorney (SPOA)', desc: 'Drafting & Sub-Registrar office registration coordination' },
+                      { label: 'Wills & Inheritance Assistance', desc: 'Legal consultation, drafting, succession & mutation support' },
+                      { label: 'Tenant Agreements & Disputes', desc: 'Legally binding agreements, police verification & dispute resolution' },
+                      { label: 'Statutory Tax & Revenue Compliance', desc: 'Municipal property tax, stamp duty & land revenue verification' },
+                      { label: 'Legal Representation', desc: 'Coordination with verified advocates & court case monitoring' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-accent/8 last:border-0 hover:bg-accent/5 rounded-xl px-3 transition-colors">
+                        <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check size={11} strokeWidth={3} className="text-accent" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <Link href="/contact?service=legal-services" className="w-full flex items-center justify-center gap-2 bg-[#0F172A] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#0F172A]/90 transition-all">
+                      <span>Enquire About Legal Services</span>
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* FIDUCIARY SERVICES BREAKDOWN */}
+              <Reveal from="right" delay={0.2}>
+                <div className="rounded-[32px] border border-primary/20 overflow-hidden bg-secondary/10">
+                  <div className="bg-primary p-6 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                      <Landmark size={20} className="text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold font-serif text-lg">Fiduciary & Estate Services</h3>
+                      <p className="text-white/60 text-xs">Cross-border financial & administrative trust</p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 space-y-1">
+                    {[
+                      { label: 'NRE / NRO Account Coordination', desc: 'Banking KYC, account opening & document attestation' },
+                      { label: 'Repatriation Paperwork (15CA/CB)', desc: 'CA coordination for fund remittance back overseas' },
+                      { label: 'Capital Gains Tax Assistance', desc: 'Tax calculation & property sale transaction accounting' },
+                      { label: 'Statutory Dues Payment', desc: 'Automated property tax, electricity & municipal fee payments' },
+                      { label: 'Audited Rental Income Ledgers', desc: 'Monthly transparent statement of rents collected & expenses' },
+                      { label: 'Senior Citizen Financial Support', desc: 'Pension paperwork, life certificate & banking accompaniment' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-primary/8 last:border-0 hover:bg-primary/5 rounded-xl px-3 transition-colors">
+                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check size={11} strokeWidth={3} className="text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <Link href="/contact?service=fiduciary-services" className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover transition-all">
+                      <span>Enquire About Fiduciary Services</span>
                       <ArrowRight size={13} />
                     </Link>
                   </div>

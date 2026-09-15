@@ -5,7 +5,7 @@ import { Footer } from '@/components/sections/Footer'
 import { PremiumSlideshow } from '@/components/sections/PremiumSlideshow'
 import { StoryPlayer } from '@/components/sections/StoryPlayer'
 import Link from 'next/link'
-import { Heart, Home, Check, CheckCircle2, ArrowRight, Quote, Phone, MessageCircle, Mail } from 'lucide-react'
+import { Heart, Home, Check, CheckCircle2, ArrowRight, Quote, Phone, MessageCircle, Mail, Scale, Landmark } from 'lucide-react'
 import { useState } from 'react'
 import { Reveal } from '@/lib/useReveal'
 import { CONTACT_PHONE, CONTACT_PHONE_RAW, CONTACT_EMAIL } from '@/lib/constants'
@@ -287,6 +287,86 @@ export default function Page() {
                   </div>
                 </div>
               </Reveal>
+
+              {/* legal services spotlight */}
+              <Reveal from="left" delay={0.15}>
+                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                  <div className="p-8 flex-grow flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                          <Scale size={22} />
+                        </div>
+                        <h3 className="font-bold font-serif text-navy text-2xl">Legal & Compliance Services</h3>
+                      </div>
+                      <p className="text-dark/70 text-sm leading-relaxed font-normal">
+                        Vetted advocates & legal experts managing property title verifications, Special Power of Attorney (SPOA), tenant contracts, and legal documentation.
+                      </p>
+                      
+                      <ul className="space-y-2.5 pt-2">
+                        {[
+                          'Property title search & Encumbrance Certificate (EC)',
+                          'Special Power of Attorney (SPOA) registration assistance',
+                          'Tenant lease agreements & police verification',
+                          'Municipal tax compliance & legal consultation'
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
+                            <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pt-8 border-t border-light-gray mt-8">
+                      <Link href="/services#legal-services" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                        <span>Explore Legal Solutions</span>
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* fiduciary services spotlight */}
+              <Reveal from="right" delay={0.2}>
+                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                  <div className="p-8 flex-grow flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                          <Landmark size={22} />
+                        </div>
+                        <h3 className="font-bold font-serif text-navy text-2xl">Fiduciary & Estate Services</h3>
+                      </div>
+                      <p className="text-dark/70 text-sm leading-relaxed font-normal">
+                        Complete fiduciary oversight for cross-border families: NRE/NRO account assistance, repatriation compliance (15CA/CB), statutory dues, and audited ledgers.
+                      </p>
+                      
+                      <ul className="space-y-2.5 pt-2">
+                        {[
+                          'NRE / NRO account banking & KYC coordination',
+                          'Repatriation compliance (Form 15CA/CB support)',
+                          'Statutory dues, property taxes & utility automation',
+                          'Audited rental income statements & estate oversight'
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
+                            <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pt-8 border-t border-light-gray mt-8">
+                      <Link href="/services#fiduciary-services" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                        <span>Explore Fiduciary Solutions</span>
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -327,8 +407,8 @@ export default function Page() {
               {[
                 { name: 'Basic Care', price: '₹4,999', desc: '1 wellness check-in, medication reminders & monthly report.', popular: false },
                 { name: 'Premium Care', price: '₹7,999', desc: '2 check-ins, hospital transport & assistance, property inspection.', popular: false },
-                { name: 'Complete Care', price: '₹11,999', desc: '4 check-ins, blood bank access, hospital support & property checks.', popular: false },
-                { name: 'NRI Prime', price: '₹20,000', desc: '8 check-ins, full hospital suite, property selling & construction.', popular: true }
+                { name: 'Complete Care', price: '₹11,999', desc: '4 check-ins, blood bank coordination, hospital support & property checks.', popular: false },
+                { name: 'NRI Prime', price: '₹22,999', desc: '8 check-ins, full hospital suite, property selling & construction.', popular: true }
               ].map((plan, idx) => (
                 <Reveal key={idx} from="bottom" delay={idx * 0.1}>
                   <div className={`rounded-2xl p-6 sm:p-8 border transition-all duration-300 relative flex flex-col justify-between h-full hover:-translate-y-1 ${
