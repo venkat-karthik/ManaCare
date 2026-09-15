@@ -186,15 +186,15 @@ export default function Page() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* parental care spotlight */}
               <Reveal from="left" delay={0.05}>
-                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2.5 hover:scale-[1.01] hover:border-primary/40 transition-all duration-500 ease-out flex flex-col h-full group">
                   <div className="relative h-60 w-full overflow-hidden">
                     <img
                       src="/assets/Parent Care & Wellness.png"
                       alt="Parental Care & Wellness"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
-                    <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3 py-1 rounded-full uppercase shadow-md animate-pulse">
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
+                    <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase shadow-md animate-pulse">
                       ★ Primary Spotlight
                     </span>
                   </div>
@@ -202,10 +202,10 @@ export default function Page() {
                   <div className="p-8 flex-grow flex flex-col justify-between">
                     <div className="space-y-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-3 shadow-xs group-hover:shadow-md transition-all duration-300">
                           <Heart size={22} />
                         </div>
-                        <h3 className="font-bold font-serif text-navy text-2xl">Parental Care & Wellness</h3>
+                        <h3 className="font-bold font-serif text-navy text-2xl group-hover:text-primary transition-colors">Parental Care & Wellness</h3>
                       </div>
                       <p className="text-dark/70 text-sm leading-relaxed font-normal">
                         Empathetic, structured care managers acting as your local eyes and hands. We look after your parents' daily health logs, vitals, medical requirements, and lifestyle companionship.
@@ -218,18 +218,20 @@ export default function Page() {
                           'Medication delivery, management & refills',
                           'Accompanied hospital & doctor consultation runs'
                         ].map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
-                            <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
-                            <span>{item}</span>
+                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal group/item">
+                            <div className="w-4 h-4 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-all duration-300">
+                              <Check size={11} className="text-accent group-hover/item:text-white transition-colors" strokeWidth={3} />
+                            </div>
+                            <span className="group-hover/item:text-navy transition-colors">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div className="pt-8 border-t border-light-gray mt-8">
-                      <Link href="/services#parent-care" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                      <Link href="/services#parent-care" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-primary-hover group/link">
                         <span>Explore Parent Care Solutions</span>
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={14} className="group-hover/link:translate-x-1.5 transition-transform duration-300" />
                       </Link>
                     </div>
                   </div>
@@ -238,15 +240,15 @@ export default function Page() {
 
               {/* property care spotlight */}
               <Reveal from="right" delay={0.1}>
-                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2.5 hover:scale-[1.01] hover:border-primary/40 transition-all duration-500 ease-out flex flex-col h-full group">
                   <div className="relative h-60 w-full overflow-hidden">
                     <img
                       src="/assets/Property Oversight.png"
                       alt="Property Oversight & Management"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
-                    <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3 py-1 rounded-full uppercase shadow-md animate-pulse">
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
+                    <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase shadow-md animate-pulse">
                       ★ Primary Spotlight
                     </span>
                   </div>
@@ -254,10 +256,10 @@ export default function Page() {
                   <div className="p-8 flex-grow flex flex-col justify-between">
                     <div className="space-y-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-3 shadow-xs group-hover:shadow-md transition-all duration-300">
                           <Home size={22} />
                         </div>
-                        <h3 className="font-bold font-serif text-navy text-2xl">Property Oversight & Protection</h3>
+                        <h3 className="font-bold font-serif text-navy text-2xl group-hover:text-primary transition-colors">Property Oversight & Protection</h3>
                       </div>
                       <p className="text-dark/70 text-sm leading-relaxed font-normal">
                         Safeguarding your property investments and family assets in India. We perform regular physical checks, manage local tenants, maintain utilities, and send you detailed digital reports.
@@ -270,18 +272,20 @@ export default function Page() {
                           'Tenant verification, onboarding & rent collection admin',
                           'Utility bills, municipal taxes & registration paperwork'
                         ].map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
-                            <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
-                            <span>{item}</span>
+                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal group/item">
+                            <div className="w-4 h-4 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-all duration-300">
+                              <Check size={11} className="text-accent group-hover/item:text-white transition-colors" strokeWidth={3} />
+                            </div>
+                            <span className="group-hover/item:text-navy transition-colors">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div className="pt-8 border-t border-light-gray mt-8">
-                      <Link href="/services#property-management" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                      <Link href="/services#property-management" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-primary-hover group/link">
                         <span>Explore Property Care Solutions</span>
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={14} className="group-hover/link:translate-x-1.5 transition-transform duration-300" />
                       </Link>
                     </div>
                   </div>
@@ -290,14 +294,14 @@ export default function Page() {
 
               {/* legal services spotlight */}
               <Reveal from="left" delay={0.15}>
-                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2.5 hover:scale-[1.01] hover:border-primary/40 transition-all duration-500 ease-out flex flex-col h-full group">
                   <div className="p-8 flex-grow flex flex-col justify-between">
                     <div className="space-y-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-3 shadow-xs group-hover:shadow-md transition-all duration-300">
                           <Scale size={22} />
                         </div>
-                        <h3 className="font-bold font-serif text-navy text-2xl">Legal & Compliance Services</h3>
+                        <h3 className="font-bold font-serif text-navy text-2xl group-hover:text-primary transition-colors">Legal & Compliance Services</h3>
                       </div>
                       <p className="text-dark/70 text-sm leading-relaxed font-normal">
                         Vetted advocates & legal experts managing property title verifications, Special Power of Attorney (SPOA), tenant contracts, and legal documentation.
@@ -310,18 +314,20 @@ export default function Page() {
                           'Tenant lease agreements & police verification',
                           'Municipal tax compliance & legal consultation'
                         ].map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
-                            <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
-                            <span>{item}</span>
+                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal group/item">
+                            <div className="w-4 h-4 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-all duration-300">
+                              <Check size={11} className="text-accent group-hover/item:text-white transition-colors" strokeWidth={3} />
+                            </div>
+                            <span className="group-hover/item:text-navy transition-colors">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div className="pt-8 border-t border-light-gray mt-8">
-                      <Link href="/services#legal-services" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                      <Link href="/services#legal-services" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-primary-hover group/link">
                         <span>Explore Legal Solutions</span>
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={14} className="group-hover/link:translate-x-1.5 transition-transform duration-300" />
                       </Link>
                     </div>
                   </div>
@@ -330,14 +336,14 @@ export default function Page() {
 
               {/* fiduciary services spotlight */}
               <Reveal from="right" delay={0.2}>
-                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                <div className="bg-white rounded-3xl border border-primary/15 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2.5 hover:scale-[1.01] hover:border-primary/40 transition-all duration-500 ease-out flex flex-col h-full group">
                   <div className="p-8 flex-grow flex flex-col justify-between">
                     <div className="space-y-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-3 shadow-xs group-hover:shadow-md transition-all duration-300">
                           <Landmark size={22} />
                         </div>
-                        <h3 className="font-bold font-serif text-navy text-2xl">Fiduciary & Estate Services</h3>
+                        <h3 className="font-bold font-serif text-navy text-2xl group-hover:text-primary transition-colors">Fiduciary & Estate Services</h3>
                       </div>
                       <p className="text-dark/70 text-sm leading-relaxed font-normal">
                         Complete fiduciary oversight for cross-border families: NRE/NRO account assistance, repatriation compliance (15CA/CB), statutory dues, and audited ledgers.
@@ -350,18 +356,20 @@ export default function Page() {
                           'Statutory dues, property taxes & utility automation',
                           'Audited rental income statements & estate oversight'
                         ].map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal">
-                            <Check size={14} className="text-accent shrink-0 mt-0.5" strokeWidth={3} />
-                            <span>{item}</span>
+                          <li key={i} className="flex items-start gap-2.5 text-xs text-dark/80 font-normal group/item">
+                            <div className="w-4 h-4 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-all duration-300">
+                              <Check size={11} className="text-accent group-hover/item:text-white transition-colors" strokeWidth={3} />
+                            </div>
+                            <span className="group-hover/item:text-navy transition-colors">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div className="pt-8 border-t border-light-gray mt-8">
-                      <Link href="/services#fiduciary-services" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+                      <Link href="/services#fiduciary-services" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-primary-hover group/link">
                         <span>Explore Fiduciary Solutions</span>
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={14} className="group-hover/link:translate-x-1.5 transition-transform duration-300" />
                       </Link>
                     </div>
                   </div>

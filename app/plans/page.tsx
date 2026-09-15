@@ -243,47 +243,52 @@ export default function PlansPage() {
             {plans.map((plan, idx) => (
               <Reveal key={idx} from="bottom" delay={idx * 0.09}>
                 <div
-                  className={`bg-white rounded-[36px] border flex flex-col justify-between p-8 transition-all relative duration-300 hover:shadow-lg hover:-translate-y-1 h-full ${
+                  className={`group relative overflow-hidden bg-white rounded-[36px] border flex flex-col justify-between p-8 transition-all duration-500 ease-out hover:-translate-y-2.5 hover:scale-[1.02] hover:shadow-2xl h-full ${
                     plan.popular
-                      ? 'border-primary ring-2 ring-primary/20 bg-gradient-to-b from-primary/5 via-white to-white shadow-md'
-                      : 'border-light-gray hover:border-primary/25'
+                      ? 'border-primary ring-2 ring-primary/20 bg-gradient-to-b from-primary/5 via-white to-white shadow-md hover:border-primary hover:ring-primary/40 hover:shadow-primary/20'
+                      : 'border-light-gray hover:border-primary/40 hover:shadow-primary/10'
                   }`}
                 >
+                  {/* Subtle hover shine sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+
                   {plan.popular && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-[9px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase font-serif animate-bounce">
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-[9px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase font-serif animate-bounce shadow-md">
                       Most Popular
                     </span>
                   )}
 
-                  <div className="space-y-6">
+                  <div className="space-y-6 relative z-10">
                     <div className="space-y-2">
-                      <h3 className="text-lg font-bold font-serif text-navy">{plan.name}</h3>
+                      <h3 className="text-lg font-bold font-serif text-navy group-hover:text-primary transition-colors duration-300">{plan.name}</h3>
                       <p className="text-xs text-dark/75 leading-relaxed font-semibold">{plan.description}</p>
                     </div>
                     <div className="space-y-1">
-                      <div className="text-3xl font-bold text-primary font-serif">{plan.formattedPrice}</div>
+                      <div className="text-3xl font-bold text-primary font-serif transition-transform duration-300 origin-left group-hover:scale-105">{plan.formattedPrice}</div>
                       <div className="text-[10px] text-dark/60 font-sans tracking-wide uppercase font-bold">{plan.period}</div>
                     </div>
                     <ul className="space-y-3 pt-6 border-t border-light-gray">
                       {plan.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2.5 text-xs text-dark/85 font-semibold leading-relaxed">
-                          <Check size={14} className="text-primary shrink-0 mt-0.5" strokeWidth={3} />
-                          <span>{feature}</span>
+                        <li key={fIdx} className="flex items-start gap-2.5 text-xs text-dark/85 font-semibold leading-relaxed group/item">
+                          <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300">
+                            <Check size={11} className="text-primary group-hover/item:text-white transition-colors" strokeWidth={3} />
+                          </div>
+                          <span className="group-hover/item:text-navy transition-colors">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-6">
+                  <div className="pt-6 relative z-10">
                     {plan.price === null ? (
                       <Link href="/contact?plan=custom"
-                        className="w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all border border-primary text-primary hover:bg-secondary">
+                        className="w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border border-primary text-primary hover:bg-primary hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
                         {plan.ctaText}
                       </Link>
                     ) : (
                       <button onClick={() => handleOpenCheckout(plan)}
-                        className={`w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                          plan.popular ? 'bg-primary text-white hover:bg-primary-hover shadow-sm' : 'border border-primary text-primary hover:bg-secondary'
+                        className={`w-full block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-[0.98] ${
+                          plan.popular ? 'bg-primary text-white hover:bg-primary-hover shadow-md hover:shadow-xl hover:shadow-primary/30' : 'border border-primary text-primary hover:bg-primary hover:text-white hover:shadow-md'
                         }`}>
                         {plan.ctaText}
                       </button>

@@ -721,13 +721,13 @@ export default function ServicesPage() {
 
               {/* PARENT CARE BREAKDOWN */}
               <Reveal from="left" delay={0.05}>
-                <div className="rounded-[32px] border border-primary/15 overflow-hidden bg-secondary/20">
+                <div className="group rounded-[32px] border border-primary/15 overflow-hidden bg-secondary/20 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:border-primary/40">
                   <div className="bg-primary p-6 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       <Heart size={20} className="text-accent" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold font-serif text-lg">Parental Care Services</h3>
+                      <h3 className="text-white font-bold font-serif text-lg group-hover:text-accent transition-colors">Parental Care Services</h3>
                       <p className="text-white/60 text-xs">Complete hospital & daily wellness support</p>
                     </div>
                   </div>
@@ -745,12 +745,12 @@ export default function ServicesPage() {
                       { label: 'Grocery & Errand Support', desc: 'Daily essentials, bill payments & household chores' },
                       { label: 'Companionship Visits', desc: 'Regular emotional wellness and companionship sessions' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 py-3 border-b border-primary/8 last:border-0 hover:bg-primary/5 rounded-xl px-3 transition-colors">
-                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                          <Check size={11} strokeWidth={3} className="text-primary" />
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-primary/8 last:border-0 hover:bg-primary/10 rounded-xl px-3 transition-all duration-200 group/item">
+                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300">
+                          <Check size={11} strokeWidth={3} className="text-primary group-hover/item:text-white transition-colors" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-sm font-semibold text-navy group-hover/item:text-primary transition-colors">{item.label}</p>
                           <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
                         </div>
                       </div>
@@ -758,7 +758,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="p-6 pt-0">
-                    <Link href="/contact?service=parent-care" className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover transition-all">
+                    <Link href="/contact?service=parent-care" className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
                       <span>Enquire About Parent Care</span>
                       <ArrowRight size={13} />
                     </Link>
@@ -768,13 +768,13 @@ export default function ServicesPage() {
 
               {/* PROPERTY CARE BREAKDOWN */}
               <Reveal from="right" delay={0.1}>
-                <div className="rounded-[32px] border border-accent/20 overflow-hidden bg-[#FDFAF6]">
+                <div className="group rounded-[32px] border border-accent/20 overflow-hidden bg-[#FDFAF6] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:border-accent/40">
                   <div className="bg-navy p-6 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       <Home size={20} className="text-accent" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold font-serif text-lg">Property Management Services</h3>
+                      <h3 className="text-white font-bold font-serif text-lg group-hover:text-accent transition-colors">Property Management Services</h3>
                       <p className="text-white/60 text-xs">Full-service property oversight & transactions</p>
                     </div>
                   </div>
@@ -792,12 +792,12 @@ export default function ServicesPage() {
                       { label: 'Utility & Tax Payments', desc: 'Property tax, EB, water & municipal dues paid on your behalf' },
                       { label: 'Legal Paperwork & Registration', desc: 'Encumbrance certificates, patta, registration & compliance support' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 py-3 border-b border-accent/8 last:border-0 hover:bg-accent/5 rounded-xl px-3 transition-colors">
-                        <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
-                          <Check size={11} strokeWidth={3} className="text-accent" />
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-accent/8 last:border-0 hover:bg-accent/10 rounded-xl px-3 transition-all duration-200 group/item">
+                        <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-all duration-300">
+                          <Check size={11} strokeWidth={3} className="text-accent group-hover/item:text-white transition-colors" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-sm font-semibold text-navy group-hover/item:text-accent transition-colors">{item.label}</p>
                           <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
                         </div>
                       </div>
@@ -805,7 +805,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="p-6 pt-0">
-                    <Link href="/contact?service=property-management" className="w-full flex items-center justify-center gap-2 bg-accent text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all">
+                    <Link href="/contact?service=property-management" className="w-full flex items-center justify-center gap-2 bg-accent text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accent/90 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
                       <span>Enquire About Property Care</span>
                       <ArrowRight size={13} />
                     </Link>
@@ -815,13 +815,13 @@ export default function ServicesPage() {
 
               {/* LEGAL SERVICES BREAKDOWN */}
               <Reveal from="left" delay={0.15}>
-                <div className="rounded-[32px] border border-accent/30 overflow-hidden bg-white">
+                <div className="group rounded-[32px] border border-accent/30 overflow-hidden bg-white transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:border-accent/50">
                   <div className="bg-[#0F172A] p-6 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       <Scale size={20} className="text-accent" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold font-serif text-lg">Legal & Compliance Services</h3>
+                      <h3 className="text-white font-bold font-serif text-lg group-hover:text-accent transition-colors">Legal & Compliance Services</h3>
                       <p className="text-white/60 text-xs">Vetted advocates, property title & POA assistance</p>
                     </div>
                   </div>
@@ -835,12 +835,12 @@ export default function ServicesPage() {
                       { label: 'Statutory Tax & Revenue Compliance', desc: 'Municipal property tax, stamp duty & land revenue verification' },
                       { label: 'Legal Representation', desc: 'Coordination with verified advocates & court case monitoring' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 py-3 border-b border-accent/8 last:border-0 hover:bg-accent/5 rounded-xl px-3 transition-colors">
-                        <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
-                          <Check size={11} strokeWidth={3} className="text-accent" />
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-accent/8 last:border-0 hover:bg-accent/10 rounded-xl px-3 transition-all duration-200 group/item">
+                        <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-all duration-300">
+                          <Check size={11} strokeWidth={3} className="text-accent group-hover/item:text-white transition-colors" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-sm font-semibold text-navy group-hover/item:text-accent transition-colors">{item.label}</p>
                           <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
                         </div>
                       </div>
@@ -848,7 +848,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="p-6 pt-0">
-                    <Link href="/contact?service=legal-services" className="w-full flex items-center justify-center gap-2 bg-[#0F172A] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#0F172A]/90 transition-all">
+                    <Link href="/contact?service=legal-services" className="w-full flex items-center justify-center gap-2 bg-[#0F172A] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#0F172A]/90 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
                       <span>Enquire About Legal Services</span>
                       <ArrowRight size={13} />
                     </Link>
@@ -858,13 +858,13 @@ export default function ServicesPage() {
 
               {/* FIDUCIARY SERVICES BREAKDOWN */}
               <Reveal from="right" delay={0.2}>
-                <div className="rounded-[32px] border border-primary/20 overflow-hidden bg-secondary/10">
+                <div className="group rounded-[32px] border border-primary/20 overflow-hidden bg-secondary/10 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:border-primary/40">
                   <div className="bg-primary p-6 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15">
+                    <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center border border-white/15 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       <Landmark size={20} className="text-accent" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold font-serif text-lg">Fiduciary & Estate Services</h3>
+                      <h3 className="text-white font-bold font-serif text-lg group-hover:text-accent transition-colors">Fiduciary & Estate Services</h3>
                       <p className="text-white/60 text-xs">Cross-border financial & administrative trust</p>
                     </div>
                   </div>
@@ -878,12 +878,12 @@ export default function ServicesPage() {
                       { label: 'Audited Rental Income Ledgers', desc: 'Monthly transparent statement of rents collected & expenses' },
                       { label: 'Senior Citizen Financial Support', desc: 'Pension paperwork, life certificate & banking accompaniment' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 py-3 border-b border-primary/8 last:border-0 hover:bg-primary/5 rounded-xl px-3 transition-colors">
-                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                          <Check size={11} strokeWidth={3} className="text-primary" />
+                      <div key={i} className="flex items-start gap-3 py-3 border-b border-primary/8 last:border-0 hover:bg-primary/10 rounded-xl px-3 transition-all duration-200 group/item">
+                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300">
+                          <Check size={11} strokeWidth={3} className="text-primary group-hover/item:text-white transition-colors" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-navy">{item.label}</p>
+                          <p className="text-sm font-semibold text-navy group-hover/item:text-primary transition-colors">{item.label}</p>
                           <p className="text-xs text-dark/55 mt-0.5">{item.desc}</p>
                         </div>
                       </div>
@@ -891,7 +891,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="p-6 pt-0">
-                    <Link href="/contact?service=fiduciary-services" className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover transition-all">
+                    <Link href="/contact?service=fiduciary-services" className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-hover shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
                       <span>Enquire About Fiduciary Services</span>
                       <ArrowRight size={13} />
                     </Link>
